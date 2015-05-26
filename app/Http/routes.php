@@ -1,3 +1,2 @@
 <?php
-
 	Route::controller('/', 'IndexController');
