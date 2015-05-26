@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Eternal
+        psr4_prefix: Eternal
+        src_path: app
