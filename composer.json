@@ -17,7 +17,9 @@
 	},
 	"autoload": {
 		"classmap": [
-			"database"
+			"database",
+            "app/Models",
+            "app/Libraries"
 		],
 		"psr-4": {
 			"Eternal\\": "app/"
