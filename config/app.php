@@ -26,7 +26,9 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://eternalvoid.de',
+
+	'host' => 'eternalvoid.de',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Europe/Berlin',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -195,6 +197,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Form'      => 'Illuminate\Html\FormFacade',
+		'HTML'      => 'Illuminate\Html\HtmlFacade',
+		'SSH'       => 'Illuminate\Remote\RemoteFacade'
 
 	],
 
