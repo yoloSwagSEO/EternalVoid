@@ -3,6 +3,9 @@
 
 	use Eternal\Models\User;
 
+	use Session;
+	use Request;
+
 	class UsersController extends Controller {
 
 		private $user;
@@ -28,11 +31,11 @@
 		}
 
 		public function postLogin() {
-			if($this->user->auth()) {
-				return redirect('planet');
+			if($this->user->login()) {
+				return redirect('http://'.Session::get('universe').'.'.Request::getHttpHost().'/');
 			}
 
-			return redirect('users/login')->withErrors($this->user->validator);
+			return redirect('earlyaccess')->withErrors($this->user->validator);
 		}
 
 		public function getLogout() {
