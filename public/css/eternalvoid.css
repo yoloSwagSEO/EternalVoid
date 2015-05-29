@@ -1,0 +1,236 @@
+body {
+	background:url(../img/main/background.jpg);
+	padding-bottom:50px;
+	font-size:12px;
+}
+
+body, h1, h2, h3, h4, h5, h6, label {
+	font-family:"Roboto";
+}
+
+a:link, a:visited, a:active, a:focus {
+	outline:none;
+}
+
+a:focus {
+	text-decoration:none;
+	color:#698696;
+}
+
+.container {
+	position:relative;
+	background:url(../img/main/background.jpg);
+}
+
+h1 {
+	background:url(../img/main/mainheader.jpg) no-repeat;
+	width:800px;
+	margin:0 auto;
+	margin-bottom:20px;
+}
+
+h1 a {
+	display:block;
+	height:120px;
+}
+
+h1 a span {
+	display:none;
+}
+
+nav ul {
+	text-align:center;
+	padding:0;
+	margin:0;
+	position:relative;
+	top:-3px;
+}
+
+nav ul li {
+	display:inline;
+	margin:0 10px;
+}
+
+nav ul li a:before, nav ul li a:after {
+	content:"";
+	position:absolute;
+	height:24px;
+	width:26px;
+	background:#052639;
+}
+
+nav ul li a:before {
+	border-left:2px solid #5F6F79;
+	left:-13px;
+	top:0px;
+	-webkit-transform: skew(-45deg);
+	-moz-transform: skew(-45deg);
+	-o-transform: skew(-45deg);
+	transform: skew(-45deg);
+}
+
+nav ul li a:after {
+	border-right:2px solid #5F6F79;
+	right:-13px;
+	top:0px;
+	-webkit-transform: skew(45deg);
+	-moz-transform: skew(45deg);
+	-o-transform: skew(45deg);
+	transform: skew(45deg);
+}
+
+nav ul li a {
+	padding:3px 18px 4px 18px;
+	color:#698696;
+	background:#052639;
+
+	transition:color .15s ease-in;
+	-moz-transition:color .15s ease-in;
+	-o-transition:color .15s ease-in;
+	-webkit-transition:color .15s ease-in;
+	border-top:1px solid #5F6F79;
+	position:relative;
+	z-index:1;
+
+}
+
+nav ul li a:hover {
+	text-decoration:none;
+	color:#ffffff;
+}
+
+.wrapper_top:before, .wrapper_top:after, .wrapper_btm:before, .wrapper_btm:after {
+	content:"";
+	height:7px;
+	width:7px;
+	position:absolute;
+	background:#052639;
+}
+
+.wrapper_top:before {
+	left:-4px;
+	top:0px;
+	-webkit-transform: skew(-45deg);
+	-moz-transform: skew(-45deg);
+	-o-transform: skew(-45deg);
+	transform: skew(-45deg);
+	border-left:2px solid #5F6F79;
+}
+.wrapper_top:after {
+	right:-4px;
+	top:0;
+	-webkit-transform: skew(45deg);
+	-moz-transform: skew(45deg);
+	-o-transform: skew(45deg);
+	transform: skew(45deg);
+	border-right:2px solid #5F6F79;
+}
+.wrapper_btm:before {
+	left:-4px;
+	bottom:0;
+	-webkit-transform: skew(-135deg);
+	-moz-transform: skew(-135deg);
+	-o-transform: skew(-135deg);
+	transform: skew(-135deg);
+	border-left:2px solid #5F6F79;
+}
+.wrapper_btm:after {
+	right:-4px;
+	bottom:0;
+	-webkit-transform: skew(135deg);
+	-moz-transform: skew(135deg);
+	-o-transform: skew(135deg);
+	transform: skew(135deg);
+	border-right:2px solid #5F6F79;
+}
+
+.wrapper_top, .wrapper_btm {
+	height:8px;
+	background:#052639;
+	margin:0 7px;
+	position:relative;
+}
+
+.wrapper_top { border-top:1px solid #5F6F79; }
+.wrapper_btm { border-bottom:1px solid #5F6F79; }
+
+.wrapper_inner {
+	background: #052639;
+	border-left:1px solid #5F6F79;
+	border-right:1px solid #5F6F79;
+	color:#ffffff;
+	padding:20px;
+}
+
+.wrapper_inner h2 {
+	margin:0;
+}
+
+.form-control {
+	background:#0F1C24;
+	border:1px solid #0E0B13;
+	color:#ffffff;
+}
+
+.form-control:focus {
+	border-color:#5F6F79;
+	box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(71, 100, 116, 1);
+}
+
+.progress {
+	border:1px solid #5F6F79;
+	height:30px;
+}
+
+.progress-bar {
+	line-height:28px;
+}
+
+.btn-default {
+	background-image:linear-gradient(to bottom, #052639 0px, #0F1C24 100%);
+	border-color:#0E0B13;
+	text-shadow:0 1px 0 #000000;
+	color:#698696;
+	background-color:#052639;
+	transition:color .15s ease-in;
+	-moz-transition:color .15s ease-in;
+	-o-transition:color .15s ease-in;
+	-webkit-transition:color .15s ease-in;
+}
+
+.btn-default:hover, .btn-default:focus {
+	background-color:#0F1C24;
+	color:#ffffff;
+	border-color:#0E0B13;
+}
+
+.panel, .progress {
+	background:#0F1C24;
+}
+
+.panel-default, .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+	border-color:#5F6F79;
+}
+
+.alert {
+	box-shadow:none;
+	background-color:transparent;
+	text-align:center;
+	text-shadow:1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.alert-danger {
+	background-image:linear-gradient(to bottom, #d9534f 0px, #c9302c 100%);
+	border-color:#fc746f;
+	padding:10px;
+}
+
+.alert-success {
+	background-image:linear-gradient(to bottom, #5cb85c 0px, #449d44 100%);
+	border-color:#88df88;
+	padding:10px;
+}
+
+.alert-danger > .text-danger, .alert-success > .text-success {
+	color:#ffffff;
+}
