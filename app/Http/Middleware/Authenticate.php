@@ -1,6 +1,7 @@
 <?php namespace Eternal\Http\Middleware;
 
 use Closure;
+use Config;
 use Illuminate\Contracts\Auth\Guard;
 
 class Authenticate {
@@ -40,7 +41,7 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				return redirect()->guest(Config::get('app.url'));
 			}
 		}
 
