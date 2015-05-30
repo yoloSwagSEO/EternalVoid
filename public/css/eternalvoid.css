@@ -234,3 +234,24 @@ nav ul li a:hover {
 .alert-danger > .text-danger, .alert-success > .text-success {
 	color:#ffffff;
 }
+
+.footer {
+	color:#ffffff;
+}
+
+.footer a {
+	color:#ffffff;
+}
+
+.footer ul {
+	list-style: none;
+}
+
+.footer ul li {
+	float:left;
+}
+
+.footer ul li a {
+	display:block;
+	text-align: center;
+}
