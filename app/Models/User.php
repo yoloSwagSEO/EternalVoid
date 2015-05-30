@@ -5,10 +5,28 @@
 	use Crypt;
 	use Auth;
 	use Session;
+	use Hash;
 
 	class User extends Base {
 
 		protected $table = 'users';
+
+		public function read($id = '', $with = []) {
+			return !empty($id) ? $this->with($with)->find($id) : $this->with($with)->get();
+		}
+
+		public function add() {
+
+		}
+
+		public function modify() {
+
+		}
+
+		public function remove() {
+
+		}
+
 
 		public function login() {
 			$rules = [
@@ -74,29 +92,38 @@
 			];
 
 			if($this->isValid($rules, $messages)) {
+				$this->username      = Request::get('username');
+				$this->password      = Hash::make(Request::get('password'));
+				$this->random        = str_random();
+				$this->email         = Crypt::encrypt(Request::get('email'));
+				$this->regip         = Crypt::encrypt(Request::ip());
+				$this->lastip        = Crypt::encrypt(Request::ip());
+				$this->created_uid   = 0;
+				$this->updated_uid   = 0;
+				$this->lastactive_at = (new \DateTime())->format('d.m.Y - H:i:s');
 
+				if($this->save()) return true;
+
+				$this->validator->messages()->add('registerfailed', $messages['registerfailed']);
+				return false;
 			}
 
 			return false;
-		}
-
-		public function add() {
-
-		}
-
-		public function modify() {
-
-		}
-
-		public function remove() {
-
 		}
 
 		public function planets() {
 			return $this->hasMany('Eternal\Models\Planets', 'user_id', 'id');
 		}
 
+		public function research() {
+			return $this->hasOne('Eternal\Models\Research', 'user_id', 'id');
+		}
+
 		public function profile() {
-			return $this->hasOne('Eternal\Models\Profile', 'user_id', 'id');
+			return $this->hasOne('Eternal\Models\UserProfile', 'user_id', 'id');
+		}
+
+		public function messages() {
+			return $this->hasMany('Eternal\Models\Message', 'receiver_id', 'id')->select(['id', 'receiver_id', 'read_at']);
 		}
 	}
