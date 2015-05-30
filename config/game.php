@@ -125,7 +125,9 @@
 				114 => 'wuestenplanet06.jpg',
 				115 => 'wuestenplanet07.jpg',
 				116 => 'wuestenplanet08.jpg',
-			]
+			],
+			'announcement' => '',
+			'marquee'      => ''
 		],
 
 		'orion'   => [
