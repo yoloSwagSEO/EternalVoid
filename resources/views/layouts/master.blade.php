@@ -31,6 +31,21 @@
 				</div>
 				<div class="wrapper_btm"></div>
 			</div>
+			<div class="footer">
+				<p class="pull-left ml10 mr30">
+					{{ date("Y") }} &copy; by Christian Wederka<br />
+					<a href="/impressum">Impressum</a>
+					<i class="fa fa-ellipsis-v pr10 pl10"></i>
+					<a href="/datenschutz">Datenschutz</a>
+				</p>
+				<ul>
+					<li>
+						<a href="https://github.com/chrischi1989/EternalVoid" title="Verfolge die Entwicklung auf GitHub">
+							<i class="fa fa-github fa-3x fa-inverse"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		{!! HTML::script('js/jquery.js') !!}
 		{!! HTML::script('js/bootstrap.min.js') !!}
