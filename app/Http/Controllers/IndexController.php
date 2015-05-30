@@ -1,9 +1,6 @@
 <?php
 	namespace Eternal\Http\Controllers;
 
-	use Hash;
-	use Crypt;
-
 	class IndexController extends Controller {
 
 		public function getPage($page = '') {
