@@ -473,13 +473,13 @@ a { outline:none !important; }
 .zi5000 { z-index:5000; }
 .tshadow-white { text-shadow:1px 1px 1px rgba(255,255,255,1); }
 .tshadow-black { text-shadow:1px 1px 1px rgba(0,0,0,1); }
-.green { color:#00ff00; }
-.red { color:#ff0000; }
-.yellow { color:#ffff00; }
-.info { color:#34708f; }
-.warn { color:#c99c00; }
-.white { color:#ffffff; }
-.black { color:#000000; }
+.green { color:#00ff00 !important; }
+.red { color:#ff0000 !important; }
+.yellow { color:#ffff00 !important; }
+.info { color:#34708f !important; }
+.warn { color:#c99c00 !important; }
+.white { color:#ffffff !important; }
+.black { color:#000000 !important; }
 .btrr { border-top-right-radius:0 !important; }
 .bbrr { border-bottom-right-radius:0 !important; }
 .btlr { border-top-left-radius:0 !important; }
