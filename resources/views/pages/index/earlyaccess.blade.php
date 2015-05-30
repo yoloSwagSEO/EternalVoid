@@ -21,9 +21,10 @@
 	<div class="row mt30">
 		<div class="col-md-6">
 			<h3 class="f28 u mb30">Registrierung</h3>
-			@if(Request::old('register'))
-				@include('messages')
+			@if(!empty(Request::old('register')))
+			@include('misc.messages')
 			@endif
+
 			<form action="/users/register" enctype="multipart/form-data" method="post" class="form-horizontal">
 				<div class="form-group mb30">
 					<label for="universe" class="control-label col-md-4 pt5">Universum:</label>
@@ -70,7 +71,9 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-offset-4 col-md-8">
-						<button type="submit" id="register" name="register" class="btn btn-default btn-block"><i class="fa fa-check"></i> Jetzt registrieren</button>
+						<button type="submit" id="register" name="register" value="register" class="btn btn-default btn-block">
+							<i class="fa fa-check"></i> Jetzt registrieren
+						</button>
 					</div>
 				</div>
 				{!! Form::token() !!}
@@ -78,8 +81,8 @@
 		</div>
 		<div class="col-md-6">
 			<h3 class="f28 u mb30">Login</h3>
-			@if(Request::old('login'))
-				@include('messages')
+			@if(!empty(Request::old('login')))
+			@include('misc.messages')
 			@endif
 
 			<form action="/users/login" enctype="multipart/form-data" method="post" class="form-horizontal">
@@ -105,7 +108,9 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-offset-4 col-md-8">
-						<button type="submit" id="login" name="login" class="btn btn-default btn-block"><i class="fa fa-sign-in"></i> Anmelden</button>
+						<button type="submit" id="login" name="login" value="login" class="btn btn-default btn-block">
+							<i class="fa fa-sign-in"></i> Anmelden
+						</button>
 					</div>
 				</div>
 				{!! Form::token() !!}
