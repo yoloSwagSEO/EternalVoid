@@ -55,7 +55,29 @@
 		}
 
 		public function register() {
+			$rules = [
+				'username'    => 'required',
+				'email'       => 'required|email',
+				'password'    => 'required|same:password_cnf|min:8',
+				'password_cnf'=> 'required|same:password',
+			];
 
+			$messages = [
+				'username.required' => trans('users.messages.login_username_required'),
+				'password.required' => trans('users.messages.login_password_required'),
+				'password.same'     => trans('users.messages.register_password_same'),
+				'password.min'      => trans('users.messages.register_password_min'),
+				'password_cnf.same' => trans('users.messages.register_password_cnf_same'),
+				'email.required'    => trans('users.messages.register_email_required'),
+				'email.email'       => trans('users.messages.register_email_email'),
+				'registerfailed'    => trans('users.messages.login_incorrect_login'),
+			];
+
+			if($this->isValid($rules, $messages)) {
+
+			}
+
+			return false;
 		}
 
 		public function add() {
