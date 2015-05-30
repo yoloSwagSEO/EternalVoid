@@ -23,7 +23,7 @@
 				return redirect('users/register')->withSuccess(trans('users.messages.register_success'));
 			}
 
-			return redirect('users/register')->withErrors($this->user->validator)->withInput();
+			return redirect('earlyaccess')->withErrors($this->user->validator)->withInput();
 		}
 
 		public function getLogin() {
@@ -35,7 +35,7 @@
 				return redirect('http://'.Session::get('universe').'.'.Request::getHttpHost().'/');
 			}
 
-			return redirect('earlyaccess')->withErrors($this->user->validator);
+			return redirect('earlyaccess')->withErrors($this->user->validator)->withInput();
 		}
 
 		public function getLogout() {
