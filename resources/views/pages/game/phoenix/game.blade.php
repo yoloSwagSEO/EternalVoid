@@ -164,7 +164,7 @@
 						<i class="fa fa-list-alt fa-lg pt1"></i>
 						<span class="visible-lg">Forum</span>
 					</a>
-					<a href="/user/logout/" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Logout">
+					<a href="/users/logout/" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Logout">
 						<i class="fa fa-sign-out fa-lg pt1"></i>
 						<span class="visible-lg">Logout</span>
 					</a>

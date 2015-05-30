@@ -11,7 +11,6 @@
 	use Eternal\Models\Defense;
 	use Eternal\Models\Unit;
 
-
 	use Session;
 	use Request;
 

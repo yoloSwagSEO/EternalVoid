@@ -4,7 +4,6 @@
 	use Request;
 	use Crypt;
 	use Auth;
-	use Session;
 	use Hash;
 
 	class User extends Base {
@@ -49,7 +48,7 @@
 
 				if(Auth::attempt($credentials, Request::exists('remember'))) {
 					if(is_null(Auth::user()->disabled_at)) {
-						Session::set('universe', Request::get('universe'));
+						session('universe', Request::get('universe'));
 
 						return true;
 					}
@@ -68,8 +67,10 @@
 		}
 
 		public function logout() {
-			Session::flush();
+			session()->flush();
 			Auth::logout();
+
+			return true;
 		}
 
 		public function register() {
