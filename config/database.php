@@ -64,7 +64,7 @@ return [
 			'strict'    => false,
 		],
 
-		'pheonix' => [
+		'phoenix' => [
 			'driver'    => 'mysql',
 			'host'      => env('DB_HOST', 'localhost'),
 			'database'  => env('DB_DATABASE', 'forge'),
