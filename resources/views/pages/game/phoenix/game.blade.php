@@ -22,7 +22,7 @@
 						<dt>Speed:</dt>
 						<dd id="gamespeed" data-speed="{{ $game['speed'] }}">{{ $game['speed'] }}x</dd>
 						<dt>Spieler online:</dt>
-
+						<dd>{{ $game['online'] }} / {{ $game['users'] }}</dd>
 						<dt>Letzte Aktion:</dt>
 						<dd id="time" data-lastupdate="{{ $planet->lastupdate_at }}" data-servertime="{{ time() }}">{{ date("H:i:s", $planet->lastupdate_at) }}</dd>
 					</dl>
