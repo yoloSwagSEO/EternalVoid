@@ -48,7 +48,7 @@
 
 				if(Auth::attempt($credentials, Request::exists('remember'))) {
 					if(is_null(Auth::user()->disabled_at)) {
-						session('universe', Request::get('universe'));
+						session(['universe' => Request::get('universe')]);
 
 						return true;
 					}
@@ -110,6 +110,11 @@
 			}
 
 			return false;
+		}
+
+		public function setLastactive(User $user) {
+			$user->lastactive_at = (new \DateTime())->format('Y-m-d H:i:s');
+			return $user->save();
 		}
 
 		public function planets() {
