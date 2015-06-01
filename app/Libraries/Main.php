@@ -2,23 +2,25 @@
 	namespace Eternal\Libraries;
 
 	use Auth;
-	use Config;
 	use Eternal\Models\User;
 	use Eternal\Models\Planet;
 
 	class Main {
 
 		private $game;
+		private $events;
 		private $user;
 		private $planet;
 		private $helper;
 
-		public function __construct(User $user, Planet $planet, Helper $helper) {
+		public function __construct(User $user, Planet $planet, Events $events, Helper $helper) {
 			$this->setGame()
 				 ->setUser($user)
-				 ->setPlanet($planet);
+				 ->setPlanet($planet)
+				 ->setEvents($events);
 
 			$this->helper = $helper;
+			$planet->setLastupdate($this->planet);
 		}
 
 		private function setGame() {
@@ -34,6 +36,8 @@
 				'messages'
 			]);
 
+			$user->setLastactive($this->user->first());
+
 			return $this;
 		}
 
@@ -41,6 +45,14 @@
 			$this->planet = $planet->read('', $this->user->id, ['production', 'resources']);
 
 			return $this;
+		}
+
+		private function setEvents(Events $events) {
+			$this->events = $events;
+			$this->events->setGame($this->game)
+						 ->setPlanet($this->planet)
+						 ->setResearch($this->user->research)
+						 ->init();
 		}
 
 		public function getGame() {
