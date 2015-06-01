@@ -14,7 +14,7 @@
 		private $helper;
 
 		public function __construct(User $user, Planet $planet, Events $events, Helper $helper) {
-			$this->setGame()
+			$this->setGame($user)
 				 ->setUser($user)
 				 ->setPlanet($planet)
 				 ->setEvents($events);
@@ -23,8 +23,14 @@
 			$planet->setLastupdate($this->planet);
 		}
 
-		private function setGame() {
+		private function setGame($user) {
+			$users      = $user->getAll();
+
 			$this->game = config()->get('game.'.session('universe'));
+			$this->game['users']  = $users->count();
+			$this->game['online'] = $users->filter(function($usr) {
+				return time() - $usr->lastactive_at < 120 ? $usr : null;
+			})->count();
 
 			return $this;
 		}
