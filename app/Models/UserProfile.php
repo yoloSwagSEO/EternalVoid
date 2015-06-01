@@ -18,8 +18,17 @@
 			return $this->save();
 		}
 
+		public function setPlanetimages(UserProfile $userProfile) {
+			$userProfile->planetimages = $userProfile->planetimages ? false : true;
+			return $userProfile->save();
+		}
+
 		public function race() {
 			return $this->belongsTo('Eternal\Models\Race', 'race_id', 'id');
+		}
+
+		public function alliance() {
+			return $this->belongsTo('Eternal\Models\Alliance', 'alliance_id', 'id');
 		}
 
 	}
