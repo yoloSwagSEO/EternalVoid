@@ -3,8 +3,8 @@
 
 	class Helper {
 
-		public function nf($int) {
-			return number_format($int, 0, ',', '.');
+		public function nf($int, $precision = 0) {
+			return number_format($int, $precision, ',', '.');
 		}
 
 		public function dt($dt) {
