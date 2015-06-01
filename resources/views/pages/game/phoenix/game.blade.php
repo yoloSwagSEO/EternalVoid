@@ -114,9 +114,9 @@
 							<td class="text-center" id="arsen" data-amount="{{ $resources->arsen }}" data-production="{{ $production->arsen * (1 + ($planet->bonus + $research->speziallegierungen * 5) / 100) }}">{{ $help->nf($resources->arsen) }}</td>
 							<td class="text-center" id="wasserstoff" data-amount="{{ $resources->wasserstoff }}" data-production="{{ $production->wasserstoff * (1 + ($planet->bonus + $research->materiestabilisierung * 5) / 100) }}">{{ $help->nf($resources->wasserstoff) }}</td>
 							<td class="text-center" id="antimaterie" data-amount="{{ $resources->antimaterie }}" data-production="{{ $production->antimaterie * (1 + ($planet->bonus + $research->materiestabilisierung * 5) / 100) }}">{{ $help->nf($resources->antimaterie) }}</td>
-							<td class="text-center" id="lager" data-int="{{ $resources->lager_int }}" data-storage="{{ $resources->lager_cap }}">{{ $help->nf($resources->lager_int,2) }}%</td>
-							<td class="text-center" id="speziallager" data-int="{{ $resources->speziallager_int }}" data-storage="{{ $resources->speziallager_cap }}">{{ $help->nf($resources->speziallager_int,2) }}%</td>
-							<td class="text-center" id="tanks" data-int="{{ $resources->tanks_int }}" data-storage="{{ $resources->tanks_cap }}">{{ $help->nf($resources->tanks_int,2) }}%</td>
+							<td class="text-center" id="lager" data-int="{{ $resources->lager_int }}" data-storage="{{ $resources->lager_cap }}">{{ $help->nf($resources->lager_int, 2) }}%</td>
+							<td class="text-center" id="speziallager" data-int="{{ $resources->speziallager_int }}" data-storage="{{ $resources->speziallager_cap }}">{{ $help->nf($resources->speziallager_int, 2) }}%</td>
+							<td class="text-center" id="tanks" data-int="{{ $resources->tanks_int }}" data-storage="{{ $resources->tanks_cap }}">{{ $help->nf($resources->tanks_int, 2) }}%</td>
 						</tr>
 					</table>
 				</div>
