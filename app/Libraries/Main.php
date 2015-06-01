@@ -23,7 +23,7 @@
 			$planet->setLastupdate($this->planet);
 		}
 
-		private function setGame($user) {
+		private function setGame(User $user) {
 			$users      = $user->getAll();
 
 			$this->game = config()->get('game.'.session('universe'));
