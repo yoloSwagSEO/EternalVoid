@@ -11,7 +11,6 @@
 	use Eternal\Models\Defense;
 	use Eternal\Models\Unit;
 
-	use Session;
 	use Request;
 
 	class UsersController extends Controller {
@@ -94,7 +93,7 @@
 
 		public function postLogin() {
 			if($this->user->login()) {
-				return redirect('http://'.Session::get('universe').'.'.Request::getHttpHost().'/');
+				return redirect('http://'.session('universe').'.'.Request::getHttpHost().'/');
 			}
 
 			return redirect('earlyaccess')->withErrors($this->user->validator)->withInput();
