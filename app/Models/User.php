@@ -113,8 +113,12 @@
 		}
 
 		public function setLastactive(User $user) {
-			$user->lastactive_at = (new \DateTime())->format('Y-m-d H:i:s');
+			$user->lastactive_at = time();
 			return $user->save();
+		}
+
+		public function getAll() {
+			return $this->select(['id', 'lastactive_at'])->get();
 		}
 
 		public function planets() {
