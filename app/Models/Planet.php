@@ -20,6 +20,10 @@
 			return $this->with($with)->get();
 		}
 
+		public function in($galaxy, $system, $with = []) {
+			return $this->with($with)->whereGalaxy($galaxy)->whereSystem($system)->get();
+		}
+
 		public function random() {
 			return $this->whereBonus(0)->whereUserId(0)->orderBy(DB::raw('RAND()'))->take(1)->first();
 		}
@@ -37,6 +41,10 @@
 		public function setLastupdate(Planet $planet) {
 			$planet->lastupdate_at = time();
 			return $planet->save();
+		}
+
+		public function user() {
+			return $this->belongsTo('Eternal\Models\User', 'user_id', 'id');
 		}
 
 		public function production() {
