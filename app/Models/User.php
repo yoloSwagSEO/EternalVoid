@@ -26,6 +26,13 @@
 
 		}
 
+		public function likeByUsername($term) {
+			return $this->where('username','LIKE','%'.$term.'%')->get();
+		}
+
+		public static function getByUsername($username) {
+			return self::whereUsername($username)->get();
+		}
 
 		public function login() {
 			$rules = [
