@@ -9,6 +9,6 @@
 
 		public function missingMethod($parameters = array()) {
 			$parameters = explode('/', $parameters);
-			return call_user_func_array(array($this,'getPage'), $parameters);
+			return call_user_func_array([$this, 'getPage'], $parameters);
 		}
 	}
