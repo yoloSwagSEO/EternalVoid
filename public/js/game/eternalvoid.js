@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     bootbox.setDefaults({
         locale: "de",
         show: true,
@@ -444,11 +450,11 @@ $(document).ready(function() {
     if($(".sceditor").length > 0) {
         $(".sceditor").sceditor({
             plugins: "bbcode",
-            style: "sceditor.default-theme.css",
+            style: "/css/sceditor.default-theme.css",
             toolbar: "bold,italic,underline,strike,subscript,superscript|left,right,center,justify,bulletlist,orderedlist|font,size,color|emoticon,code,quote,image,link,unlink,youtube|removeformat,source",
             width : "98%"
         });
 
-        $("#preview").on('click', function($e) { $("#preview-modal .modal-body").html($(".sceditor").sceditor('instance').val()); });
+        $("#preview").on('click', function($e) { $("#preview-modal .modal-body").html($(".sceditor").sceditor('instance').getBody().html()); });
     }
 });
