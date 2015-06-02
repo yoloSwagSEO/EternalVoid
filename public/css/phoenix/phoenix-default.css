@@ -163,12 +163,17 @@ a:focus {
 .btn-default:active, .btn-default.active {
 	background:#16374A;
 	color:#ffffff;
+	border-color:#000000;
 	/*border:1px solid #0E0B13;*/
 }
 
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
 	border:1px solid #0E0B13;
 	opacity:0.5;
+}
+
+.btn-default.disabled, .btn-default:disabled, .btn-default[disabled] {
+	background-color:#121212;
 }
 
 .form-group button.btn, .form-group a.btn, .modal-footer button.btn, .panel a.btn  {
