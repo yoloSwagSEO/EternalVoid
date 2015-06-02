@@ -2,6 +2,7 @@
 <html lang="{{ Config::get('app.locale') }}">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<title>Eternal Void &raquo; {{ $game['name'] }}</title>
 		{!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900%7CRoboto+Condensed:400,300,700') !!}
 		{!! HTML::style('css/font-awesome.min.css') !!}
