@@ -3,10 +3,9 @@ html {
 }
 
 body {
-	background-image:url(../../img/main/background.jpg);
-	background-attachment:fixed;
+	background:url(../../img/main/background.jpg) fixed;
 	color:#ffffff;
-	font-family:"Roboto Condensed";
+	font-family:"Roboto Condensed", Arial, "Helvetica Neue", Helvetica, sans-serif;
 	font-size:12px;
 	padding-top:180px;
 	padding-bottom:70px;
@@ -67,7 +66,7 @@ a:focus {
 	height:30px;
 	width:29px;
 	background-image:linear-gradient(to bottom, #0F1C24 0px, #052639 100%);
-	top:0px;
+	top:0;
 	border-bottom:1px solid #3d4d57;
 }
 
@@ -75,6 +74,7 @@ a:focus {
 	border-right:2px solid #3d4d57;
 	right:-15px;
 	-webkit-transform: skew(315deg);
+	-ms-transform: skew(315deg);
 	-moz-transform: skew(315deg);
 	-o-transform: skew(315deg);
 	transform: skew(315deg);
@@ -84,6 +84,7 @@ a:focus {
 	border-left:2px solid #3d4d57;
 	left:-15px;
 	-webkit-transform: skew(45deg);
+	-ms-transform: skew(45deg);
 	-moz-transform: skew(45deg);
 	-o-transform: skew(45deg);
 	transform: skew(45deg);
@@ -114,8 +115,7 @@ a:focus {
 }
 
 .panel {
-	background-color:#052639;
-	background-image:linear-gradient(to bottom, #0F1C24 0px, #052639 100%);
+	background:#052639 linear-gradient(to bottom, #0F1C24 0px, #052639 100%);
 	border-color:#3d4d57;
 	box-shadow:none;
 }
@@ -141,12 +141,11 @@ a:focus {
 }
 
 .btn-default {
-	background-image:linear-gradient(to bottom, #16374A 0px, #0F1C24 100%);
-	border-color:#0E0B13;
-	border-width:0;
+	background:#052639 linear-gradient(to bottom, #16374A 0px, #0F1C24 100%);
+	border:0 solid #0E0B13;
 	text-shadow:0 1px 0 #000000;
 	color:#9CB9C9;
-	background-color:#052639;
+
 	transition:color .15s ease-in;
 	-moz-transition:color .15s ease-in;
 	-o-transition:color .15s ease-in;
@@ -207,7 +206,7 @@ a:focus {
 
 .popover {
 	color:#000000;
-	font-family:"Roboto Condensed";
+	font-family:"Roboto Condensed", Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .popover-content {
@@ -276,13 +275,13 @@ a:focus {
 }
 
 .nav-tabs {
-	border-bottom:0px;
+	border-bottom:0;
 	margin-left:10px;
 }
 
 .nav-tabs > li > a {
 	color:#9CB9C9;
-	border-bottom:0px;
+	border-bottom:0;
 	transition:color .15s ease-in;
 	-moz-transition:color .15s ease-in;
 	-o-transition:color .15s ease-in;
@@ -293,7 +292,7 @@ a:focus {
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 	background-image:linear-gradient(to bottom, #052639 0px, #0F1C24 100%);
 	border-color:#3D4D57;
-	border-bottom:0px;
+	border-bottom:0;
 	color:#ffffff;
 }
 
@@ -332,8 +331,7 @@ a:focus {
 }
 
 .modal-content {
-	background-image:linear-gradient(to bottom, #0F1C24 0px, #052639 100%);
-	background-color:transparent;
+	background:transparent linear-gradient(to bottom, #0F1C24 0px, #052639 100%);
 	color:#ffffff;
 	border:1px solid #3D4D57;
 	box-shadow:0 0 25px 0 rgba(255, 255, 255, 0.2)
@@ -395,12 +393,11 @@ a:focus {
 }
 
 .progress {
-	background-image:linear-gradient(to bottom, #0F1C24 0px, #052639 100%);
+	background:transparent linear-gradient(to bottom, #0F1C24 0px, #052639 100%);
 	border:1px solid #3D4D57;
 	padding:1px;
 	box-shadow:none;
 	border-radius:5px;
-	background-color:transparent;
 	height:24px;
 }
 
@@ -418,12 +415,11 @@ a:focus {
 .progress-bar-v6 { background-image:linear-gradient(to bottom, #e74c3c 0px, #c0392b 100%); }
 
 .tooltip {
-	font-family:"Roboto Condensed";
+	font-family:"Roboto Condensed", Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .thumbnail {
-	background-color:transparent;
-	background-image:linear-gradient(to bottom, #16374A 0px, #0F1C24 100%);
+	background:transparent linear-gradient(to bottom, #16374A 0px, #0F1C24 100%);
 	border:1px solid #3D4D57;
 }
 
