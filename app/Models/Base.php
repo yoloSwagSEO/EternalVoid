@@ -9,10 +9,24 @@
 	class Base extends Eloquent {
 
 		public $validator;
+		protected $usr;
+		protected $plt;
 
 		public function isValid($rules = [], $messages = []) {
 			$this->validator = Validator::make(Request::all(), $rules, $messages);
 			return $this->validator->passes();
+		}
+
+		public function setCurrentUser(User $user) {
+			$this->usr = $user;
+
+			return $this;
+		}
+
+		public function setCurrentPlanet(Planet $planet) {
+			$this->plt = $planet;
+
+			return $this;
 		}
 
 		protected function creator() {
