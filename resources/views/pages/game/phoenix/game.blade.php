@@ -25,7 +25,7 @@
 						<dt>Spieler online:</dt>
 						<dd>{{ $game['online'] }} / {{ $game['users'] }}</dd>
 						<dt>Letzte Aktion:</dt>
-						<dd id="time" data-lastupdate="{{ $planet->lastupdate_at }}" data-servertime="{{ time() }}">{{ date("H:i:s", $planet->lastupdate_at) }}</dd>
+						<dd id="time" data-lastupdate="{{ $planet->lastupdate_at->timestamp }}" data-servertime="{{ time() }}">{{ $planet->lastupdate_at->format('H:i:s') }}</dd>
 					</dl>
 					<h1 class="text-center w50 acenter pt15">{{ Crypt::decrypt($planet->planetname) }}</h1>
 				</div>
