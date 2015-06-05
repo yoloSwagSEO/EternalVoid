@@ -2,6 +2,7 @@
 	namespace Eternal\Libraries;
 
 	use Auth;
+	use Carbon\Carbon;
 	use Eternal\Models\User;
 	use Eternal\Models\Planet;
 
@@ -25,11 +26,10 @@
 
 		private function setGame(User $user) {
 			$users      = $user->getAll();
-
 			$this->game = config()->get('game.'.session('universe'));
 			$this->game['users']  = $users->count();
 			$this->game['online'] = $users->filter(function($usr) {
-				return time() - $usr->lastactive_at < 120 ? $usr : null;
+				return Carbon::now()->diffInMinutes($usr->lastactive_at) < 120 ? $usr : null;
 			})->count();
 
 			return $this;
