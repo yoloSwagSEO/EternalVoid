@@ -110,7 +110,9 @@
 
 			$buildings = $this->planet->buildings;
 
-			return view('pages.game.'.$this->game['viewpath'].'.resources', $data)->withBuildings($buildings);
+			return view('pages.game.'.$this->game['viewpath'].'.resources', $data)->with([
+				'buildings' => $buildings
+			]);
 		}
 
 	}
