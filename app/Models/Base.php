@@ -1,14 +1,16 @@
 <?php
 	namespace Eternal\Models;
 
-	use Illuminate\Database\Eloquent\Model as Eloquent;
+	use Illuminate\Database\Eloquent\Model;
 
 	use Validator;
 	use Request;
 
-	class Base extends Eloquent {
+	class Base extends Model {
 
+		/* @var $validator \Illuminate\Validation\Validator */
 		public $validator;
+
 		protected $usr;
 		protected $plt;
 
