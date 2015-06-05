@@ -20,9 +20,11 @@
 				return $query->with(['race', 'alliance']);
 			}]);
 
-			return view('pages.game.'.$this->game['viewpath'].'.galaxy')->withGalaxy($galaxy)
-																		->withSystem($system)
-																		->withPlanets($planets);
+			return view('pages.game.'.$this->game['viewpath'].'.galaxy')->with([
+				'galaxy'  => $galaxy,
+				'system'  => $system,
+				'planets' => $planets
+			]);
 		}
 
 		public function postIndex() {
