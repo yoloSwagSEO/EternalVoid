@@ -5,7 +5,7 @@
 			<div class="thumbnail posfix">
 				<img src="/img/game/planets/{{ $game['planets'][$planet->image] }}" alt="...">
 				<div class="caption">
-					<h3 class="mt0">{{ Crypt::decrypt($planet->planetname) }}</h3>
+					<h3 class="mt0">{{ empty($planet->planetname) ? 'Planet' : $planet->planetname }}</h3>
 					<dl class="dl-horizontal dl-o2 text-left">
 						<dt>Besiedelung:</dt>
 						<dd>{{ $help->dt($planet->settled_at)->format('d.m.Y') }}</dd>

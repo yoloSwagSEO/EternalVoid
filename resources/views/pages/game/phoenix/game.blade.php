@@ -27,7 +27,7 @@
 						<dt>Letzte Aktion:</dt>
 						<dd id="time" data-lastupdate="{{ $planet->lastupdate_at->timestamp }}" data-servertime="{{ time() }}">{{ $planet->lastupdate_at->format('H:i:s') }}</dd>
 					</dl>
-					<h1 class="text-center w50 acenter pt15">{{ Crypt::decrypt($planet->planetname) }}</h1>
+					<h1 class="text-center w50 acenter pt15">{{ empty($planet->planetname) ? 'Planet' : $planet->planetname }}</h1>
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 p0">
 					<div class="btn-group btn-group-sm btn-group-justified btn-group-top">

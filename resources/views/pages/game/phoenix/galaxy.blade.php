@@ -12,9 +12,9 @@
 				</div>
 				<div class="w100 text-center">
 					<div class="input-group">
-							<span class="input-group-btn">
-								<button type="submit" id="prevgalaxy" name="prevgalaxy" class="btn btn-default btn-sm" title="Vorherige Galaxie"><i class="fa fa-minus fa-lg"></i></button>
-							</span>
+						<span class="input-group-btn">
+							<button type="submit" id="prevgalaxy" name="prevgalaxy" class="btn btn-default btn-sm" title="Vorherige Galaxie"><i class="fa fa-minus fa-lg"></i></button>
+						</span>
 						<input type="text" id="galaxy" name="galaxy" value="{{ $galaxy }}" class="form-control input-sm text-center"/>
 							<span class="input-group-btn">
 								<button type="submit" id="nextgalaxy" name="nextgalaxy" class="btn btn-default btn-sm ml-1" title="Nächste Galaxie"><i class="fa fa-plus fa-lg"></i></button>
@@ -26,9 +26,9 @@
 								<button type="submit" id="prevsystem" name="prevsystem" class="btn btn-default btn-sm mr-1" title="Vorheriges System"><i class="fa fa-minus fa-lg"></i></button>
 							</span>
 						<input type="text" id="system" name="system" value="{{ $system }}" class="form-control input-sm text-center"/>
-							<span class="input-group-btn">
-								<button type="submit" id="nextsystem" name="nextsystem" class="btn btn-default btn-sm" title="Nächstes System"><i class="fa fa-plus fa-lg"></i></button>
-							</span>
+						<span class="input-group-btn">
+							<button type="submit" id="nextsystem" name="nextsystem" class="btn btn-default btn-sm" title="Nächstes System"><i class="fa fa-plus fa-lg"></i></button>
+						</span>
 					</div>
 				</div>
 				{!! Form::token() !!}
