@@ -2,53 +2,53 @@
 	namespace Eternal\Models;
 
 	use Request;
+	use Carbon\Carbon;
 
 	class Message extends Base {
 
 		protected $table = 'users_messages';
 
-		public function getByReceiverId($userId) {
-			return $this->whereReceiverId($userId)->whereReceiverfolder(1)->get();
-		}
-
 		public function read($id, $with = []) {
-			return $this->with($with)->whereId($id)->where(function($query) {
-				$query->whereReceiverId($this->usr->id)
-					  ->orWhere('sender_id', '=', $this->usr->id);
-			})->get()->first();
+			return $this->with($with)
+						->where('id', '=', $id)
+						->get()
+						->first();
 		}
 
 		public function add() {
-			$rules = array(
+			$rules = [
 				'receiver' => 'required',
 				'subject'  => 'required',
 				'message'  => 'required',
-			);
+			];
 
-			$messages = array(
+			$messages = [
 				'receiver.required' => 'Bitte gebe mindestens einen Empfänger an.',
 				'subject.required'  => 'Bitte gebe einen Betreff für die Nachricht ein.',
 				'message.required'  => 'Bitte gebe einen Text für die Nachricht ein.',
-			);
+			];
 
 			if($this->isValid($rules, $messages)) {
-				$data      = array();
+				$data      = [];
 				$receivers = array_unique(explode(',',str_replace(', ', ',', Request::get('receiver'))));
 				foreach($receivers as $username) {
 					if(!empty($username)) {
 						$username = trim($username);
+
+						/* @var $user \Illuminate\Database\Eloquent\Collection */
 						$user     = User::getByUsername($username);
+
 						if(!$user->isEmpty()) {
-							$data[] = array(
+							$data[] = [
 								'sender_id'   => $this->usr->id,
 								'receiver_id' => $user[0]->id,
-								'created_at'  => (new \DateTime())->format('Y-m-d H:i:s'),
+								'created_at'  => Carbon::now(),
 								'created_uid' => $this->usr->id,
-								'updated_at'  => (new \DateTime())->format('Y-m-d H:i:s'),
+								'updated_at'  => Carbon::now(),
 								'updated_uid' => $this->usr->id,
 								'subject'     => Request::get('subject'),
 								'message'     => Request::get('message')
-							);
+							];
 						} else {
 							$this->validator->messages()->add('unknownreciever','Der folgende Empfänger ist unbekannt: '.$username);
 							return false;
@@ -68,24 +68,41 @@
 		public function in($folder, $with = []) {
 			switch($folder) {
 				case 'inbox':
-					return $this->with($with)->whereReceiverFolder(1)->whereReceiverId($this->usr->id)->get();
+					return $this->with($with)
+								->where([
+									'receiver_folder' => 1,
+									'receiver_id'     => $this->usr->id
+								])->get();
 				break;
 				case 'outbox':
-					return $this->with($with)->whereSenderFolder(2)->whereSenderId($this->usr->id)->get();
+					return $this->with($with)
+								->where([
+									'sender_folder' => 2,
+									'sender_id'     => $this->usr->id
+								])->get();
 				break;
 				case 'trash':
-					return $this->with($with)->where(function($query) {
-						$query->whereReceiverId($this->usr->id)->orWhere('sender_id', '=', $this->usr->id);
-					})->where(function($query) {
-						$query->whereReceiverFolder(3)->orWhere('sender_folder', '=', 3);
-					})->get();
+					return $this->with($with)->where(
+						function($query) {
+							$query->where('receiver_id', '=', $this->usr->id)
+								  ->orWhere('sender_id', '=', $this->usr->id);
+						}
+					)->where(
+						function($query) {
+							$query->where('receiver_folder', '=', 3)
+								  ->orWhere('sender_folder', '=', 3);
+						}
+					)->get();
+				break;
+				default:
+					return null;
 				break;
 			}
 		}
 
-		public function remove($message) {
+		public function remove(Message $message) {
 			if($message->receiver_id == $this->usr->id) {
-				$message->read_at         = (new \DateTime())->format('Y-m-d H:i:s');
+				$message->read_at         = Carbon::now();
 				$message->receiver_folder = 4;
 			}
 
@@ -104,7 +121,7 @@
 			')->get()->first();
 		}
 
-		public function moveTo($folder, $message) {
+		public function moveTo($folder, Message $message) {
 			switch($folder) {
 				case 'trash':
 					if($message->receiver_id == $this->usr->id) $message->receiver_folder = 3;
@@ -115,16 +132,16 @@
 			return $message->save();
 		}
 
-		public function recover($message) {
+		public function recover(Message $message) {
 			if($message->receiver_id == $this->usr->id) $message->receiver_folder = 1;
 			if($message->sender_id == $this->usr->id) $message->sender_folder = 2;
 
 			return $message->save();
 		}
 
-		public function markAsRead($message) {
+		public function markAsRead(Message $message) {
 			if(is_null($message->read_at)) {
-				$message->read_at = (new \DateTime())->format('Y-m-d H:i:s');
+				$message->read_at = Carbon::now();
 
 				return $message->save();
 			}
