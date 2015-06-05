@@ -30,6 +30,14 @@
 
 		}
 
+		public function search() {
+			return $this->with([
+				'planets' => function($query) {
+					return $query->where('base_id', '=', 1);
+				}
+			])->where('username','LIKE','%'.Request::get('searchterm').'%')->get();
+		}
+
 		public function likeByUsername($term) {
 			return $this->where('username','LIKE','%'.$term.'%')->get();
 		}
@@ -136,7 +144,7 @@
 		}
 
 		public function planets() {
-			return $this->hasMany('Eternal\Models\Planets', 'user_id', 'id');
+			return $this->hasMany('Eternal\Models\Planet', 'user_id', 'id');
 		}
 
 		public function research() {

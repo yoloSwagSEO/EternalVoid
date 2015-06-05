@@ -3,6 +3,7 @@
 
 	use Crypt;
 	use DB;
+	use Request;
 	use Carbon\Carbon;
 
 	class Planet extends Base {
@@ -46,7 +47,6 @@
 		public function setUser(Planet $planet, User $user) {
 			$planet->user_id       = $user->id;
 			$planet->base_id       = 1;
-			$planet->planetname    = Crypt::encrypt('Planet');
 			$planet->settled_at    = Carbon::now();
 			$planet->lastupdate_at = time();
 
@@ -56,6 +56,10 @@
 		public function setLastupdate(Planet $planet) {
 			$planet->lastupdate_at = Carbon::now();
 			return $planet->save();
+		}
+
+		public function search() {
+			return $this->where('planetname', 'LIKE', '%'.Request::get('searchterm').'%');
 		}
 
 		public function user() {
