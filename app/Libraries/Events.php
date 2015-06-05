@@ -1,6 +1,8 @@
 <?php
 	namespace Eternal\Libraries;
 
+	use Carbon\Carbon;
+
 	class Events {
 
 		private $game;
@@ -53,7 +55,8 @@
 		}
 
 		private function setInterval($start = '', $end = '') {
-			$this->interval = empty($start) && empty($end) ? time() - $this->planet->lastupdate_at : $end - $start;
+			$now = Carbon::now();
+			$this->interval = empty($start) && empty($end) ? $now->diffInSeconds($this->planet->lastupdate_at) : $end->diffInSeconds($start);
 
 			return $this;
 		}
