@@ -5,10 +5,14 @@
 	use Crypt;
 	use Auth;
 	use Hash;
+	use Carbon\Carbon;
 
 	class User extends Base {
 
 		protected $table = 'users';
+		protected $dates = [
+			'lastactive_at'
+		];
 
 		public function read($id = '', $with = []) {
 			return !empty($id) ? $this->with($with)->find($id) : $this->with($with)->get();
@@ -31,7 +35,7 @@
 		}
 
 		public static function getByUsername($username) {
-			return self::whereUsername($username)->get();
+			return self::whereUsername($username)->get()->first();
 		}
 
 		public function login() {
@@ -108,7 +112,7 @@
 				$this->lastip        = Crypt::encrypt(Request::ip());
 				$this->created_uid   = 0;
 				$this->updated_uid   = 0;
-				$this->lastactive_at = (new \DateTime())->format('d.m.Y - H:i:s');
+				$this->lastactive_at = Carbon::now();
 
 				if($this->save()) return true;
 
@@ -120,10 +124,13 @@
 		}
 
 		public function setLastactive(User $user) {
-			$user->lastactive_at = time();
+			$user->lastactive_at = Carbon::now();
 			return $user->save();
 		}
 
+		/**
+		 * @return mixed
+		 */
 		public function getAll() {
 			return $this->select(['id', 'lastactive_at'])->get();
 		}
