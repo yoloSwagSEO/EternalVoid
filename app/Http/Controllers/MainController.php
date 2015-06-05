@@ -12,6 +12,9 @@
 		protected $research;
 		protected $helper;
 
+		/**
+		 * @param $main \Eternal\Libraries\Main
+		 */
 		public function __construct($main) {
 			$this->main 	  = $main;
 			$this->game 	  = $main->getGame();
