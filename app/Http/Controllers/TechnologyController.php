@@ -14,9 +14,11 @@
 			$defenses  = $this->planet->defenses;
 			$units     = $this->planet->units;
 
-			return view('pages.game.'.$this->game['viewpath'].'.technology')->withBuildings($buildings)
-																			->withDefenses($defenses)
-																			->withUnits($units);
+			return view('pages.game.'.$this->game['viewpath'].'.technology')->with([
+				'buildings' => $buildings,
+			    'defenses'  => $defenses,
+			    'units'     => $units,
+			]);
 		}
 
 	}
