@@ -109,7 +109,7 @@ a:focus {
 }
 
 .trow {
-	background-image:linear-gradient(to bottom, #0F1C24 0px, #16374A 60%, transparent 60%);
+	background-image:linear-gradient(to bottom, #0F1C24 0px, #16374A 50%, transparent 60%);
 	color:#9CB9C9;
 	border:0;
 }
