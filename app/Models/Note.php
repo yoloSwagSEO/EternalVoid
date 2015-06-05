@@ -1,0 +1,62 @@
+<?php
+	namespace Eternal\Models;
+
+	use Request;
+
+	class Note extends Base {
+
+		protected $table = 'users_notes';
+
+		private $rules = [
+			'subject' => 'required',
+			'note'    => 'required',
+		];
+
+		private $messages = [
+			'subject.required' => 'Bitte gebe einen Betreff für die Notiz ein.',
+			'note.required'    => 'Bitte gebe einen Text für die Notiz ein.',
+		];
+
+
+		public function read($id = '') {
+			return !empty($id) ? $this->whereUserId($this->usr->id)->find($id) : $this->whereUserId($this->usr->id)->get();
+		}
+
+		public function add() {
+			if($this->isValid($this->rules, $this->messages)) {
+				$this->user_id     = $this->usr->id;
+				$this->created_uid = $this->usr->id;
+				$this->updated_uid = $this->usr->id;
+				$this->subject     = Request::get('subject');
+				$this->note        = Request::get('note');
+
+				if($this->save()) return true;
+
+				$this->validator->messages()->add('addfailed','Die Notiz konnte nicht erstellt werden.');
+				return false;
+			}
+
+			return false;
+		}
+
+		public function edit(Note $note) {
+			if($this->isValid($this->rules, $this->messages)) {
+				$note->subject = Request::get('subject');
+				$note->note    = Request::get('note');
+
+				if($note->save()) return true;
+
+				$this->validator->messages()->add('editfailed','Die Notiz konnte nicht bearbeitet werden.');
+				return false;
+			}
+
+			return false;
+		}
+
+		public function remove(Note $note) {
+			if(is_null($note)) return true;
+
+			return $note->delete();
+		}
+
+	}
