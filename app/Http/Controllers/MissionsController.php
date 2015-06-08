@@ -1,6 +1,6 @@
 <?php
-	namespace Eternal\Http\Controllers;
+    namespace Eternal\Http\Controllers;
 
-	class MissionsController extends Controller {
+    class MissionsController extends Controller {
 
-	}
+    }

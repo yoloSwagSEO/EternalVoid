@@ -1,46 +1,46 @@
 <?php
-	namespace Eternal\Models;
+    namespace Eternal\Models;
 
-	use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Model;
 
-	use Validator;
-	use Request;
+    use Validator;
+    use Request;
 
-	class Base extends Model {
+    class Base extends Model {
 
-		/* @var $validator \Illuminate\Validation\Validator */
-		public $validator;
+        /* @var $validator \Illuminate\Validation\Validator */
+        public $validator;
 
-		protected $usr;
-		protected $plt;
+        protected $usr;
+        protected $plt;
 
-		public function isValid($rules = [], $messages = []) {
-			$this->validator = Validator::make(Request::all(), $rules, $messages);
-			return $this->validator->passes();
-		}
+        public function isValid($rules = [], $messages = []) {
+            $this->validator = Validator::make(Request::all(), $rules, $messages);
+            return $this->validator->passes();
+        }
 
-		public function setCurrentUser(User $user) {
-			$this->usr = $user;
+        public function setCurrentUser(User $user) {
+            $this->usr = $user;
 
-			return $this;
-		}
+            return $this;
+        }
 
-		public function setCurrentPlanet(Planet $planet) {
-			$this->plt = $planet;
+        public function setCurrentPlanet(Planet $planet) {
+            $this->plt = $planet;
 
-			return $this;
-		}
+            return $this;
+        }
 
-		protected function creator() {
-			return $this->hasOne('Eternal\Models\User', 'created_uid', 'id');
-		}
+        protected function creator() {
+            return $this->hasOne('Eternal\Models\User', 'created_uid', 'id');
+        }
 
-		protected function modifier() {
-			return $this->hasOne('Eternal\Models\User', 'modified_uid', 'id');
-		}
+        protected function modifier() {
+            return $this->hasOne('Eternal\Models\User', 'modified_uid', 'id');
+        }
 
-		protected function remover() {
-			return $this->hasOne('Eternal\Models\User', 'deleted_uid', 'id');
-		}
+        protected function remover() {
+            return $this->hasOne('Eternal\Models\User', 'deleted_uid', 'id');
+        }
 
-	}
+    }

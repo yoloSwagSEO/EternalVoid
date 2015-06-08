@@ -1,32 +1,32 @@
 <?php
-	namespace Eternal\Http\Controllers;
+    namespace Eternal\Http\Controllers;
 
-	use Eternal\Models\User;
+    use Eternal\Models\User;
 
-	use Request;
+    use Request;
 
-	class JsonController extends Controller {
+    class JsonController extends Controller {
 
-		private $user;
+        private $user;
 
-		public function __construct(User $user) {
-			$this->user = $user;
-		}
+        public function __construct(User $user) {
+            $this->user = $user;
+        }
 
-		public function getReceivers() {
-			if(Request::ajax()) {
+        public function getReceivers() {
+            if(Request::ajax()) {
 
-				$users     = $this->user->likeByUsername(Request::get('term'));
-				$usernames = [];
+                $users     = $this->user->likeByUsername(Request::get('term'));
+                $usernames = [];
 
-				foreach($users as $user) {
-					$usernames[] = $user->username;
-				}
+                foreach($users as $user) {
+                    $usernames[] = $user->username;
+                }
 
-				return response()->json($usernames);
-			}
+                return response()->json($usernames);
+            }
 
-			return response('', 403);
-		}
+            return response('', 403);
+        }
 
-	}
+    }

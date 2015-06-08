@@ -1,62 +1,62 @@
 <?php
-	namespace Eternal\Models;
+    namespace Eternal\Models;
 
-	use Request;
+    use Request;
 
-	class Note extends Base {
+    class Note extends Base {
 
-		protected $table = 'users_notes';
+        protected $table = 'users_notes';
 
-		private $rules = [
-			'subject' => 'required',
-			'note'    => 'required',
-		];
+        private $rules = [
+            'subject' => 'required',
+            'note'    => 'required',
+        ];
 
-		private $messages = [
-			'subject.required' => 'Bitte gebe einen Betreff für die Notiz ein.',
-			'note.required'    => 'Bitte gebe einen Text für die Notiz ein.',
-		];
+        private $messages = [
+            'subject.required' => 'Bitte gebe einen Betreff für die Notiz ein.',
+            'note.required'    => 'Bitte gebe einen Text für die Notiz ein.',
+        ];
 
 
-		public function read($id = '') {
-			return !empty($id) ? $this->whereUserId($this->usr->id)->find($id) : $this->whereUserId($this->usr->id)->get();
-		}
+        public function read($id = '') {
+            return !empty($id) ? $this->whereUserId($this->usr->id)->find($id) : $this->whereUserId($this->usr->id)->get();
+        }
 
-		public function add() {
-			if($this->isValid($this->rules, $this->messages)) {
-				$this->user_id     = $this->usr->id;
-				$this->created_uid = $this->usr->id;
-				$this->updated_uid = $this->usr->id;
-				$this->subject     = Request::get('subject');
-				$this->note        = Request::get('note');
+        public function add() {
+            if($this->isValid($this->rules, $this->messages)) {
+                $this->user_id     = $this->usr->id;
+                $this->created_uid = $this->usr->id;
+                $this->updated_uid = $this->usr->id;
+                $this->subject     = Request::get('subject');
+                $this->note        = Request::get('note');
 
-				if($this->save()) return true;
+                if($this->save()) return true;
 
-				$this->validator->messages()->add('addfailed','Die Notiz konnte nicht erstellt werden.');
-				return false;
-			}
+                $this->validator->messages()->add('addfailed','Die Notiz konnte nicht erstellt werden.');
+                return false;
+            }
 
-			return false;
-		}
+            return false;
+        }
 
-		public function edit(Note $note) {
-			if($this->isValid($this->rules, $this->messages)) {
-				$note->subject = Request::get('subject');
-				$note->note    = Request::get('note');
+        public function edit(Note $note) {
+            if($this->isValid($this->rules, $this->messages)) {
+                $note->subject = Request::get('subject');
+                $note->note    = Request::get('note');
 
-				if($note->save()) return true;
+                if($note->save()) return true;
 
-				$this->validator->messages()->add('editfailed','Die Notiz konnte nicht bearbeitet werden.');
-				return false;
-			}
+                $this->validator->messages()->add('editfailed','Die Notiz konnte nicht bearbeitet werden.');
+                return false;
+            }
 
-			return false;
-		}
+            return false;
+        }
 
-		public function remove(Note $note) {
-			if(is_null($note)) return true;
+        public function remove(Note $note) {
+            if(is_null($note)) return true;
 
-			return $note->delete();
-		}
+            return $note->delete();
+        }
 
-	}
+    }

@@ -1,6 +1,6 @@
 <?php
-	namespace Eternal\Http\Controllers;
+    namespace Eternal\Http\Controllers;
 
-	class ShipyardController extends Controller {
+    class ShipyardController extends Controller {
 
-	}
+    }

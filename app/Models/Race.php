@@ -1,9 +1,9 @@
 <?php
-	namespace Eternal\Models;
+    namespace Eternal\Models;
 
-	class Race extends Base {
+    class Race extends Base {
 
-		public $timestamps = false;
-		protected $table   = 'races';
+        public $timestamps = false;
+        protected $table   = 'races';
 
-	}
+    }

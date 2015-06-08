@@ -1,6 +1,6 @@
 <?php
-	namespace Eternal\Http\Controllers;
+    namespace Eternal\Http\Controllers;
 
-	class ExchangeController extends Controller {
+    class ExchangeController extends Controller {
 
-	}
+    }

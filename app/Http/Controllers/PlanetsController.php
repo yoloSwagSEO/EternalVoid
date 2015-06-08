@@ -1,16 +1,16 @@
 <?php
-	namespace Eternal\Http\Controllers;
+    namespace Eternal\Http\Controllers;
 
-	use Eternal\Libraries\Main;
+    use Eternal\Libraries\Main;
 
-	class PlanetsController extends MainController {
+    class PlanetsController extends MainController {
 
-		public function __construct(Main $main) {
-			parent::__construct($main);
-		}
+        public function __construct(Main $main) {
+            parent::__construct($main);
+        }
 
-		public function getIndex() {
-			return view('pages.game.'.$this->game['viewpath'].'.planet');
-		}
+        public function getIndex() {
+            return view('pages.game.'.$this->game['viewpath'].'.planet');
+        }
 
-	}
+    }

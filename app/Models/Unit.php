@@ -1,15 +1,15 @@
 <?php
-	namespace Eternal\Models;
+    namespace Eternal\Models;
 
-	class Unit extends Base {
+    class Unit extends Base {
 
-		public $timestamps = false;
-		protected $table   = 'planets_units';
+        public $timestamps = false;
+        protected $table   = 'planets_units';
 
-		public function add($planet) {
-			$this->planet_id = $planet->id;
+        public function add($planet) {
+            $this->planet_id = $planet->id;
 
-			return $this->save();
-		}
+            return $this->save();
+        }
 
-	}
+    }

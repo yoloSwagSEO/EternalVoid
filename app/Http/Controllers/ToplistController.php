@@ -1,6 +1,6 @@
 <?php
-	namespace Eternal\Http\Controllers;
+    namespace Eternal\Http\Controllers;
 
-	class ToplistController extends Controller {
+    class ToplistController extends Controller {
 
-	}
+    }

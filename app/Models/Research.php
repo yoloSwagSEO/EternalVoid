@@ -1,15 +1,15 @@
 <?php
-	namespace Eternal\Models;
+    namespace Eternal\Models;
 
-	class Research extends Base {
+    class Research extends Base {
 
-		public $timestamps = false;
-		protected $table   = 'users_research';
+        public $timestamps = false;
+        protected $table   = 'users_research';
 
-		public function add(User $user) {
-			$this->user_id = $user->id;
+        public function add(User $user) {
+            $this->user_id = $user->id;
 
-			return $this->save();
-		}
+            return $this->save();
+        }
 
-	}
+    }

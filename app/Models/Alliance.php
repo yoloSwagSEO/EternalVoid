@@ -1,16 +1,16 @@
 <?php
-	namespace Eternal\Models;
+    namespace Eternal\Models;
 
-	use Request;
+    use Request;
 
-	class Alliance extends Base {
+    class Alliance extends Base {
 
-		protected $table = 'alliances';
+        protected $table = 'alliances';
 
-		public function search() {
-			return $this->where('alliance_tag', 'LIKE', '%'.Request::get('searchterm').'%')
-						->orWhere('alliance_name', 'LIKE', '%'.Request::get('searchterm').'%')
-						->get();
-		}
+        public function search() {
+            return $this->where('alliance_tag', 'LIKE', '%'.Request::get('searchterm').'%')
+                        ->orWhere('alliance_name', 'LIKE', '%'.Request::get('searchterm').'%')
+                        ->get();
+        }
 
-	}
+    }

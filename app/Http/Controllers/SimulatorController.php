@@ -1,6 +1,6 @@
 <?php
-	namespace Eternal\Http\Controllers;
+    namespace Eternal\Http\Controllers;
 
-	class SimulatorController extends Controller {
+    class SimulatorController extends Controller {
 
-	}
+    }
