@@ -12,7 +12,7 @@
 		public function __construct(Main $main, Event $event) {
 			parent::__construct($main);
 			$event->setCurrentUser($this->user)
-				  ->setCurrentPlanet($this->planet);
+				->setCurrentPlanet($this->planet);
 
 			$this->event            = $event;
 			$this->currentBuildJobs = $this->main->getBuildingsEvents();
@@ -23,7 +23,7 @@
 
 			return view('pages.game.'.$this->game['viewpath'].'.buildings')->with([
 				'current_build_jobs' => $this->currentBuildJobs,
-			    'buildings'          => $buildings
+				'buildings'          => $buildings
 			]);
 		}
 
