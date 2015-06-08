@@ -16,14 +16,14 @@
          * @param $main \Eternal\Libraries\Main
          */
         public function __construct($main) {
-            $this->main 	  = $main;
-            $this->game 	  = $main->getGame();
-            $this->user 	  = $main->getUser();
+            $this->main       = $main;
+            $this->game       = $main->getGame();
+            $this->user       = $main->getUser();
             $this->planet     = $main->getPlanet();
             $this->resources  = $main->getResources();
             $this->production = $main->getProduction();
             $this->research   = $main->getResearch();
-            $this->helper	  = $main->getHelper();
+            $this->helper     = $main->getHelper();
 
             $this->setupLayout();
         }
