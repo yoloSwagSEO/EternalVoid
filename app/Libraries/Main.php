@@ -88,4 +88,20 @@
 		public function getHelper() {
 			return $this->helper;
 		}
+
+		public function getBuildingsEvents() {
+			return $this->events->getBuildingsEvents();
+		}
+
+		public function getResearchEvents() {
+			return $this->events->getResearchEvents();
+		}
+
+		public function getUnitEvents() {
+			return $this->events->getUnitEvents();
+		}
+
+		public function getFleetEvents() {
+			return $this->events->getFleetEvents();
+		}
 	}
