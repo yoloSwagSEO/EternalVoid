@@ -68,6 +68,7 @@
 				if(Auth::attempt($credentials, Request::exists('remember'))) {
 					if(is_null(Auth::user()->disabled_at)) {
 						session(['universe' => Request::get('universe')]);
+						session(['baseId' => 1]);
 
 						return true;
 					}
