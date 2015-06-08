@@ -38,13 +38,13 @@
             }
 
             view()->share([
-                'help' 		 => $this->helper,
-                'game' 		 => $this->game,
-                'user' 		 => $this->user,
-                'planet'	 => $this->planet,
+                'help'       => $this->helper,
+                'game'       => $this->game,
+                'user'       => $this->user,
+                'planet'     => $this->planet,
                 'resources'  => $this->resources,
                 'production' => $this->production,
-                'research' 	 => $this->research,
+                'research'   => $this->research,
                 'newmessage' => $newmessage,
             ]);
         }
