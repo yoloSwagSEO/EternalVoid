@@ -33,7 +33,41 @@
 
 		public function init() {
 			$this->setInterval()
+				 ->eventBuildings()
 				 ->eventResources();
+		}
+
+		private function eventBuildings() {
+			$this->libBuildings->setStack($this->stack)
+				               ->setPlanet($this->planet)
+				               ->handleEvents();
+
+			$this->stack = $this->libBuildings->getStack();
+			return $this;
+		}
+
+		private function eventResources() {
+			$this->libResources->setGame($this->game)
+							   ->setPlanet($this->planet)
+							   ->setResearch($this->research);
+
+			if(!empty($this->stack)) {
+				foreach($this->stack as $item) {
+					if(isset($item['production'])) {
+						$this->setInterval($item['start'], (!is_object($item['end']) ? Carbon::now() : $item['end']));
+						$this->libResources->setPlanet($this->planet)
+										   ->process($this->interval);
+					}
+				}
+
+				$this->planet->production->save();
+			} else {
+				$this->libResources->process($this->interval);
+			}
+
+			$this->planet->resources->save();
+
+			return $this;
 		}
 
 		public function setGame($game) {
@@ -61,29 +95,8 @@
 			return $this;
 		}
 
-		private function eventResources() {
-			$this->libResources->setGame($this->game)
-							   ->setPlanet($this->planet)
-							   ->setResearch($this->research);
-
-			if(!empty($this->stack)) {
-				foreach($this->stack as $item) {
-					if(isset($item['production'])) {
-						$this->setInterval($item['start'], ($item['end'] == 0 ? time() : $item['end']));
-						$this->planet->production = $item['production'];
-						$this->libResources->setPlanet($this->planet)
-										   ->process($this->interval);
-					}
-				}
-
-				$this->planet->production->save();
-			} else {
-				$this->libResources->process($this->interval);
-			}
-
-			$this->planet->resources->save();
-
-			return $this;
+		public function getBuildingsEvents() {
+			return $this->libBuildings->getEvents();
 		}
 
 	}
