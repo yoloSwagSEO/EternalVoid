@@ -55,5 +55,4 @@
 				'error' => 'Bitte gebe einen Suchbegriff ein.'
 			]);
 		}
-
 	}
