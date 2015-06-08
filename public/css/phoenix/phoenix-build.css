@@ -1,0 +1,52 @@
+.gcontainer {
+	max-width:126px;
+	margin:10px auto;
+}
+
+.posrel {
+	border:1px solid #3D4D57;
+	border-radius:3px;
+	margin-bottom:1px;
+	width:122px;
+}
+
+.posrel img {
+	border-radius:3px;
+}
+
+.overlay_top {
+	border-radius:2px 2px 0 0;
+}
+
+.overlay_btm {
+	border-radius:0 0 2px 2px;
+}
+
+.gcontainer .col-md-4 .gcontainer .col-md-6, .gcontainer .col-xs-4, .gcontainer .col-xs-6 {
+	border:1px solid #3D4D57;
+	border-radius:3px;
+	text-align:center;
+	padding:5px 0 !important;
+}
+
+.gcontainer .col-md-12, .gcontainer .col-xs-12 {
+	border:1px solid #3D4D57;
+	border-radius:3px;
+	text-align:center;
+}
+
+.gcontainer .col-md-4:first-child {
+	margin-right:0px;
+}
+
+.gcontainer .col-md-4:last-child {
+	margin-left:0px;
+}
+
+.form-control {
+	height:28px;
+	border-color:#3D4D57;
+	border-left:0;
+	border-top:0;
+	border-bottom:0;
+}
