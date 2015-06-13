@@ -73,6 +73,7 @@ a { outline:none !important; }
 .w90 { width:90% !important; }
 .w95 { width:95% !important; }
 .w100 { width:100% !important; }
+.ha { height:auto; }
 .h1 { height:1px !important; }
 .h2 { height:2px !important; }
 .h3 { height:3px !important; }
