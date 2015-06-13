@@ -50,6 +50,12 @@
                         }
                     }
 
+                    if(isset($data['capacity'])) {
+                        if($data['key'] == 'lager') $this->planet->resources->lager_cap = $data['capacity'];
+                        if($data['key'] == 'speziallager') $this->planet->resources->speziallager_cap = $data['capacity'];
+                        if($data['key'] == 'tanks') $this->planet->resources->tanks_cap = $data['capacity'];
+                    }
+
                     $this->event->remove($event);
                     $item = $this->events->shift();
                     unset($item);
