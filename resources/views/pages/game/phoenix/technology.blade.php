@@ -26,8 +26,8 @@
 								<td class="green w50">keine</td>
 							</tr>
 							<tr>
-								<td class="{{ $planet->bid == 1 ? 'red' : 'green' }} left">Arsenfertigung ({{ $buildings->arsenfertigung }})</td>
-								<td class="{{ $planet->bid == 1 ? 'red' : 'green' }}">Nur auf Kolonien</td>
+								<td class="{{ $planet->base_id == 1 ? 'red' : 'green' }} left">Arsenfertigung ({{ $buildings->arsenfertigung }})</td>
+								<td class="{{ $planet->base_id == 1 ? 'red' : 'green' }}">Nur auf Kolonien</td>
 							</tr>
 							<tr>
 								<td class="green left w50">Wasserstofffabrik ({{ $buildings->wasserstofffabrik }})</td>
