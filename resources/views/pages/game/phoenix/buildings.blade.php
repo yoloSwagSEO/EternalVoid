@@ -34,7 +34,7 @@
 										</div>
 									</td>
 									<td class="w5 text-center">
-										<a href="/buildings/abort/{{ $build->id }}" title="Abbrechen"><i class="fa fa-times-circle fa-lg"></i></a>
+										<a href="/buildings/cancel/{{ $build->id }}" title="Abbrechen"><i class="fa fa-times-circle fa-lg"></i></a>
 									</td>
 								</tr>
 							@endforeach
@@ -46,11 +46,11 @@
 			@endif
 			@foreach($buildings as $build => $building)
 
-				<div class="col-xl-1 col-lg-2 col-md-2 col-sm-3 col-xs-6">
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 p0">
 					<div class="gcontainer">
 						<div class="posrel">
 							<div class="overlay_top">{{ $building['name'] }}</div>
-							<img src="{{ $building['image'] }}" alt="{{ $building['name'] }}" class="m0" />
+							<img src="{{ $building['image'] }}" alt="{{ $building['name'] }}" class="m0 w100 ha" />
 							<div class="overlay_btm">{{ $planet->buildings->{$build} }}{!! $building['level'] != 0 ? '<span class="green"> + '.$building['level'].'</span>' : '' !!}</div>
 						</div>
 						<div class="row m0">
