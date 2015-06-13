@@ -156,3 +156,35 @@ div.sceditor-group {
 .sceditor-font-picker ul li a:hover, .sceditor-fontsize-picker ul li a:hover {
 	color:#9CB9C9;
 }
+
+.form-group button.btn, .form-group a.btn, .modal-footer button.btn, .panel a.btn  {
+	border-width:1px;
+}
+
+.dropdown-menu {
+	color:#ffffff;
+	background-image:linear-gradient(to bottom, #0F1C24 0px, #052639 100%);
+	padding:5px 0;
+	border:1px solid #3D4D57;
+	float:left;
+	position:absolute;
+	top:100%;
+	z-index:1000;
+}
+
+.dropdown-menu li:first-child a {
+	border-radius:3px 3px 0 0;
+}
+
+.dropdown-menu li:last-child a {
+	border-radius:0 0 3px 3px;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+	background:#16374A;
+	color:#ffffff;
+}
+
+.dropdown-menu > li > a {
+	color:#ffffff;
+}
