@@ -34,6 +34,7 @@
         public function init() {
             $this->setInterval()
                  ->eventBuildings()
+                 ->eventResearch()
                  ->eventResources();
         }
 
@@ -43,6 +44,16 @@
                                ->handleEvents();
 
             $this->stack = $this->libBuildings->getStack();
+            return $this;
+        }
+
+        private function eventResearch() {
+            $this->libResearch->setStack($this->stack)
+                              ->setPlanet($this->planet)
+                              ->setResearch($this->research)
+                              ->handleEvents();
+
+            $this->stack = $this->libResearch->getStack();
             return $this;
         }
 
@@ -97,6 +108,10 @@
 
         public function getBuildingsEvents() {
             return $this->libBuildings->getEvents();
+        }
+
+        public function getResearchEvents() {
+            return $this->libResearch->getEvents();
         }
 
     }
