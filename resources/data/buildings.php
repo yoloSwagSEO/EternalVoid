@@ -45,7 +45,7 @@
 			'aluminium'   => 300,
 			'titan'       => 400,
 			'production'  => [11, 1.5],
-			'needs'       => [session('baseId', 1) => 1],
+			'needs'       => [session('baseId') => 2],
 		],
 
 		'wasserstofffabrik' => [
