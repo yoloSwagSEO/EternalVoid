@@ -40,6 +40,23 @@
             return redirect('buildings');
         }
 
+        public function getCancel($eventId) {
+            $event = $this->event->find($eventId);
+            if(!is_null($event)) {
+                if($event->user_id == $this->user->id && $event->type == 1 && $event->planet_id == $this->planet->id) {
+                    if($this->event->cancel($event)) {
+                        return redirect('buildings');
+                    }
+
+                    return redirect('buildings');
+                }
+
+                return redirect('buildings');
+            }
+
+            return redirect('buildings');
+        }
+
         private function setBuildingValues() {
             $buildings = require_once(base_path().'/resources/data/buildings.php');
 
@@ -50,7 +67,7 @@
 
             foreach($buildings as $build => $building) {
                 foreach($building['needs'] as $current => $required) {
-                    if($current <= $required) {
+                    if($current < $required) {
                         unset($buildings[$build]);
                         continue(2);
                     }
@@ -71,7 +88,7 @@
                 if($this->currentBuildJobs->count() < 5) {
                     $building = $this->setBuildPermission($building);
                 } else {
-                    $buildings[$build]['build'] = false;
+                    $building['build'] = false;
                 }
 
                 $building          = $this->setResourceTime($building);
