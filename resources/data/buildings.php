@@ -40,7 +40,7 @@
 			'key'         => 'arsenfertigung',
 			'name'        => 'Arsenfertigung',
 			'image'       => '/img/game/builds/arsenfertigung.jpg',
-			'description' => '',
+			'description' => 'Aufgrund der toxischen Eigenschaften von Arsen wurde im galaktischem Rat entschieden, dass dieses Halbmetall nur auf Kolonien eines Imperiums abgebaut werden darf.<br /><br />Verwendung findet es vorallem in der Halbleiterindustrie bei der Herstellung von intergrierten Schaltkreisen oder Laserdioden, welche wiederum in Forschungslaboren, Raumschiffen oder Verteidigungsanlagen verwendet werden.',
 			'level'       => 0,
 			'aluminium'   => 300,
 			'titan'       => 400,
