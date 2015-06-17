@@ -1,6 +1,13 @@
 <?php
     namespace Eternal\Models;
 
+    /**
+     * Class Defense
+     * @package Eternal\Models
+     *
+     * @property int $planet_id
+     */
+
     class Defense extends Base {
 
         public $timestamps = false;

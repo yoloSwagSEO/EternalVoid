@@ -32,8 +32,8 @@
             $mins	  = ($sec - $sec_rest) / 60;
             $sec	  = $sec_rest;
 
-            $weeks = $weeks > 0 ? ($weeks > 1 ? $weeks.'w ' : $weeks.'w ') : '';
-            $days  = $days > 0 ? ($days > 1 ? $days.'d ' : $days.'d ') : '';
+            $weeks = $weeks > 0 ? $weeks.'w ' : '';
+            $days  = $days > 0 ? $days.'d ' : '';
             $hours = $hours < 10 ? "0".$hours : $hours;
             $mins  = $mins < 10 ? "0".$mins : $mins;
             $sec   = $sec < 10 ? "0".$sec : $sec;

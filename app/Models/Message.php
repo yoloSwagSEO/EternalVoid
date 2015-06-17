@@ -4,6 +4,17 @@
     use Request;
     use Carbon\Carbon;
 
+    /**
+     * Class Message
+     * @package Eternal\Models
+     *
+     * @property int $receiver_id
+     * @property int $sender_id
+     * @property int $receiver_folder
+     * @property int $sender_folder
+     * @proprety mixed $read_at
+     */
+
     class Message extends Base {
 
         protected $table = 'users_messages';

@@ -1,6 +1,13 @@
 <?php
     namespace Eternal\Models;
 
+    /**
+     * Class Research
+     * @package Eternal\Models
+     *
+     * @property int $user_id
+     */
+
     class Research extends Base {
 
         public $timestamps = false;

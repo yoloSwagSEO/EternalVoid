@@ -3,6 +3,17 @@
 
     use Request;
 
+    /**
+     * Class Note
+     * @package Eternal\Models
+     *
+     * @property int $user_id
+     * @property int $created_uid
+     * @property int $updated_uid
+     * @property string $subject
+     * @property string $note
+     */
+
     class Note extends Base {
 
         protected $table = 'users_notes';
@@ -19,7 +30,7 @@
 
 
         public function read($id = '') {
-            return !empty($id) ? $this->whereUserId($this->usr->id)->find($id) : $this->whereUserId($this->usr->id)->get();
+            return !empty($id) ? $this->where('user_id', '=', $this->usr->id)->find($id) : $this->where('user_id', '=', $this->usr->id)->get();
         }
 
         public function add() {

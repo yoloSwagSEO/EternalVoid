@@ -5,15 +5,14 @@
 
     /**
      * Class Event
+     * @package Eternal\Models
      *
-     * @property-read int $id
-     * @property-read string $data
-     * @property-write int $user_id
-     * @property-write int $planet_id
-     * @property-write int $type
-     * @property-write mixed $finished_at
-     * @property-write string $data
-     *
+     * @property int $id
+     * @property int $user_id
+     * @property int $planet_id
+     * @property int $type
+     * @property mixed $finished_at
+     * @property string $data
      */
 
     class Event extends Base {

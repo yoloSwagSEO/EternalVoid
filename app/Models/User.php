@@ -7,6 +7,22 @@
     use Hash;
     use Carbon\Carbon;
 
+    /**
+     * Class User
+     * @package Eternal\Models
+     *
+     * @property int $id
+     * @property string $username
+     * @property string $password
+     * @property string $random
+     * @property string $email
+     * @property string $regip
+     * @property string $lastip
+     * @property int $created_uid
+     * @property int $updated_uid
+     * @property mixed $lastactive_at
+     */
+
     class User extends Base {
 
         protected $table = 'users';

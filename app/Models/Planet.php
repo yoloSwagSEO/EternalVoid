@@ -1,10 +1,21 @@
 <?php
     namespace Eternal\Models;
 
-    use Crypt;
     use DB;
     use Request;
     use Carbon\Carbon;
+
+    /**
+     * Class Planet
+     * @package Eternal\Models
+     *
+     * @property-read int $id
+     * @property-write int $user_id
+     * @property-write int $base_id
+     * @property-write mixed $settled_at
+     * @property-write mixed $lastupdate_at
+     *
+     */
 
     class Planet extends Base {
 
@@ -20,10 +31,10 @@
 
             if(!empty($userId)) {
                 return $this->with($with)
-                    ->where('user_id', '=', $userId)
-                    ->where('base_id', '=', session('baseId', 1))
-                    ->get()
-                    ->first();
+                            ->where('user_id', '=', $userId)
+                            ->where('base_id', '=', session('baseId', 1))
+                            ->get()
+                            ->first();
             }
 
             return $this->with($with)->get();
@@ -31,24 +42,24 @@
 
         public function in($galaxy, $system, $with = []) {
             return $this->with($with)
-                ->where('galaxy', '=', $galaxy)
-                ->where('system', '=', $system)
-                ->get();
+                        ->where('galaxy', '=', $galaxy)
+                        ->where('system', '=', $system)
+                        ->get();
         }
 
         public function random() {
             return $this->where('bonus', '=', 0)
-                ->where('user_id', '=', 0)
-                ->orderBy(DB::raw('RAND()'))
-                ->take(1)
-                ->first();
+                        ->where('user_id', '=', 0)
+                        ->orderBy(DB::raw('RAND()'))
+                        ->take(1)
+                        ->first();
         }
 
         public function setUser(Planet $planet, User $user) {
             $planet->user_id       = $user->id;
             $planet->base_id       = 1;
             $planet->settled_at    = Carbon::now();
-            $planet->lastupdate_at = time();
+            $planet->lastupdate_at = Carbon::now();
 
             return $planet->save();
         }

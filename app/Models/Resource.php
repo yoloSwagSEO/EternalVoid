@@ -1,6 +1,13 @@
 <?php
     namespace Eternal\Models;
 
+    /**
+     * Class Resource
+     * @package Eternal\Models
+     *
+     * @property int $planet_id
+     */
+
     class Resource extends Base {
 
         public $timestamps = false;
