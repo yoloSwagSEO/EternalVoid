@@ -111,13 +111,12 @@
         }
 
         private function setResearchPermission($tech) {
-            $tech['build'] = true;
-            $tech['build'] = $tech['aluminium'] <= $this->resources->aluminium && $tech['build'] ? true : false;
-            $tech['build'] = $tech['titan'] <= $this->resources->titan && $tech['build'] ? true : false;
-            $tech['build'] = $tech['silizium'] <= $this->resources->silizium && $tech['build'] ? true : false;
-            $tech['build'] = $tech['arsen'] <= $this->resources->arsen && $tech['build'] ? true : false;
-            $tech['build'] = $tech['wasserstoff'] <= $this->resources->wasserstoff && $tech['build'] ? true : false;
-            $tech['build'] = $tech['antimaterie'] <= $this->resources->antimaterie && $tech['build'] ? true : false;
+            $tech['build'] = $tech['aluminium'] <= $this->resources->aluminium &&
+                             $tech['titan'] <= $this->resources->titan &&
+                             $tech['silizium'] <= $this->resources->silizium &&
+                             $tech['arsen'] <= $this->resources->arsen &&
+                             $tech['wasserstoff'] <= $this->resources->wasserstoff &&
+                             $tech['antimaterie'] <= $this->resources->antimaterie ? true : false;
 
             return $tech;
         }

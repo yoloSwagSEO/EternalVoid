@@ -124,10 +124,9 @@
         }
 
         private function setBuildPermission($building) {
-            $building['build'] = true;
-            $building['build'] = $building['aluminium'] <= $this->resources->aluminium && $building['build'] ? true : false;
-            $building['build'] = $building['titan'] <= $this->resources->titan && $building['build'] ? true : false;
-            $building['build'] = $building['silizium'] <= $this->resources->silizium && $building['build'] ? true : false;
+            $building['build'] = $building['aluminium'] <= $this->resources->aluminium &&
+                                 $building['titan'] <= $this->resources->titan &&
+                                 $building['silizium'] <= $this->resources->silizium ? true : false;
 
             return $building;
         }
