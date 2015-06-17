@@ -96,12 +96,4 @@
         public function getResearchEvents() {
             return $this->events->getResearchEvents();
         }
-
-        public function getUnitEvents() {
-            return $this->events->getUnitEvents();
-        }
-
-        public function getFleetEvents() {
-            return $this->events->getFleetEvents();
-        }
     }
