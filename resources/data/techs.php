@@ -6,9 +6,12 @@
             'image'       => '/img/game/research/pulsantrieb.jpg',
             'description' => 'Chemische Raketen, Ionenantriebe sowie auch auf Kernspaltung oder Kernfusion basierende Antriebe werden Pulsantriebe genannt.<br /><br />Diese Technologie ist rellativ einfach und platzsparend. Deshalb findet man diese Art Antrieb hauptsächlich bei Jägern und kleinen Transportern, da dort meistens kein Platz für ein Antimaterieantrieb vorhanden ist.',
             'level'       => 0,
-            'aluminium'    => 2500,
+            'aluminium'   => 2500,
             'titan'       => 2750,
+            'silizium'    => 0,
+            'arsen'       => 0,
             'wasserstoff' => 4000,
+            'antimaterie' => 0,
             'needs'       => [$this->planet->buildings->forschungszentrum => 1]
         ],
 
@@ -18,7 +21,10 @@
             'image'       => '/img/game/research/antimaterieantrieb.jpg',
             'description' => 'Chemische oder elektrische Antriebe wie der Ionenantrieb sind für interstellare oder gar intergalaktische Distanzen ungeeignet.<br /><br />Unter dem Aufwand gewaltiger Energiemengen, die durch eine Materie-Antimaterie-Reaktion entsteht, ist es möglich ein sogenanntes Fenster in den Hyperraum zu öffnen, welcher eine Abkürzung durch das reguläre Raum-Zeit-Kontinuum darstellt und so das Maximum der Lichtgeschwindigkeit im Normalraum umgeht.<br /><br />Die Leistungsfähigkeit solcher Antriebe ist im Prinzip nur durch die Energiemenge begrenzt, die der Reaktor freisetzen kann.',
             'level'       => 0,
-            'aluminium'    => 8250,
+            'aluminium'   => 8250,
+            'titan'       => 0,
+            'silizium'    => 0,
+            'arsen'       => 0,
             'wasserstoff' => 7500,
             'antimaterie' => 5500,
             'needs'       => [$this->planet->buildings->forschungszentrum => 4]
@@ -30,9 +36,12 @@
             'image'       => '/img/game/research/projektilwaffen.jpg',
             'description' => 'Projektilwaffen sind die älteste aller Waffengattungen. Eine Treibladung beschleunigt ein Projektil, welches beim Auftreffen auf ein Objekt Schaden anrichtet.<br /><br />Die Weiterentwicklung dieser Technologie beinhaltet die Anwendung von Magnetfeldern oder Spulen um ein Projektil auf Geschwindigkeit zu bringen.<br /><br />Solche Waffen werden auch als Railguns oder Gauss-Geschütze bezeichnet und bieten den Vorteil einer wesentlich höheren Aufschlaggeschwindigkeit und damit verbunden, eines größeren Schadens am beschossenem Objekt.',
             'level'       => 0,
-            'aluminium'    => 3000,
+            'aluminium'   => 3000,
+            'titan'       => 0,
             'silizium'    => 1000,
+            'arsen'       => 0,
             'wasserstoff' => 1700,
+            'antimaterie' => 0,
             'needs'       => [$this->planet->buildings->forschungszentrum => 1]
         ],
 
@@ -42,9 +51,12 @@
             'image'       => '/img/game/research/laserwaffen.jpg',
             'description' => 'Das Licht wurde schon in der Antike vom Erdforscher Archimedes als Waffe genutzt. Auch wenn sich die Technologie weiter entwickelt hat, ist das Grundprinzip fast das Gleiche.<br /><br />Hochenergetische Lichtstrahlen werden heute mittels spezieller Kristalle konzentriert und gebündelt.<br /><br />Dadurch entsteht eine sehr große Hitzeentwicklung, der aktuelle Panzerungen nur schwer wiederstehen können.',
             'level'       => 0,
+            'aluminium'   => 0,
             'titan'       => 9000,
             'silizium'    => 4500,
+            'arsen'       => 0,
             'wasserstoff' => 7750,
+            'antimaterie' => 0,
             'needs'       => [$this->planet->buildings->forschungszentrum => 2]
         ],
 
@@ -56,6 +68,8 @@
             'level'       => 0,
             'aluminium'   => 15000,
             'titan'       => 14750,
+            'silizium'    => 0,
+            'arsen'       => 0,
             'wasserstoff' => 12500,
             'antimaterie' => 7500,
             'needs'       => [$this->planet->buildings->forschungszentrum => 4]
@@ -69,6 +83,8 @@
             'level'       => 0,
             'aluminium'   => 16000,
             'titan'       => 10000,
+            'silizium'    => 0,
+            'arsen'       => 0,
             'wasserstoff' => 16500,
             'antimaterie' => 12000,
             'needs'       => [$this->planet->buildings->forschungszentrum => 8]
@@ -82,7 +98,10 @@
             'level'       => 0,
             'aluminium'   => 5000,
             'titan'       => 3500,
+            'silizium'    => 0,
+            'arsen'       => 0,
             'wasserstoff' => 4000,
+            'antimaterie' => 0,
             'needs'       => [$this->planet->buildings->forschungszentrum => 1]
         ],
 
@@ -93,8 +112,11 @@
             'description' => '',
             'level'       => 0,
             'aluminium'   => 3500,
+            'titan'       => 0,
             'silizium'    => 2350,
+            'arsen'       => 0,
             'wasserstoff' => 850,
+            'antimaterie' => 0,
             'needs'       => [$this->planet->buildings->forschungszentrum => 2]
         ],
 
@@ -104,9 +126,12 @@
             'image'       => '/img/game/research/orbitalkonstruktion.jpg',
             'description' => '',
             'level'       => 0,
+            'aluminium'   => 0,
             'titan'       => 12500,
             'silizium'    => 5500,
+            'arsen'       => 0,
             'wasserstoff' => 10000,
+            'antimaterie' => 0,
             'needs'       => [
                 $this->planet->buildings->forschungszentrum => 5,
                 $this->research->strukturelle_integritaet => 5,
@@ -120,9 +145,12 @@
             'image'       => '/img/game/research/lagererweiterung.jpg',
             'description' => '',
             'level'       => 0,
+            'aluminium'   => 0,
             'titan'       => 3500,
             'silizium'    => 2500,
+            'arsen'       => 0,
             'wasserstoff' => 5000,
+            'antimaterie' => 0,
             'needs'       => [$this->research->strukturelle_integritaet => 2]
         ],
 
@@ -135,7 +163,9 @@
             'aluminium'   => 15000,
             'titan'       => 12500,
             'silizium'    => 6000,
+            'arsen'       => 0,
             'wasserstoff' => 10500,
+            'antimaterie' => 0,
             'needs'       => [
                 $this->research->strukturelle_integritaet => 2,
                 $this->research->orbitalkonstruktion => 4
@@ -148,10 +178,12 @@
             'image'       => '/img/game/research/rumpfstatik.jpg',
             'description' => '',
             'level'       => 0,
+            'aluminium'   => 0,
             'titan'       => 40000,
             'silizium'    => 12500,
             'arsen'       => 5500,
             'wasserstoff' => 35000,
+            'antimaterie' => 0,
             'needs'       => [
                 $this->planet->buildings->forschungszentrum => 10,
                 $this->research->schiffskapazitaet => 10
@@ -181,7 +213,9 @@
             'image'       => '/img/game/research/schildtechnologie.jpg',
             'description' => '',
             'level'       => 0,
+            'aluminium'   => 0,
             'titan'       => 75000,
+            'silizium'    => 0,
             'arsen'       => 35000,
             'wasserstoff' => 80000,
             'antimaterie' => 50000,
@@ -198,8 +232,11 @@
             'description' => '',
             'level'       => 0,
             'aluminium'   => 5000,
+            'titan'       => 0,
             'silizium'    => 2500,
+            'arsen'       => 0,
             'wasserstoff' => 6000,
+            'antimaterie' => 0,
             'needs'       => [
                 $this->planet->buildings->forschungszentrum => 1,
                 $this->planet->buildings->sternenbasis => 10,
@@ -213,7 +250,9 @@
             'description' => '',
             'level'       => 0,
             'aluminium'   => 13500,
+            'titan'       => 0,
             'silizium'    => 6500,
+            'arsen'       => 0,
             'wasserstoff' => 3500,
             'antimaterie' => 11000,
             'needs'       => [$this->planet->buildings->forschungszentrum => 5]
@@ -226,6 +265,9 @@
             'description' => '',
             'level'       => 0,
             'aluminium'   => 2000,
+            'titan'       => 0,
+            'silizium'    => 0,
+            'arsen'       => 0,
             'wasserstoff' => 1500,
             'antimaterie' => 500,
             'needs'       => [$this->planet->buildings->forschungszentrum => 1]
@@ -240,7 +282,9 @@
             'aluminium'   => 4500,
             'titan'       => 3250,
             'silizium'    => 2250,
+            'arsen'       => 0,
             'wasserstoff' => 2000,
+            'antimaterie' => 0,
             'needs'       => [
                 $this->planet->buildings->forschungszentrum => 3,
                 $this->planet->buildings->lager => 5,
@@ -256,8 +300,11 @@
             'description' => 'Geologie beinhaltet haupsächlich die Forschungsgebiete der Mineralienkunde sowie der Kartografierung des Planeten. Speziell ausgebildete Geologenteams suchen nach neuen Vorkommen natürlicher Ressourcen und tragen diese auf die Planetenkarten ein. Dadurch wird es ermöglicht, die Effektivität der Aluminiumminen, Titanfertigungen sowie der Siliziumminen zu steigern. Jede Forschungsstufe erhöht den Stundenbetrag dieser drei Minen um 5%.',
             'level'       => 0,
             'aluminium'   => 7500,
+            'titan'       => 0,
             'silizium'    => 3750,
+            'arsen'       => 0,
             'wasserstoff' => 5750,
+            'antimaterie' => 0,
             'needs'       => [
                 $this->planet->buildings->forschungszentrum => 1,
                 $this->planet->buildings->aluminiummine => 10,
@@ -271,9 +318,12 @@
             'image'       => '/img/game/research/speziallegierungen.jpg',
             'description' => '',
             'level'       => 0,
+            'aluminium'   => 0,
             'titan'       => 10000,
             'silizium'    => 2000,
+            'arsen'       => 0,
             'wasserstoff' => 11000,
+            'antimaterie' => 0,
             'needs'       => [
                 $this->planet->buildings->forschungszentrum => 4,
                 $this->planet->buildings->titanfertigung => 10,
@@ -287,6 +337,9 @@
             'description' => '',
             'level'       => 0,
             'aluminium'   => 8000,
+            'titan'       => 0,
+            'silizium'    => 0,
+            'arsen'       => 0,
             'wasserstoff' => 12500,
             'antimaterie' => 7500,
             'needs'       => [
