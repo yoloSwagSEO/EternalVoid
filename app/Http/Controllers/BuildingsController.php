@@ -101,9 +101,7 @@
         private function setResources($building) {
             $building['aluminium'] = floor($building['aluminium'] * pow(($this->planet->buildings->{$building['key']} + ($building['level'] + 1)), 1.65));
             $building['titan']     = floor($building['titan'] * pow(($this->planet->buildings->{$building['key']} + ($building['level'] + 1)), 1.65));
-            if(isset($building['silizium'])) {
-                $building['silizium'] = floor($building['silizium'] * pow(($this->planet->buildings->{$building['key']} + ($building['level'] + 1)), 1.65));
-            }
+            $building['silizium']  = floor($building['silizium'] * pow(($this->planet->buildings->{$building['key']} + ($building['level'] + 1)), 1.65));
 
             return $building;
         }
@@ -126,15 +124,10 @@
         }
 
         private function setBuildPermission($building) {
-            $building['build'] = false;
-
-            if($building['aluminium'] <= $this->resources->aluminium &&	$building['titan'] <= $this->resources->titan) {
-                $building['build'] = true;
-            }
-
-            if(isset($building['silizium'])) {
-                $building['build'] = $building['silizium'] <= $this->resources->silizium ? true : false;
-            }
+            $building['build'] = true;
+            $building['build'] = $building['aluminium'] <= $this->resources->aluminium && $building['build'] ? true : false;
+            $building['build'] = $building['titan'] <= $this->resources->titan && $building['build'] ? true : false;
+            $building['build'] = $building['silizium'] <= $this->resources->silizium && $building['build'] ? true : false;
 
             return $building;
         }
@@ -143,11 +136,8 @@
             $data = [
                 floor(($building['aluminium'] - $this->resources->aluminium) / ($this->production->aluminium + $this->game['aluminium'])),
                 floor(($building['titan'] - $this->resources->titan) / ($this->production->titan + $this->game['titan'])),
+                floor(($building['silizium'] - $this->resources->silizium) / ($this->production->silizium + $this->game['silizium']))
             ];
-
-            if(isset($building['silizium'])) {
-                $data[] = floor(($building['silizium'] - $this->resources->silizium) / ($this->production->silizium + $this->game['silizium']));
-            }
 
             $building['restime'] = max($data);
             return $building;
