@@ -9,11 +9,17 @@
      * Class Planet
      * @package Eternal\Models
      *
-     * @property-read int $id
-     * @property-write int $user_id
-     * @property-write int $base_id
-     * @property-write mixed $settled_at
-     * @property-write mixed $lastupdate_at
+     * @property int $id
+     * @property int $user_id
+     * @property int $base_id
+     * @property mixed $settled_at
+     * @property mixed $lastupdate_at
+     * @property \Eternal\Models\User $user
+     * @property \Eternal\Models\Production $production
+     * @property \Eternal\Models\Resource $resources
+     * @property \Eternal\Models\Building $buildings
+     * @property \Eternal\Models\Defense $defenses
+     * @property \Eternal\Models\Unit $units
      *
      */
 

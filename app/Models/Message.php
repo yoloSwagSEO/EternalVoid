@@ -12,7 +12,7 @@
      * @property int $sender_id
      * @property int $receiver_folder
      * @property int $sender_folder
-     * @proprety mixed $read_at
+     * @proprety Carbon\Carbon $read_at
      */
 
     class Message extends Base {
@@ -107,7 +107,7 @@
                     break;
                 default:
                     return null;
-                    break;
+                break;
             }
         }
 
@@ -137,7 +137,7 @@
                 case 'trash':
                     if($message->receiver_id == $this->usr->id) $message->receiver_folder = 3;
                     if($message->sender_id == $this->usr->id) $message->sender_folder = 3;
-                    break;
+                break;
             }
 
             return $message->save();
