@@ -3,6 +3,19 @@
 
     use Carbon\Carbon;
 
+    /**
+     * Class Event
+     *
+     * @property-read int $id
+     * @property-read string $data
+     * @property-write int $user_id
+     * @property-write int $planet_id
+     * @property-write int $type
+     * @property-write mixed $finished_at
+     * @property-write string $data
+     *
+     */
+
     class Event extends Base {
 
         protected $table = 'events';
@@ -36,12 +49,12 @@
             // Needed for canel action
             $data['orig_time'] = $data['time'];
 
-            $this->plt->resources->aluminium -= isset($data['aluminium']) ? $data['aluminium'] : 0;
-            $this->plt->resources->titan -= isset($data['titan']) ? $data['titan'] : 0;
-            $this->plt->resources->silizium -= isset($data['silizium']) ? $data['silizium'] : 0;
-            $this->plt->resources->arsen -= isset($data['arsen']) ? $data['arsen'] : 0;
-            $this->plt->resources->wasserstoff -= isset($data['wasserstoff']) ? $data['wasserstoff'] : 0;
-            $this->plt->resources->antimaterie -= isset($data['antimaterie']) ? $data['antimaterie'] : 0;
+            $this->plt->resources->aluminium -= $data['aluminium'];
+            $this->plt->resources->titan -= $data['titan'];
+            $this->plt->resources->silizium -= $data['silizium'];
+            $this->plt->resources->arsen -= $data['arsen'];
+            $this->plt->resources->wasserstoff -= $data['wasserstoff'];
+            $this->plt->resources->antimaterie -= $data['antimaterie'];
             $this->plt->resources->save();
 
             $lastEvent = $this->last($this->usr->id, $type, $this->plt->id);
@@ -59,16 +72,16 @@
             return $this->save();
         }
 
-        public function modify($event, $data) {
+        public function modify(Event $event, $data) {
             $event->data = serialize($data);
             return $event->save();
         }
 
-        public function remove($event) {
+        public function remove(Event $event) {
             return $event->delete();
         }
 
-        public function cancel($event) {
+        public function cancel(Event $event) {
             $events = $this->where([
                 'user_id'   => $event->user_id,
                 'planet_id' => $event->planet_id,
@@ -80,12 +93,12 @@
             $eventData = unserialize($event->data);
             $remaining = $eventData['remaining'] / $eventData['time'];
 
-            $this->plt->resources->aluminium += isset($eventData['aluminium']) ? $eventData['aluminium'] * $remaining : 0;
-            $this->plt->resources->titan += isset($eventData['titan']) ? $eventData['titan'] * $remaining : 0;
-            $this->plt->resources->silizium += isset($eventData['silizium']) ? $eventData['silizium'] * $remaining : 0;
-            $this->plt->resources->arsen += isset($eventData['arsen']) ? $eventData['arsen'] * $remaining : 0;
-            $this->plt->resources->wasserstoff += isset($eventData['wasserstoff']) ? $eventData['wasserstoff'] * $remaining : 0;
-            $this->plt->resources->antimaterie += isset($eventData['antimaterie']) ? $eventData['antimaterie'] * $remaining : 0;
+            $this->plt->resources->aluminium += $eventData['aluminium'] * $remaining;
+            $this->plt->resources->titan += $eventData['titan'] * $remaining;
+            $this->plt->resources->silizium += $eventData['silizium'] * $remaining;
+            $this->plt->resources->arsen += $eventData['arsen'] * $remaining;
+            $this->plt->resources->wasserstoff += $eventData['wasserstoff'] * $remaining;
+            $this->plt->resources->antimaterie += $eventData['antimaterie'] * $remaining;
             $this->plt->resources->save();
 
             if(!$events->isEmpty()) {
