@@ -34,9 +34,9 @@
 
         public function postNew() {
             if($this->message->add()) {
-                return redirect('messages/outbox')->with([
-                    'success' => 'Deine Nachricht wurde erfolgreich versendet.'
-                ]);
+                return redirect('messages/outbox')->with(
+                    'success', 'Deine Nachricht wurde erfolgreich versendet.'
+                );
             }
 
             return redirect('messages/new')->withErrors($this->message->validator)->withInput();
@@ -53,14 +53,14 @@
                     ]);
                 }
 
-                return redirect('messages')->with([
-                    'error' => 'Man '.$this->user->username.' du Stulle...ist doch nicht deine Nachricht...'
-                ]);
+                return redirect('messages')->with(
+                    'error', 'Man '.$this->user->username.' du Stulle...ist doch nicht deine Nachricht...'
+                );
             }
 
-            return redirect('messages')->with([
-                'success' => $this->user->username.' wird dem Admin von Eternal Void jetzt ein Bier als Danke für\'s Testen ausgeben.'
-            ]);
+            return redirect('messages')->with(
+                'success', $this->user->username.' wird dem Admin von Eternal Void jetzt ein Bier als Danke für\'s Testen ausgeben.'
+            );
         }
 
         public function getMarkasread($id) {
@@ -68,24 +68,24 @@
             if(!is_null($message)) {
                 if($message->receiver_id == $this->user->id) {
                     if($this->message->markAsRead($message)) {
-                        return redirect()->back()->with([
-                            'success' => 'Die Nachricht wurde erfolgreich als gelesen markiert.'
-                        ]);
+                        return redirect()->back()->with(
+                            'success', 'Die Nachricht wurde erfolgreich als gelesen markiert.'
+                        );
                     }
 
-                    return redirect()->back()->with([
-                        'error' => 'Die Nachricht konnte nicht als gelesen markiert werden.'
-                    ]);
+                    return redirect()->back()->with(
+                        'error', 'Die Nachricht konnte nicht als gelesen markiert werden.'
+                    );
                 }
 
-                return redirect('messages')->with([
-                    'error' => 'Die gewünschte Nachricht kann nicht angezeigt werden.'
-                ]);
+                return redirect('messages')->with(
+                    'error', 'Die gewünschte Nachricht kann nicht angezeigt werden.'
+                );
             }
 
-            return redirect('messages')->with([
-                'error' => 'Die gewünschte Nachricht ist unbekannt.'
-            ]);
+            return redirect('messages')->with(
+                'error', 'Die gewünschte Nachricht ist unbekannt.'
+            );
         }
 
         public function getReply($id) {
@@ -98,21 +98,21 @@
                     ]);
                 }
 
-                return redirect('messages')->with([
-                    'error' => 'Die gewünschte Nachricht kann nicht angezeigt werden.'
-                ]);
+                return redirect('messages')->with(
+                    'error', 'Die gewünschte Nachricht kann nicht angezeigt werden.'
+                );
             }
 
-            return redirect('messages')->with([
-                'error' => 'Die gewünschte Nachricht ist unbekannt.'
-            ]);
+            return redirect('messages')->with(
+                'error', 'Die gewünschte Nachricht ist unbekannt.'
+            );
         }
 
         public function postReply($id) {
             if($this->message->add()) {
-                return redirect('messages')->with([
-                    'success' => 'Deine Nachricht wurde erfolgreich versendet.'
-                ]);
+                return redirect('messages')->with(
+                    'success', 'Deine Nachricht wurde erfolgreich versendet.'
+                );
             }
 
             return redirect('message/reply/'.$id)->withErrors($this->message->validator)->withInput();
@@ -123,24 +123,24 @@
             if(!is_null($message)) {
                 if($message->receiver_id == $this->user->id || $message->sender_id == $this->user->id) {
                     if($this->message->moveTo($folder, $message)) {
-                        return redirect()->back()->with([
-                            'success' => 'Die Nachricht wurde erfolgreich verschoben.'
-                        ]);
+                        return redirect()->back()->with(
+                            'success', 'Die Nachricht wurde erfolgreich verschoben.'
+                        );
                     }
 
-                    return redirect()->back()->with([
-                        'error' => 'Die Nachricht konnte nicht verschoben werden.'
-                    ]);
+                    return redirect()->back()->with(
+                        'error', 'Die Nachricht konnte nicht verschoben werden.'
+                    );
                 }
 
-                return redirect('messages')->with([
-                    'error' => 'Man du Stulle...ist doch nicht deine Nachricht...'
-                ]);
+                return redirect('messages')->with(
+                    'error', 'Man du Stulle...ist doch nicht deine Nachricht...'
+                );
             }
 
-            return redirect('messages')->with([
-                'error' => 'Du Spaten sollst nicht willkürlich Nachrichten-ID\'s ausprobieren.'
-            ]);
+            return redirect('messages')->with(
+                'error', 'Du Spaten sollst nicht willkürlich Nachrichten-ID\'s ausprobieren.'
+            );
         }
 
         public function getRecover($id) {
@@ -148,24 +148,24 @@
             if(!is_null($message)) {
                 if($message->receiver_id == $this->user->id || $message->sender_id == $this->user->id) {
                     if($this->message->recover($message)) {
-                        return redirect()->back()->with([
-                            'success' => 'Die Nachricht wurde erfolgreich wiederhergestellt.'
-                        ]);
+                        return redirect()->back()->with(
+                            'success', 'Die Nachricht wurde erfolgreich wiederhergestellt.'
+                        );
                     }
 
-                    return redirect()->back()->with([
-                        'error' => 'Die Nachricht konnte nicht wiederhergestellt werden.'
-                    ]);
+                    return redirect()->back()->with(
+                        'error', 'Die Nachricht konnte nicht wiederhergestellt werden.'
+                    );
                 }
 
-                return redirect()->back()->with([
-                    'error' => 'Die wiederherzustellende Nachricht kann nicht wiederhergestellt werden.'
-                ]);
+                return redirect()->back()->with(
+                    'error', 'Die wiederherzustellende Nachricht kann nicht wiederhergestellt werden.'
+                );
             }
 
-            return redirect()->back()->with([
-                'error' => 'Die wiederherzustellende Nachricht ist unbekannt.'
-            ]);
+            return redirect()->back()->with(
+                'error', 'Die wiederherzustellende Nachricht ist unbekannt.'
+            );
         }
 
         public function getDelete($id) {
@@ -173,24 +173,24 @@
             if(!is_null($message)) {
                 if($message->receiver_id == $this->user->id || $this->message->sender_id == $this->user->id) {
                     if($this->message->remove($message)) {
-                        return redirect()->back()->with([
-                            'success' => 'Die Nachricht wurde erfolgreich gelöscht.'
-                        ]);
+                        return redirect()->back()->with(
+                            'success', 'Die Nachricht wurde erfolgreich gelöscht.'
+                        );
                     }
 
-                    return redirect()->back()->with([
-                        'error' => 'Die Nachricht konnte nicht gelöscht werden.'
-                    ]);
+                    return redirect()->back()->with(
+                        'error', 'Die Nachricht konnte nicht gelöscht werden.'
+                    );
                 }
 
-                return redirect()->back()->with([
-                    'error' => 'Die zu löschende Nachricht kann nicht gelöscht werden.'
-                ]);
+                return redirect()->back()->with(
+                    'error', 'Die zu löschende Nachricht kann nicht gelöscht werden.'
+                );
             }
 
-            return redirect()->back()->with([
-                'error' => 'Die zu löschende Nachricht ist unbekannt.'
-            ]);
+            return redirect()->back()->with(
+                'error', 'Die zu löschende Nachricht ist unbekannt.'
+            );
         }
 
         public function getExport() {

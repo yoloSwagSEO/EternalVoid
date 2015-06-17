@@ -81,9 +81,9 @@
                 // Set default planet units
                 $this->unit->add($planet);
 
-                return redirect('earlyaccess')->with([
-                    'success' => trans('users.messages.register_success')
-                ]);
+                return redirect('earlyaccess')->with(
+                    'success', trans('users.messages.register_success')
+                );
             }
 
             return redirect('earlyaccess')->withErrors($this->user->validator)->withInput();
@@ -103,9 +103,9 @@
 
         public function getLogout() {
             if($this->user->logout()) {
-                return redirect('/')->with([
-                    'success' => trans('users.messages.logout_success')
-                ]);
+                return redirect('/')->with(
+                    'success', trans('users.messages.logout_success')
+                );
             }
 
             return redirect('/');

@@ -32,14 +32,14 @@
                     ]);
                 }
 
-                return redirect('notes')->with([
-                    'error' => 'Die gewünschte Notiz kann nicht angezeigt werden.'
-                ]);
+                return redirect('notes')->with(
+                    'error', 'Die gewünschte Notiz kann nicht angezeigt werden.'
+                );
             }
 
-            return redirect('notes')->with([
-                'error' => 'Die gewünschte Notiz existiert nicht.',
-            ]);
+            return redirect('notes')->with(
+                'error', 'Die gewünschte Notiz existiert nicht.'
+            );
         }
 
         public function getNew() {
@@ -55,14 +55,14 @@
                     ]);
                 }
 
-                return redirect('notes')->with([
-                    'error' => 'Die zu bearbeitende Notiz kann nicht bearbeitet werden.'
-                ]);
+                return redirect('notes')->with(
+                    'error', 'Die zu bearbeitende Notiz kann nicht bearbeitet werden.'
+                );
             }
 
-            return redirect('notes')->with([
-                'error' => 'Die zu bearbeitende Notiz existiert nicht.'
-            ]);
+            return redirect('notes')->with(
+                'error', 'Die zu bearbeitende Notiz existiert nicht.'
+            );
         }
 
         public function getDelete($id) {
@@ -75,26 +75,26 @@
                         ]);
                     }
 
-                    return redirect('notes')->with([
-                        'error' => 'Die Notiz konnte nicht gelöscht werden.'
-                    ]);
+                    return redirect('notes')->with(
+                        'error', 'Die Notiz konnte nicht gelöscht werden.'
+                    );
                 }
 
-                return redirect('notes')->with([
-                    'error' => 'Die gewünschte Notiz kann nicht gelöscht werden.'
-                ]);
+                return redirect('notes')->with(
+                    'error', 'Die gewünschte Notiz kann nicht gelöscht werden.'
+                );
             }
 
-            return redirect('notes')->with([
-                'error' => 'Die gewünschte Notiz existiert nicht.'
-            ]);
+            return redirect('notes')->with(
+                'error', 'Die gewünschte Notiz existiert nicht.'
+            );
         }
 
         public function postNew() {
             if($this->note->add()) {
-                return redirect('notes')->with([
-                    'success' => 'Die Notiz wurde erfolgreich erstellt.'
-                ]);
+                return redirect('notes')->with(
+                    'success', 'Die Notiz wurde erfolgreich erstellt.'
+                );
             }
 
             return redirect('notes/new')->withInput()->withErrors($this->note->validator);
@@ -105,21 +105,21 @@
             if(!is_null($note)) {
                 if($note->user_id == $this->user->id) {
                     if($this->note->edit($note)) {
-                        return redirect('notes')->with([
-                            'success' => 'Die Notiz wurde erfolgreich bearbeitet'
-                        ]);
+                        return redirect('notes')->with(
+                            'success', 'Die Notiz wurde erfolgreich bearbeitet'
+                        );
                     }
 
                     return redirect('notes/edit/'.$id)->withInput()->withErrors($this->note->validator);
                 }
 
-                return redirect('notes')->with([
-                    'error' => 'Die zu bearbeitende Notiz kann nicht bearbeitet werden.'
-                ]);
+                return redirect('notes')->with(
+                    'error', 'Die zu bearbeitende Notiz kann nicht bearbeitet werden.'
+                );
             }
 
-            return redirect('notes')->with([
-                'error' => 'Die zu bearbeitende Notiz existiert nicht.'
-            ]);
+            return redirect('notes')->with(
+                'error', 'Die zu bearbeitende Notiz existiert nicht.'
+            );
         }
     }

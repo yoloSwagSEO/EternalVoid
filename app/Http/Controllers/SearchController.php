@@ -51,8 +51,8 @@
                 ]);
             }
 
-            return redirect('search')->with([
-                'error' => 'Bitte gebe einen Suchbegriff ein.'
-            ]);
+            return redirect('search')->with(
+                'error', 'Bitte gebe einen Suchbegriff ein.'
+            );
         }
     }
