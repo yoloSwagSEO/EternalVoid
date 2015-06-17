@@ -13,6 +13,7 @@
      * @method \Illuminate\Database\Eloquent\Builder insert()
      * @method \Illuminate\Database\Eloquent\Builder where()
      * @method \Illuminate\Database\Query\Builder orderBy()
+     * @method \Illuminate\Database\Query\Builder select()
      * @method \Illuminate\Database\Query\Builder selectRaw()
      */
 
