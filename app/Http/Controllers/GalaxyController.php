@@ -28,16 +28,36 @@
         }
 
         public function postIndex() {
-            $galaxy = Request::exists('home') ? $this->planet->galaxy : (int) Request::get('galaxy');
-            $system = Request::exists('home') ? $this->planet->system : (int) Request::get('system');
+            $galaxy = (int) Request::get('galaxy');
+            $system = (int) Request::get('system');
 
-            $galaxy = Request::exists('prevgalaxy') ? $galaxy-1 : (Request::exists('nextgalaxy') ? $galaxy+1 : $galaxy);
-            $system = Request::exists('prevsystem') ? $system-1 : (Request::exists('nextsystem') ? $system+1 : $system);
+            foreach(Request::all() as $key => $value) {
+                switch($key) {
+                    case 'home':
+                        $galaxy = $this->planet->galaxy;
+                        $system = $this->planet->system;
+                    break;
+                    case 'prevgalaxy':
+                        $galaxy--;
+                    break;
+                    case 'nextgalaxy':
+                        $galaxy++;
+                    break;
+                    case 'prevsystem':
+                        $system--;
+                    break;
+                    case 'nextsystem':
+                        $system++;
+                    break;
+                }
+            }
 
             if($system < 1) {
                 $system = 255;
                 $galaxy--;
-            } elseif($system > 255) {
+            }
+
+            if($system > 255) {
                 $system = 1;
                 $galaxy++;
             }
