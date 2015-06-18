@@ -125,11 +125,11 @@
             switch($action) {
                 case 'recover':
                     $message->receiver_folder = $message->receiver_id == $this->usr->id ? 1 : $message->receiver_folder;
-                    $message->sender_folder   = $message->receiver_id == $this->usr->id ? 2 : $message->receiver_folder;
+                    $message->sender_folder   = $message->sender_id == $this->usr->id ? 2 : $message->sender_folder;
                 break;
                 case 'trash':
                     $message->receiver_folder = $message->receiver_id == $this->usr->id ? 3 : $message->receiver_folder;
-                    $message->sender_folder   = $message->receiver_id == $this->usr->id ? 3 : $message->receiver_folder;
+                    $message->sender_folder   = $message->sender_id == $this->usr->id ? 3 : $message->sender_folder;
                 break;
                 case 'delete':
                     $message->read_at = Carbon::now();
