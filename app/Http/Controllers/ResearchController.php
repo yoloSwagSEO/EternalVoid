@@ -4,14 +4,6 @@
     use Eternal\Models\Event;
     use Eternal\Libraries\Main;
 
-    /**
-     * Class ResearchController
-     * @package Eternal\Http\Controllers
-     *
-     * @var \Eternal\Models\Event $event
-     * @var \Illuminate\Database\Eloquent\Collection $currentResearchJobs
-     */
-
     class ResearchController extends MainController {
 
         private $event;
