@@ -38,6 +38,10 @@
             ])->get();
         }
 
+        public function readById($eventId) {
+            return $this->where('id', '=', $eventId)->get()->first();
+        }
+
         public function add($data, $type) {
             unset($data['image']);
             unset($data['description']);
