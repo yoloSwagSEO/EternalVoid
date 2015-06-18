@@ -21,6 +21,10 @@
      * @property mixed $read_at
      * @property string $subject
      * @property string $message
+     *
+     * @method \Illuminate\Database\Query\Builder where()
+     * @method \Illuminate\Database\Query\Builder insert()
+     * @method \Illuminate\Database\Query\Builder selectRaw()
      */
 
     class Message extends Base {
@@ -92,14 +96,12 @@
                             'receiver_folder' => 1,
                             'receiver_id'     => $this->usr->id
                         ])->get();
-                    break;
                 case 'outbox':
                     return $this->with($with)
                         ->where([
                             'sender_folder' => 2,
                             'sender_id'     => $this->usr->id
                         ])->get();
-                    break;
                 case 'trash':
                     return $this->with($with)->where(
                         function($query) {
@@ -112,10 +114,8 @@
                                   ->orWhere('sender_folder', '=', 3);
                         }
                     )->get();
-                    break;
                 default:
                     return null;
-                break;
             }
         }
 
@@ -145,7 +145,6 @@
                 case 'trash':
                     if($message->receiver_id == $this->usr->id) $message->receiver_folder = 3;
                     if($message->sender_id == $this->usr->id) $message->sender_folder = 3;
-                break;
             }
 
             return $message->save();
