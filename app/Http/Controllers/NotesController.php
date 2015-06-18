@@ -70,9 +70,9 @@
             if(!is_null($note)) {
                 if($note->user_id == $this->user->id) {
                     if($this->note->remove($note)) {
-                        return redirect('notes')->with([
-                            'success' => 'Die Notiz wurde erfolgreich gelöscht.'
-                        ]);
+                        return redirect('notes')->with(
+                            'success', 'Die Notiz wurde erfolgreich gelöscht.'
+                        );
                     }
 
                     return redirect('notes')->with(
