@@ -13,6 +13,7 @@
             'wasserstoff' => 0,
             'antimaterie' => 0,
 			'production'  => [30, 1.8],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -29,6 +30,7 @@
             'wasserstoff' => 0,
             'antimaterie' => 0,
 			'production'  => [28, 1.7],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -45,6 +47,7 @@
             'wasserstoff' => 0,
             'antimaterie' => 0,
 			'production'  => [23, 1.65],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -61,7 +64,10 @@
             'wasserstoff' => 0,
             'antimaterie' => 0,
 			'production'  => [11, 1.5],
-			'needs'       => [session('baseId') => 2],
+            'capacity'    => [0, 0],
+			'needs'       => [
+                session('baseId') => 2
+            ],
 		],
 
 		'wasserstofffabrik' => [
@@ -77,6 +83,7 @@
             'wasserstoff' => 0,
             'antimaterie' => 0,
 			'production'  => [20, 1.61],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -93,6 +100,7 @@
             'wasserstoff' => 0,
             'antimaterie' => 0,
 			'production'  => [14, 1.5],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -108,7 +116,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
-			'capacity'    => [400000,10000],
+            'production'  => [0, 0],
+			'capacity'    => [400000, 10000],
 			'needs'       => [],
 		],
 
@@ -124,7 +133,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
-			'capacity'    => [250000,9000],
+            'production'  => [0, 0],
+			'capacity'    => [250000, 9000],
 			'needs'       => [$this->planet->buildings->wasserstofffabrik => 1],
 		],
 
@@ -140,7 +150,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
-			'capacity'    => [160000,8000],
+            'production'  => [0, 0],
+			'capacity'    => [160000, 8000],
 			'needs'       => [$this->planet->buildings->antimateriefabrik => 1],
 		],
 
@@ -156,7 +167,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
-			'capacity'    => [5000,1000],
+            'production'  => [0, 0],
+			'capacity'    => [5000, 1000],
 			'needs'       => [],
 		],
 
@@ -172,6 +184,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -187,6 +201,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -202,6 +218,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -217,7 +235,11 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
-			'needs'       => [$this->planet->buildings->sternenbasis => 1],
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
+			'needs'       => [
+                $this->planet->buildings->sternenbasis => 1
+            ],
 		],
 
 		'planetarer_schild' => [
@@ -232,7 +254,12 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
-			'needs'       => [$this->research->schildtechnologie => 1, $this->planet->buildings->sternenbasis => 10],
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
+			'needs'       => [
+                $this->research->schildtechnologie => 1,
+                $this->planet->buildings->sternenbasis => 10
+            ],
 		],
 
 		'kommandozentrale' => [
@@ -247,6 +274,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -262,6 +291,8 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
 			'needs'       => [],
 		],
 
@@ -277,7 +308,11 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
-			'needs'       => [$this->planet->buildings->flottenkommando => 1],
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
+			'needs'       => [
+                $this->planet->buildings->flottenkommando => 1
+            ],
 		],
 
 		'schiffsboerse' => [
@@ -292,6 +327,10 @@
             'arsen'       => 0,
             'wasserstoff' => 0,
             'antimaterie' => 0,
-			'needs'       => [$this->planet->buildings->flottenkommando => 1],
+            'production'  => [0, 0],
+            'capacity'    => [0, 0],
+			'needs'       => [
+                $this->planet->buildings->flottenkommando => 1
+            ],
 		],
 	];
