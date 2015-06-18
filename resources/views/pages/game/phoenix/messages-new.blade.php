@@ -18,7 +18,7 @@
 					@include('misc.messages')
 					@include('misc.preview')
 
-					<form action="/messages/new" enctype="multipart/form-data" method="post" class="form-horizontal">
+					<form action="/messages/new{{ isset($id) ? '/'.$id : '' }}" enctype="multipart/form-data" method="post" class="form-horizontal">
 						<div class="form-group">
 							<label for="receiver" class="col-md-2 control-label pt3">Empfänger:</label>
 							<div class="col-md-10 posrel">

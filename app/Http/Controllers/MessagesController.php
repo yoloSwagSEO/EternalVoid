@@ -32,14 +32,14 @@
             ]);
         }
 
-        public function postNew() {
+        public function postNew($id = '') {
             if($this->message->add()) {
                 return redirect('messages/outbox')->with(
                     'success', 'Deine Nachricht wurde erfolgreich versendet.'
                 );
             }
 
-            return redirect('messages/new')->withErrors($this->message->validator)->withInput();
+            return redirect('messages/new'.(!empty($id) ? '/'.$id : ''))->withErrors($this->message->validator)->withInput();
         }
 
         public function getRead($id) {
@@ -94,7 +94,8 @@
                 if($message->receiver_id == $this->user->id) {
                     return view('pages.game.'.$this->game['viewpath'].'.messages-new')->with([
                         'message'       => $message,
-                        'message_count' => $this->messageCount
+                        'message_count' => $this->messageCount,
+                        'id'            => $id,
                     ]);
                 }
 
@@ -106,16 +107,6 @@
             return redirect('messages')->with(
                 'error', 'Die gewünschte Nachricht ist unbekannt.'
             );
-        }
-
-        public function postReply($id) {
-            if($this->message->add()) {
-                return redirect('messages')->with(
-                    'success', 'Deine Nachricht wurde erfolgreich versendet.'
-                );
-            }
-
-            return redirect('message/reply/'.$id)->withErrors($this->message->validator)->withInput();
         }
 
         public function getMoveto($folder, $id) {
