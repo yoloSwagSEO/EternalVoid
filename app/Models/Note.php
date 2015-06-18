@@ -17,7 +17,7 @@
      * @property string $subject
      * @property string $note
      *
-     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method where(string $column, string $operator, string $value, string $boolean = 'and')
      */
 
     class Note extends Base {

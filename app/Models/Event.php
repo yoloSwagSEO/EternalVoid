@@ -15,7 +15,7 @@
      * @property mixed $finished_at
      * @property string $data
      *
-     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method where(string $column, string $operator, string $value, string $boolean = 'and')
      */
 
     class Event extends Base {

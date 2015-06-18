@@ -6,7 +6,8 @@
     /**
      * Class Alliance
      * @package Eternal\Models
-     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method orWhere(string $column, string $operator, mixed $value)
      */
 
     class Alliance extends Base {

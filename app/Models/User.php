@@ -28,13 +28,13 @@
      * @property mixed $disabled_at
      * @property int $disabled_uid
      * @property mixed $lastactive_at
-     * @property mixed $planets
-     * @property mixed $research
-     * @property mixed $profile
-     * @property mixed $messages
+     * @property Planet $planets
+     * @property Research $research
+     * @property UserProfile $profile
+     * @property Message $messages
      *
-     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
-     * @method \Illuminate\Database\Query\Builder select(array $columns = array('*'))
+     * @method where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method select(array $columns = array('*'))
      */
 
     class User extends Base {

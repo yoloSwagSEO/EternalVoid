@@ -25,14 +25,14 @@
      * @property mixed $settled_at
      * @property mixed $updated_at
      * @property mixed $lastupdate_at
-     * @property \Eternal\Models\User $user
-     * @property \Eternal\Models\Production $production
-     * @property \Eternal\Models\Resource $resources
-     * @property \Eternal\Models\Building $buildings
-     * @property \Eternal\Models\Defense $defenses
-     * @property \Eternal\Models\Unit $units
+     * @property User $user
+     * @property Production $production
+     * @property Resource $resources
+     * @property Building $buildings
+     * @property Defense $defenses
+     * @property Unit $units
      *
-     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method where(string $column, string $operator, string $value, string $boolean = 'and')
      *
      */
 
