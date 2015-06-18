@@ -9,13 +9,12 @@
         private $event;
         private $events;
         private $planet;
-        private $stack;
 
         public function __construct(Event $event) {
             $this->event = $event;
         }
 
-        public function handleEvents() {
+        public function handleEvents(Resources $libResources) {
             $this->events = $this->event->read($this->planet->user_id, 1, $this->planet->id);
             foreach($this->events as $event) {
                 $data = unserialize($event->data);
@@ -26,31 +25,11 @@
                     $this->planet->pkt++;
                     $this->planet->save();
 
-                    if(isset($data['production'])) {
-                        if(end($this->stack) === false) {
-                            $this->stack[] = [
-                                'start'      => $this->planet->lastupdate_at,
-                                'end'        => $event->finished_at,
-                                'production' => $this->planet->production
-                            ];
-
-                            $this->stack[] = [
-                                'start'      => $event->finished_at,
-                                'end'        => 0,
-                                'production' => $this->calculateNewProduction($data)
-                            ];
-
-                        } else {
-                            $this->stack[key($this->stack)]['end'] = $event->finished_at;
-                            $this->stack[] = [
-                                'start'      => $event->finished_at,
-                                'end'        => 0,
-                                'production' => $this->calculateNewProduction($data)
-                            ];
-                        }
+                    if($data['production'] > 0) {
+                        $libResources->pushToStack($event, $data);
                     }
 
-                    if(isset($data['capacity'])) {
+                    if($data['capacity'] > 0) {
                         if($data['key'] == 'lager') $this->planet->resources->lager_cap = $data['capacity'];
                         if($data['key'] == 'speziallager') $this->planet->resources->speziallager_cap = $data['capacity'];
                         if($data['key'] == 'tanks') $this->planet->resources->tanks_cap = $data['capacity'];
@@ -64,28 +43,6 @@
                     $this->event->modify($event, $data);
                 }
             }
-        }
-
-        private function calculateNewProduction($data) {
-            $production = $data['production'] / 3600;
-
-            if($data['key'] == 'aluminiummine') $this->planet->production->aluminium = $production;
-            if($data['key'] == 'titanfertigung') $this->planet->production->titan = $production;
-            if($data['key'] == 'siliziummine') $this->planet->production->silizium = $production;
-            if($data['key'] == 'arsenfertigung') $this->planet->production->arsen = $production;
-            if($data['key'] == 'wasserstofffabrik') $this->planet->production->wasserstoff = $production;
-            if($data['key'] == 'antimateriefabrik') $this->planet->production->antimaterie = $production;
-
-            return $this->planet->production;
-        }
-
-        public function setStack($stack) {
-            $this->stack = $stack;
-            return $this;
-        }
-
-        public function getStack() {
-            return $this->stack;
         }
 
         public function setPlanet($planet) {
