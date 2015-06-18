@@ -75,23 +75,11 @@
 
                 $building = $this->setResources($building);
                 $building = $this->setBuildTime($building);
+                $building = $this->setProduction($building);
+                $building = $this->setCapacity($building);
+                $building = $this->setBuildPermission($building);
+                $building = $this->setResourceTime($building);
 
-                if(isset($building['production'])) {
-                    $building = $this->setProduction($building);
-                }
-
-                if(isset($building['capacity'])) {
-                    $building = $this->setCapacity($building);
-                }
-
-                // Check if the build queue is full
-                if($this->currentBuildJobs->count() < 5) {
-                    $building = $this->setBuildPermission($building);
-                } else {
-                    $building['build'] = false;
-                }
-
-                $building          = $this->setResourceTime($building);
                 $buildings[$build] = $building;
             }
 
@@ -124,9 +112,13 @@
         }
 
         private function setBuildPermission($building) {
-            $building['build'] = $building['aluminium'] <= $this->resources->aluminium &&
-                                 $building['titan'] <= $this->resources->titan &&
-                                 $building['silizium'] <= $this->resources->silizium ? true : false;
+            if($this->currentBuildJobs->count() < 5) {
+                $building['build'] = $building['aluminium'] <= $this->resources->aluminium &&
+                                     $building['titan'] <= $this->resources->titan &&
+                                     $building['silizium'] <= $this->resources->silizium ? true : false;
+            } else {
+                $building['build'] = false;
+            }
 
             return $building;
         }

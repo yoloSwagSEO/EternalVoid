@@ -75,15 +75,9 @@
 
                 $tech = $this->setResources($tech);
                 $tech = $this->setResearchTime($tech);
+                $tech = $this->setResearchPermission($tech);
+                $tech = $this->setResourceTime($tech);
 
-                // Check if the build queue is full
-                if($this->currentResearchJobs->count() < 3) {
-                    $tech = $this->setResearchPermission($tech);
-                } else {
-                    $tech['build'] = false;
-                }
-
-                $tech      = $this->setResourceTime($tech);
                 $techs[$t] = $tech;
             }
 
@@ -111,12 +105,16 @@
         }
 
         private function setResearchPermission($tech) {
-            $tech['build'] = $tech['aluminium'] <= $this->resources->aluminium &&
-                             $tech['titan'] <= $this->resources->titan &&
-                             $tech['silizium'] <= $this->resources->silizium &&
-                             $tech['arsen'] <= $this->resources->arsen &&
-                             $tech['wasserstoff'] <= $this->resources->wasserstoff &&
-                             $tech['antimaterie'] <= $this->resources->antimaterie ? true : false;
+            if($this->currentResearchJobs->count() < 3) {
+                $tech['build'] = $tech['aluminium'] <= $this->resources->aluminium &&
+                                 $tech['titan'] <= $this->resources->titan &&
+                                 $tech['silizium'] <= $this->resources->silizium &&
+                                 $tech['arsen'] <= $this->resources->arsen &&
+                                 $tech['wasserstoff'] <= $this->resources->wasserstoff &&
+                                 $tech['antimaterie'] <= $this->resources->antimaterie ? true : false;
+            } else {
+                $tech['build'] = false;
+            }
 
             return $tech;
         }

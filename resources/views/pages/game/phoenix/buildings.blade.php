@@ -61,9 +61,9 @@
 									<span class="btn btn-default tt" data-toggle="tooltip" title="{{ $building['description'] }}"><i class="fa fa-info fa-lg"></i></span>
 									<span class="btn btn-default tt" data-toggle="tooltip" title="Aluminium: <span class='{{ $building['aluminium'] > $resources->aluminium ? 'red' : 'green'}}'>{{ $help->nf($building['aluminium']) }}</span><br />
 										Titan: <span class='{{ $building['titan'] > $resources->titan ? 'red' : 'green' }}'>{{ $help->nf($building['titan']) }}</span><br />
-										{!! isset($building['silizium']) ? 'Silizium: <span class=\''.($building['silizium'] > $resources->silizium ? 'red' : 'green').'\'>'.$help->nf($building['silizium']).'</span><br /><br />' : '<br />' !!}
-										{!! isset($building['production']) ? 'Produktion: '.$help->nf($building['production']).'<br />' : '' !!}
-										{!! isset($building['capacity']) ? 'Kapazität: '.$help->nf($building['capacity']).'<br />' : '' !!}
+										{!! $building['silizium'] > 0 ? 'Silizium: <span class=\''.($building['silizium'] > $resources->silizium ? 'red' : 'green').'\'>'.$help->nf($building['silizium']).'</span><br /><br />' : '<br />' !!}
+										{!! $building['production'] > 0 ? 'Produktion: '.$help->nf($building['production']).'<br />' : '' !!}
+										{!! $building['capacity'] > 0 ? 'Kapazität: '.$help->nf($building['capacity']).'<br />' : '' !!}
 										Bauzeit: {{ $help->htime($building['time']) }}<br /><br />
 										Rohstoffe verfügbar in: {!! $building['restime'] > 0 ? '<span class=\'red\'>'.$help->htime($building['restime']).'</span>' : '<span class=\'green\'>Sofort verfügbar</span>' !!}">
 										<i class="fa fa-bar-chart-o fa-lg"></i>

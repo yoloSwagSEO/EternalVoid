@@ -60,12 +60,12 @@
 								<div class="btn-group btn-group-justified posrel mb0">
 									<span class="btn btn-default tt" data-toggle="tooltip" title="{{ $tech['description'] }}"><i class="fa fa-info fa-lg"></i></span>
 									<span class="btn btn-default tt" data-toggle="tooltip" title="
-										{!! isset($tech['aluminium']) ? 'Aluminium: <span class=\''.($tech['aluminium'] > $resources->aluminium ? 'red' : 'green').'\'>'.$help->nf($tech['aluminium']).'</span><br />' : '' !!}
-										{!! isset($tech['titan']) ? 'Titan: <span class=\''.($tech['titan'] > $resources->titan ? 'red' : 'green').'\'>'.$help->nf($tech['titan']).'</span><br />' : '' !!}
-										{!! isset($tech['silizium']) ? 'Silizium: <span class=\''.($tech['silizium'] > $resources->silizium ? 'red' : 'green').'\'>'.$help->nf($tech['silizium']).'</span><br />' : '' !!}
-										{!! isset($tech['arsen']) ? 'Arsen: <span class=\''.($tech['arsen'] > $resources->arsen ? 'red' : 'green').'\'>'.$help->nf($tech['arsen']).'</span><br />' : '' !!}
-										{!! isset($tech['wasserstoff']) ? 'Wasserstoff: <span class=\''.($tech['wasserstoff'] > $resources->wasserstoff ? 'red' : 'green').'\'>'.$help->nf($tech['wasserstoff']).'</span><br />' : '' !!}
-										{!! isset($tech['antimaterie']) ? 'Antimaterie: <span class=\''.($tech['antimaterie'] > $resources->antimaterie ? 'red' : 'green').'\'>'.$help->nf($tech['antimaterie']).'</span><br />' : '' !!}
+										{!! $tech['aluminium'] > 0 ? 'Aluminium: <span class=\''.($tech['aluminium'] > $resources->aluminium ? 'red' : 'green').'\'>'.$help->nf($tech['aluminium']).'</span><br />' : '' !!}
+										{!! $tech['titan'] > 0 ? 'Titan: <span class=\''.($tech['titan'] > $resources->titan ? 'red' : 'green').'\'>'.$help->nf($tech['titan']).'</span><br />' : '' !!}
+										{!! $tech['silizium'] > 0 ? 'Silizium: <span class=\''.($tech['silizium'] > $resources->silizium ? 'red' : 'green').'\'>'.$help->nf($tech['silizium']).'</span><br />' : '' !!}
+										{!! $tech['arsen'] > 0 ? 'Arsen: <span class=\''.($tech['arsen'] > $resources->arsen ? 'red' : 'green').'\'>'.$help->nf($tech['arsen']).'</span><br />' : '' !!}
+										{!! $tech['wasserstoff'] > 0 ? 'Wasserstoff: <span class=\''.($tech['wasserstoff'] > $resources->wasserstoff ? 'red' : 'green').'\'>'.$help->nf($tech['wasserstoff']).'</span><br />' : '' !!}
+										{!! $tech['antimaterie'] > 0 ? 'Antimaterie: <span class=\''.($tech['antimaterie'] > $resources->antimaterie ? 'red' : 'green').'\'>'.$help->nf($tech['antimaterie']).'</span><br />' : '' !!}
 										<br />Forschungszeit: {{ $help->htime($tech['time']) }}<br /><br />
 										Rohstoffe verfügbar in: {!! $tech['restime'] > 0 ? '<span class=\'red\'>'.$help->htime($tech['restime']).'</span>' : '<span class=\'green\'>Sofort verfügbar</span>' !!}">
 										<i class="fa fa-bar-chart-o fa-lg"></i>
