@@ -42,7 +42,7 @@
                 'messages'
             ]);
 
-            $user->setLastactive($this->user->first());
+            $user->setLastactive($this->user);
 
             return $this;
         }
@@ -58,7 +58,7 @@
             $this->events->setGame($this->game)
                          ->setPlanet($this->planet)
                          ->setResearch($this->user->research)
-                         ->init();
+                         ->process();
         }
 
         public function getGame() {
