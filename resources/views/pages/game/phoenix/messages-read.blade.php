@@ -42,11 +42,11 @@
 						<div class="form-group">
 							<div class="btn-group btn-group-sm col-md-10 col-md-offset-2 pl0">
 								<a href="/messages/reply/{{ $message->id }}" class="btn btn-default"><i class="fa fa-reply pr5"></i> Antworten</a>
-								<a href="/messages/{{ $message->receiver_folder == 3 || $message->sender_folder == 3 ? 'recover/'.$message->id : 'moveto/trash/'.$message->id }}" class="btn btn-default">
+								<a href="/messages/move/{{ $message->receiver_folder == 3 || $message->sender_folder == 3 ? 'recover/'.$message->id : 'trash/'.$message->id }}" class="btn btn-default">
 									<i class="fa fa-{{ $message->receiver_folder == 3 || $message->sender_folder == 3 ? 'undo' : 'trash-o' }} pr5"></i>
 									{{ $message->receiver_folder == 3 || $message->sender_folder == 3 ? 'Wiederherstellen' : 'In Papierkorb verschieben' }}
 								</a>
-								<a href="/messages/delete/{{ $message->id }}" class="btn btn-default"><i class="fa fa-times-circle pr5"></i> Löschen</a>
+								<a href="/messages/move/delete/{{ $message->id }}" class="btn btn-default"><i class="fa fa-times-circle pr5"></i> Löschen</a>
 							</div>
 						</div>
 					</div>

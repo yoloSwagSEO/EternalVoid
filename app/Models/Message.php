@@ -21,10 +21,12 @@
      * @property mixed $read_at
      * @property string $subject
      * @property string $message
+     * @property User $sender
+     * @property User $receiver
      *
-     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
-     * @method \Illuminate\Database\Query\Builder insert(array $values)
-     * @method \Illuminate\Database\Query\Builder selectRaw(string $expression, array $bindings = array())
+     * @method where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method insert(array $values)
+     * @method selectRaw(string $expression, array $bindings = array())
      */
 
     class Message extends Base {
@@ -119,40 +121,22 @@
             }
         }
 
-        public function remove(Message $message) {
-            if($message->receiver_id == $this->usr->id) {
-                $message->read_at         = Carbon::now();
-                $message->receiver_folder = 4;
-            }
-
-            if($message->sender_id == $this->usr->id) {
-                $message->sender_folder = 4;
-            }
-
-            return $message->save();
-        }
-
-        public function countMessages() {
-            return $this->selectRaw('
-				(SELECT COUNT(id) FROM eternal_'.$this->table.' WHERE receiver_id = '.$this->usr->id.' AND receiver_folder = 1) AS num_inbox,
-				(SELECT COUNT(id) FROM eternal_'.$this->table.' WHERE sender_id = '.$this->usr->id.' AND sender_folder = 2) AS num_outbox,
-			 	(SELECT COUNT(id) FROM eternal_'.$this->table.' WHERE (receiver_id = '.$this->usr->id.' OR sender_id = '.$this->usr->id.') AND (receiver_folder = 3 OR sender_folder = 3)) AS num_trash
-			')->get()->first();
-        }
-
-        public function moveTo($folder, Message $message) {
-            switch($folder) {
+        public function move($action, Message $message) {
+            switch($action) {
+                case 'recover':
+                    $message->receiver_folder = $message->receiver_id == $this->usr->id ? 1 : $message->receiver_folder;
+                    $message->sender_folder   = $message->receiver_id == $this->usr->id ? 2 : $message->receiver_folder;
+                break;
                 case 'trash':
-                    if($message->receiver_id == $this->usr->id) $message->receiver_folder = 3;
-                    if($message->sender_id == $this->usr->id) $message->sender_folder = 3;
+                    $message->receiver_folder = $message->receiver_id == $this->usr->id ? 3 : $message->receiver_folder;
+                    $message->sender_folder   = $message->receiver_id == $this->usr->id ? 3 : $message->receiver_folder;
+                break;
+                case 'delete':
+                    $message->read_at = Carbon::now();
+                    $message->receiver_folder = $message->receiver_id == $this->usr->id ? 4 : $message->receiver_folder;
+                    $message->sender_folder   = $message->sender_id == $this->usr->id ? 4 : $message->sender_folder;
+                break;
             }
-
-            return $message->save();
-        }
-
-        public function recover(Message $message) {
-            if($message->receiver_id == $this->usr->id) $message->receiver_folder = 1;
-            if($message->sender_id == $this->usr->id) $message->sender_folder = 2;
 
             return $message->save();
         }
@@ -165,6 +149,14 @@
             }
 
             return true;
+        }
+
+        public function countMessages() {
+            return $this->selectRaw('
+				(SELECT COUNT(id) FROM eternal_'.$this->table.' WHERE receiver_id = '.$this->usr->id.' AND receiver_folder = 1) AS num_inbox,
+				(SELECT COUNT(id) FROM eternal_'.$this->table.' WHERE sender_id = '.$this->usr->id.' AND sender_folder = 2) AS num_outbox,
+			 	(SELECT COUNT(id) FROM eternal_'.$this->table.' WHERE (receiver_id = '.$this->usr->id.' OR sender_id = '.$this->usr->id.') AND (receiver_folder = 3 OR sender_folder = 3)) AS num_trash
+			')->get()->first();
         }
 
         public function sender() {

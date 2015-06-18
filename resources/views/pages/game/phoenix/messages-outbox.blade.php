@@ -42,8 +42,8 @@
 								<td class="text-center"><a href="/user/detail/{{ $message->receiver->username }}">{{ $message->receiver->username }}</a></td>
 								<td class="text-center">{{ $help->dt($message->created_at)->format('d.m.Y - H:i:s') }}</td>
 								<td class="text-center">
-									<a href="/messages/moveto/trash/{{ $message->id }}" title="Nachricht vom Postausgang in den Papierkorb verschieben"><i class="fa fa-trash-o fa-lg pr10"></i></a>
-									<a href="/messages/delete/{{ $message->id }}" title="Nachricht löschen"><i class="fa fa-times-circle fa-lg"></i></a>
+									<a href="/messages/move/trash/{{ $message->id }}" title="Nachricht vom Postausgang in den Papierkorb verschieben"><i class="fa fa-trash-o fa-lg pr10"></i></a>
+									<a href="/messages/move/delete/{{ $message->id }}" title="Nachricht löschen"><i class="fa fa-times-circle fa-lg"></i></a>
 								</td>
 							</tr>
 						@empty

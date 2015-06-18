@@ -56,8 +56,8 @@
 									<i class="fa fa-check-square-o fa-lg posrel t1 pr10 cur-p" title="Nachricht gelesen oder als gelesen markiert am: {{ $help->dt($message->read_at)->format('d.m.Y') }} um {{ $help->dt($message->read_at)->format('H:i:s') }} Uhr"></i>
 								@endif
 
-									<a href="/messages/moveto/trash/{{ $message->id }}" title="Nachricht in Papierkorb verschieben"><i class="fa fa-trash-o fa-lg pr10"></i></a>
-									<a href="/messages/delete/{{ $message->id }}" title="Nachricht löschen"><i class="fa fa-times-circle fa-lg"></i></a>
+									<a href="/messages/move/trash/{{ $message->id }}" title="Nachricht in Papierkorb verschieben"><i class="fa fa-trash-o fa-lg pr10"></i></a>
+									<a href="/messages/move/delete/{{ $message->id }}" title="Nachricht löschen"><i class="fa fa-times-circle fa-lg"></i></a>
 								</td>
 							</tr>
 						@empty

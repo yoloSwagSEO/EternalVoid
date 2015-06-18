@@ -109,11 +109,11 @@
             );
         }
 
-        public function getMoveto($folder, $id) {
-            $message = $this->message->read($id);
+        public function getMove($action, $messageId) {
+            $message = $this->message->read($messageId);
             if(!is_null($message)) {
                 if($message->receiver_id == $this->user->id || $message->sender_id == $this->user->id) {
-                    if($this->message->moveTo($folder, $message)) {
+                    if($this->message->move($action, $message)) {
                         return redirect()->back()->with(
                             'success', 'Die Nachricht wurde erfolgreich verschoben.'
                         );
@@ -131,56 +131,6 @@
 
             return redirect('messages')->with(
                 'error', 'Du Spaten sollst nicht willkürlich Nachrichten-ID\'s ausprobieren.'
-            );
-        }
-
-        public function getRecover($id) {
-            $message = $this->message->read($id);
-            if(!is_null($message)) {
-                if($message->receiver_id == $this->user->id || $message->sender_id == $this->user->id) {
-                    if($this->message->recover($message)) {
-                        return redirect()->back()->with(
-                            'success', 'Die Nachricht wurde erfolgreich wiederhergestellt.'
-                        );
-                    }
-
-                    return redirect()->back()->with(
-                        'error', 'Die Nachricht konnte nicht wiederhergestellt werden.'
-                    );
-                }
-
-                return redirect()->back()->with(
-                    'error', 'Die wiederherzustellende Nachricht kann nicht wiederhergestellt werden.'
-                );
-            }
-
-            return redirect()->back()->with(
-                'error', 'Die wiederherzustellende Nachricht ist unbekannt.'
-            );
-        }
-
-        public function getDelete($id) {
-            $message = $this->message->read($id);
-            if(!is_null($message)) {
-                if($message->receiver_id == $this->user->id || $this->message->sender_id == $this->user->id) {
-                    if($this->message->remove($message)) {
-                        return redirect()->back()->with(
-                            'success', 'Die Nachricht wurde erfolgreich gelöscht.'
-                        );
-                    }
-
-                    return redirect()->back()->with(
-                        'error', 'Die Nachricht konnte nicht gelöscht werden.'
-                    );
-                }
-
-                return redirect()->back()->with(
-                    'error', 'Die zu löschende Nachricht kann nicht gelöscht werden.'
-                );
-            }
-
-            return redirect()->back()->with(
-                'error', 'Die zu löschende Nachricht ist unbekannt.'
             );
         }
 
