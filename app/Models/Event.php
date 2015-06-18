@@ -25,17 +25,15 @@
 
         public function read($userId, $type, $planetId = '') {
             if(!empty($planetId)) {
-                return $this->where([
-                    'user_id'   => $userId,
-                    'planet_id' => $planetId,
-                    'type'      => $type,
-                ])->get();
+                return $this->where('user_id', '=', $userId)
+                            ->where('planet_id', '=', $planetId)
+                            ->where('type', '=', $type)
+                            ->get();
             }
 
-            return $this->where([
-                'user_id' => $userId,
-                'type'    => $type,
-            ])->get();
+            return $this->where('user_id', '=', $userId)
+                        ->where('type', '=', $type)
+                        ->get();
         }
 
         public function readById($eventId) {
@@ -86,13 +84,11 @@
         }
 
         public function cancel(Event $event) {
-            $events = $this->where([
-                'user_id'   => $event->user_id,
-                'planet_id' => $event->planet_id,
-                'type'      => $event->type,
-            ])->where(
-                'id', '>', $event->id
-            )->get();
+            $events = $this->where('user_id', '=', $event->user_id)
+                           ->where('planet_id', '=', $event->planet_id)
+                           ->where('type', '=', $event->type)
+                           ->where('id', '>', $event->id)
+                           ->get();
 
             $eventData = unserialize($event->data);
             $remaining = $eventData['remaining'] / $eventData['time'];
@@ -120,14 +116,13 @@
         }
 
         private function last($userId, $type, $planetId = '') {
-            return $this->where([
-                'user_id'   => $userId,
-                'planet_id' => $planetId,
-                'type'      => $type,
-            ])->orderBy('id', 'desc')
-              ->take(1)
-              ->get()
-              ->first();
+            return $this->where('user_id', '=', $userId)
+                        ->where('planet_id', '=', $planetId)
+                        ->where('type', '=', $type)
+                        ->orderBy('id', 'desc')
+                        ->take(1)
+                        ->get()
+                        ->first();
         }
 
     }
