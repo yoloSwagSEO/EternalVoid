@@ -32,6 +32,8 @@
      * @property \Eternal\Models\Defense $defenses
      * @property \Eternal\Models\Unit $units
      *
+     * @method \Illuminate\Database\Query\Builder where()
+     *
      */
 
     class Planet extends Base {

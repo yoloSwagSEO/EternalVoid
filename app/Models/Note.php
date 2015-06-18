@@ -16,6 +16,8 @@
      * @property int $deleted_uid
      * @property string $subject
      * @property string $note
+     *
+     * @method \Illuminate\Database\Query\Builder where()
      */
 
     class Note extends Base {

@@ -6,7 +6,7 @@
     /**
      * Class Alliance
      * @package Eternal\Models
-     * @method \Illuminate\Database\Eloquent\Builder where
+     * @method \Illuminate\Database\Eloquent\Builder where()
      */
 
     class Alliance extends Base {

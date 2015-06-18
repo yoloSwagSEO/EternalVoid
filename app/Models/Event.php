@@ -14,6 +14,8 @@
      * @property mixed $created_at
      * @property mixed $finished_at
      * @property string $data
+     *
+     * @method \Illuminate\Database\Query\Builder where()
      */
 
     class Event extends Base {

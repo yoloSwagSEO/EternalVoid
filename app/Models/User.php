@@ -32,6 +32,9 @@
      * @property mixed $research
      * @property mixed $profile
      * @property mixed $messages
+     *
+     * @method \Illuminate\Database\Query\Builder where()
+     * @method \Illuminate\Database\Query\Builder select()
      */
 
     class User extends Base {
