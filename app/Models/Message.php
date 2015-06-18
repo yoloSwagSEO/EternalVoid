@@ -18,7 +18,7 @@
      * @property int $updated_uid
      * @property mixed $deleted_at
      * @property int $deleted_uid
-     * @proprety mixed $read_at
+     * @property mixed $read_at
      * @property string $subject
      * @property string $message
      */
@@ -29,9 +29,9 @@
 
         public function read($id, $with = []) {
             return $this->with($with)
-                ->where('id', '=', $id)
-                ->get()
-                ->first();
+                        ->where('id', '=', $id)
+                        ->get()
+                        ->first();
         }
 
         public function add() {
