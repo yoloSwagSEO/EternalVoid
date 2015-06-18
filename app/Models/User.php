@@ -66,7 +66,7 @@
         }
 
         public static function getByUsername($username) {
-            return self::whereUsername($username)->get()->first();
+            return self::where('username', '=', $username)->get()->first();
         }
 
         public function login() {
