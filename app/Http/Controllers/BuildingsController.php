@@ -4,6 +4,14 @@
     use Eternal\Models\Event;
     use Eternal\Libraries\Main;
 
+    /**
+     * Class BuildingsController
+     * @package Eternal\Http\Controllers
+     *
+     * @var \Eternal\Models\Event $event
+     * @var \Illuminate\Database\Eloquent\Collection $currentBuildJobs
+     */
+
     class BuildingsController extends MainController {
 
         private $event;
