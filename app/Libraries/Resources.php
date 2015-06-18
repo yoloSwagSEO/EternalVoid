@@ -55,21 +55,45 @@
             }
         }
 
+        public function process() {
+            if(empty($this->stack)) {
+                $this->stack[] = [
+                    'interval'   => Carbon::now()->diffInSeconds($this->planet->lastupdate_at),
+                    'production' => $this->planet->production
+                ];
+            }
+
+            foreach($this->stack as $item) {
+                $this->interval = is_object($item['interval']) ? Carbon::now()->diffInSeconds($item['interval']) : $item['interval'];
+
+                $this->calculate($item['production']);
+
+                $this->planet->resources->bunker_int = (($this->planet->resources->aluminium + $this->planet->resources->titan + $this->planet->resources->silizium + $this->planet->resources->arsen + $this->planet->resources->wasserstoff + $this->planet->resources->antimaterie) / $this->planet->resources->bunker_cap) * 100;
+                $this->planet->resources->bunker_int = $this->planet->resources->bunker_int > 100 ? 100 : $this->planet->resources->bunker_int;
+
+                $this->overflow($item['production']);
+            }
+        }
+
         private function setProduction($data) {
             switch($data['key']) {
                 case 'aluminiummine':
+                    $this->planet->production->aluminium = ($data['production'] / 3600) * $this->getGeologieBonus();
+                break;
                 case 'titanfertigung':
+                    $this->planet->production->titan = ($data['production'] / 3600) * $this->getSpeziallegierungBonus();
+                break;
                 case 'siliziummine':
+                    $this->planet->production->silizium = ($data['production'] / 3600) * $this->getGeologieBonus();
+                break;
                 case 'arsenfertigung':
+                    $this->planet->production->arsen = ($data['production'] / 3600) * $this->getSpeziallegierungBonus();
+                break;
                 case 'wasserstofffabrik':
+                    $this->planet->production->wasserstoff = ($data['production'] / 3600) * $this->getMateriestabilisierungBonus();
+                break;
                 case 'antimateriefabrik':
-                    $production = $data['production'] / 3600;
-                    if($data['key'] == 'aluminiummine') $this->planet->production->aluminium = $production * $this->getGeologieBonus();
-                    if($data['key'] == 'titanfertigung') $this->planet->production->titan = $production * $this->getSpeziallegierungBonus();
-                    if($data['key'] == 'siliziummine') $this->planet->production->silizium = $production * $this->getGeologieBonus();
-                    if($data['key'] == 'arsenfertigung') $this->planet->production->arsen = $production  * $this->getSpeziallegierungBonus();
-                    if($data['key'] == 'wasserstofffabrik') $this->planet->production->wasserstoff = $production * $this->getMateriestabilisierungBonus();
-                    if($data['key'] == 'antimateriefabrik') $this->planet->production->antimaterie = $production * $this->getMateriestabilisierungBonus();
+                    $this->planet->production->antimaterie = ($data['production'] / 3600) * $this->getMateriestabilisierungBonus();
                 break;
                 case 'geologie':
                     $this->planet->production->aluminium = $this->planet->production->aluminium * $this->getGeologieBonus();
@@ -78,6 +102,7 @@
                 case 'speziallegierung':
                     $this->planet->production->titan = $this->planet->production->titan * $this->getSpeziallegierungBonus();
                     $this->planet->production->arsen = $this->planet->production->arsen * $this->getSpeziallegierungBonus();
+                break;
                 case 'materiestabilisierung':
                     $this->planet->production->wasserstoff = $this->planet->production->wasserstoff * $this->getMateriestabilisierungBonus();
                     $this->planet->production->antimaterie = $this->planet->production->antimaterie * $this->getMateriestabilisierungBonus();
@@ -97,80 +122,24 @@
             return 1 + (($this->planet->bonus + ($this->research->materiestabilisierung * 5)) / 100);
         }
 
-        private function setAluminiumProduction($production) {
+        private function calculate($production) {
             if($this->planet->resources->lager_int < 100) {
                 $this->planet->resources->aluminium += ($production->aluminium + $this->game['aluminium']) * $this->interval;
-            }
-
-            return $this;
-        }
-
-        private function setTitanProduction($production) {
-            if($this->planet->resources->lager_int < 100) {
                 $this->planet->resources->titan += ($production->titan + $this->game['titan']) * $this->interval;
-            }
-
-            return $this;
-        }
-
-        private function setSiliziumProduction($production) {
-            if($this->planet->resources->lager_int < 100) {
                 $this->planet->resources->silizium += ($production->silizium + $this->game['silizium']) * $this->interval;
             }
 
-            return $this;
-        }
-
-        private function setArsenProduction($production) {
             if($this->planet->resources->speziallager_int < 100) {
                 $this->planet->resources->arsen += $production->arsen * $this->interval;
-            }
-
-            return $this;
-        }
-
-        private function setWasserstoffProduction($production) {
-            if($this->planet->resources->speziallager_int < 100) {
                 $this->planet->resources->wasserstoff += $production->wasserstoff * $this->interval;
             }
 
-            return $this;
-        }
-
-        private function setAntimaterieProduction($production) {
             if($this->planet->resources->tanks_int < 100) {
                 $this->planet->resources->antimaterie += $production->antimaterie * $this->interval;
             }
-
-            return $this;
         }
 
-        public function process() {
-            if(empty($this->stack)) {
-                $this->stack[] = [
-                    'interval'   => Carbon::now()->diffInSeconds($this->planet->lastupdate_at),
-                    'production' => $this->planet->production
-                ];
-            }
-
-            foreach($this->stack as $item) {
-                $this->interval = is_object($item['interval']) ? Carbon::now()->diffInSeconds($item['interval']) : $item['interval'];
-
-                $this->setAluminiumProduction($item['production'])
-                     ->setTitanProduction($item['production'])
-                     ->setSiliziumProduction($item['production'])
-                     ->setArsenProduction($item['production'])
-                     ->setWasserstoffProduction($item['production'])
-                     ->setAntimaterieProduction($item['production']);
-
-                $this->planet->resources->bunker_int = (($this->planet->resources->aluminium + $this->planet->resources->titan + $this->planet->resources->silizium + $this->planet->resources->arsen + $this->planet->resources->wasserstoff + $this->planet->resources->antimaterie) / $this->planet->resources->bunker_cap) * 100;
-                $this->planet->resources->bunker_int = $this->planet->resources->bunker_int > 100 ? 100 : $this->planet->resources->bunker_int;
-
-                $this->overflow($item['production']);
-            }
-        }
-
-        public function overflow($production) {
+        private function overflow($production) {
             $lager_resources        = $this->planet->resources->aluminium + $this->planet->resources->titan + $this->planet->resources->silizium;
             $speziallager_resources = $this->planet->resources->wasserstoff + $this->planet->resources->arsen;
 
