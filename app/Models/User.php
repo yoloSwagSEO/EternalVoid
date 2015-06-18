@@ -14,12 +14,19 @@
      * @property int $id
      * @property string $username
      * @property string $password
+     * @property string $remember_token
      * @property string $random
      * @property string $email
      * @property string $regip
      * @property string $lastip
+     * @property mixed $created_at
      * @property int $created_uid
+     * @property mixed $updated_at
      * @property int $updated_uid
+     * @property mixed $deleted_at
+     * @property int $deleted_uid
+     * @property mixed $disabled_at
+     * @property int $disabled_uid
      * @property mixed $lastactive_at
      */
 

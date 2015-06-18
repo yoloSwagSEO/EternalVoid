@@ -12,7 +12,15 @@
      * @property int $sender_id
      * @property int $receiver_folder
      * @property int $sender_folder
-     * @proprety Carbon\Carbon $read_at
+     * @property mixed $created_at
+     * @property int $created_uid
+     * @property mixed $updated_at
+     * @property int $updated_uid
+     * @property mixed $deleted_at
+     * @property int $deleted_uid
+     * @proprety mixed $read_at
+     * @property string $subject
+     * @property string $message
      */
 
     class Message extends Base {

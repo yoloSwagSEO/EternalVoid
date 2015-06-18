@@ -8,8 +8,12 @@
      * @package Eternal\Models
      *
      * @property int $user_id
+     * @property mixed $created_at
      * @property int $created_uid
+     * @property mixed $updated_at
      * @property int $updated_uid
+     * @property mixed $deleted_at
+     * @property int $deleted_uid
      * @property string $subject
      * @property string $note
      */

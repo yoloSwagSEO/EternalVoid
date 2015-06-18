@@ -4,7 +4,27 @@
     /**
      * Class Building
      * @package Eternal\Models
-     * @property-write int $planet_id
+     *
+     * @property int $planet_id
+     * @property int $aluminiummine
+     * @property int $titanfertigung
+     * @property int $siliziummine
+     * @property int $arsenfertigung
+     * @property int $wasserstofffabrik
+     * @property int $antimateriefabrik
+     * @property int $lager
+     * @property int $speziallager
+     * @property int $tanks
+     * @property int $bunker
+     * @property int $schiffswerft
+     * @property int $raumhafen
+     * @property int $sternenbasis
+     * @property int $flottenkommando
+     * @property int $planetarer_schild
+     * @property int $kommandozentrale
+     * @property int $forschungszentrum
+     * @property int $handelsboerse
+     * @property int $schiffsboerse
      */
 
     class Building extends Base {

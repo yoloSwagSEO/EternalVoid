@@ -3,6 +3,17 @@
 
     use Request;
 
+    /**
+     * Class UserProfile
+     * @package Eternal\Models
+     *
+     * @property int $user_id
+     * @property int $race_id
+     * @property int $alliance_id
+     * @property int $alliance_rank_id
+     * @property int $planetimages
+     */
+
     class UserProfile extends Base {
 
         public $timestamps = false;

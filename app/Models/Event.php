@@ -11,6 +11,7 @@
      * @property int $user_id
      * @property int $planet_id
      * @property int $type
+     * @property mixed $created_at
      * @property mixed $finished_at
      * @property string $data
      */

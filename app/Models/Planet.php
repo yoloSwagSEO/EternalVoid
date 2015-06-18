@@ -12,7 +12,18 @@
      * @property int $id
      * @property int $user_id
      * @property int $base_id
+     * @property int $galaxy
+     * @property int $system
+     * @property int $position
+     * @property int $temp_min
+     * @property int $temp_max
+     * @property int $diameter
+     * @property int $image
+     * @property int $bonus
+     * @property string $planetname
+     * @property int $pkt
      * @property mixed $settled_at
+     * @property mixed $updated_at
      * @property mixed $lastupdate_at
      * @property \Eternal\Models\User $user
      * @property \Eternal\Models\Production $production

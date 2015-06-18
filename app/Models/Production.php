@@ -6,6 +6,12 @@
      * @package Eternal\Models
      *
      * @property int $planet_id
+     * @property float $aluminium
+     * @property float $titan
+     * @property float $silizium
+     * @property float $arsen
+     * @property float $wasserstoff
+     * @property float $antimaterie
      */
 
     class Production extends Base {
