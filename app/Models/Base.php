@@ -12,9 +12,13 @@
      *
      * @method \Illuminate\Database\Eloquent\Builder insert()
      * @method \Illuminate\Database\Eloquent\Builder where()
+     * @method \Illuminate\Database\Eloquent\Builder find()
      * @method \Illuminate\Database\Query\Builder orderBy()
      * @method \Illuminate\Database\Query\Builder select()
      * @method \Illuminate\Database\Query\Builder selectRaw()
+     * @method \Illuminate\Database\Eloquent\Collection map()
+     * @method \Illuminate\Database\Eloquent\Collection filter()
+     * @method \Illuminate\Database\Eloquent\Collection count()
      */
 
     class Base extends Eloquent {
