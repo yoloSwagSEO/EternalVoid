@@ -41,7 +41,7 @@
         }
 
         public function getCancel($eventId) {
-            $event = $this->event->find($eventId);
+            $event = $this->event->readById($eventId);
             if(!is_null($event)) {
                 if($event->user_id == $this->user->id && $event->type == 2) {
                     if($this->event->cancel($event)) {
