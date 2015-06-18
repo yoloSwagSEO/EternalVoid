@@ -1,28 +1,12 @@
 <?php
     namespace Eternal\Models;
 
-    use Illuminate\Database\Eloquent;
+    use Illuminate\Database\Eloquent\Model;
 
     use Validator;
     use Request;
 
-    /**
-     * Class Base
-     * @package Eternal\Models
-     *
-     * @method Eloquent\Builder insert()
-     * @method Eloquent\Builder where()
-     * @method Eloquent\Builder find()
-     * @method Eloquent\Builder first()
-     * @method Eloquent\Builder orderBy()
-     * @method Eloquent\Builder select()
-     * @method Eloquent\Builder selectRaw()
-     * @method Eloquent\Collection map()
-     * @method Eloquent\Collection filter()
-     * @method Eloquent\Collection count()
-     */
-
-    class Base extends Eloquent\Model {
+    class Base extends Model {
 
         /* @var $validator \Illuminate\Validation\Validator */
         public $validator;

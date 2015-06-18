@@ -140,6 +140,7 @@ return [
 		'Illuminate\Html\HtmlServiceProvider',
 		'Illuminate\Remote\RemoteServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 		/*
 		 * Application Service Providers...
