@@ -28,6 +28,10 @@
      * @property mixed $disabled_at
      * @property int $disabled_uid
      * @property mixed $lastactive_at
+     * @property mixed $planets
+     * @property mixed $research
+     * @property mixed $profile
+     * @property mixed $messages
      */
 
     class User extends Base {

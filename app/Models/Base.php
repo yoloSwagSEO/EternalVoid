@@ -1,7 +1,7 @@
 <?php
     namespace Eternal\Models;
 
-    use Illuminate\Database\Eloquent\Model as Eloquent;
+    use Illuminate\Database\Eloquent;
 
     use Validator;
     use Request;
@@ -10,19 +10,19 @@
      * Class Base
      * @package Eternal\Models
      *
-     * @method \Illuminate\Database\Eloquent\Builder insert()
-     * @method \Illuminate\Database\Eloquent\Builder where()
-     * @method \Illuminate\Database\Eloquent\Builder find()
-     * @method \Illuminate\Database\Eloquent\Builder first()
-     * @method \Illuminate\Database\Eloquent\Builder orderBy()
-     * @method \Illuminate\Database\Eloquent\Builder select()
-     * @method \Illuminate\Database\Eloquent\Builder selectRaw()
-     * @method \Illuminate\Database\Eloquent\Collection map()
-     * @method \Illuminate\Database\Eloquent\Collection filter()
-     * @method \Illuminate\Database\Eloquent\Collection count()
+     * @method Eloquent\Builder insert()
+     * @method Eloquent\Builder where()
+     * @method Eloquent\Builder find()
+     * @method Eloquent\Builder first()
+     * @method Eloquent\Builder orderBy()
+     * @method Eloquent\Builder select()
+     * @method Eloquent\Builder selectRaw()
+     * @method Eloquent\Collection map()
+     * @method Eloquent\Collection filter()
+     * @method Eloquent\Collection count()
      */
 
-    class Base extends Eloquent {
+    class Base extends Eloquent\Model {
 
         /* @var $validator \Illuminate\Validation\Validator */
         public $validator;
