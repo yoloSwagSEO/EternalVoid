@@ -31,7 +31,7 @@
             $this->libResources->setGame($this->game)->setPlanet($this->planet)->setResearch($this->research);
 
             $this->libBuildings->setPlanet($this->planet)->handleEvents($this->libResources);
-            $this->libResources->setResearch($this->research)->handleEvents($this->libResources);
+            $this->libResearch->setResearch($this->research)->handleEvents($this->libResources);
             $this->libResources->process();
 
             $this->planet->resources->save();
