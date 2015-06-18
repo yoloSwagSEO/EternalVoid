@@ -32,8 +32,8 @@
         }
 
         public function init() {
-            $this->setInterval()
-                 ->eventBuildings()
+            $this->interval = Carbon::now()->diffInSeconds($this->planet->lastupdate_at);
+            $this->eventBuildings()
                  ->eventResearch()
                  ->eventResources();
         }
@@ -99,9 +99,13 @@
             return $this;
         }
 
-        private function setInterval($start = '', $end = '') {
-            $now = Carbon::now();
-            $this->interval = empty($start) && empty($end) ? $now->diffInSeconds($this->planet->lastupdate_at) : $end->diffInSeconds($start);
+        /**
+         * @param Carbon $start
+         * @param Carbon $end
+         * @return $this
+         */
+        private function setInterval($start, $end) {
+            $this->interval = $end->diffInSeconds($start);
 
             return $this;
         }
