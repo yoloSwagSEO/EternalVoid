@@ -32,7 +32,7 @@
      * @property \Eternal\Models\Defense $defenses
      * @property \Eternal\Models\Unit $units
      *
-     * @method \Illuminate\Database\Query\Builder where()
+     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
      *
      */
 

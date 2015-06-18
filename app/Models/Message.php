@@ -22,9 +22,9 @@
      * @property string $subject
      * @property string $message
      *
-     * @method \Illuminate\Database\Query\Builder where()
-     * @method \Illuminate\Database\Query\Builder insert()
-     * @method \Illuminate\Database\Query\Builder selectRaw()
+     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method \Illuminate\Database\Query\Builder insert(array $values)
+     * @method \Illuminate\Database\Query\Builder selectRaw(string $expression, array $bindings = array())
      */
 
     class Message extends Base {

@@ -33,8 +33,8 @@
      * @property mixed $profile
      * @property mixed $messages
      *
-     * @method \Illuminate\Database\Query\Builder where()
-     * @method \Illuminate\Database\Query\Builder select()
+     * @method \Illuminate\Database\Query\Builder where(string $column, string $operator, string $value, string $boolean = 'and')
+     * @method \Illuminate\Database\Query\Builder select(array $columns = array('*'))
      */
 
     class User extends Base {
