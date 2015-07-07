@@ -74,8 +74,8 @@
 									@endif
 								</td>
 								<td class="text-center vmiddle w8">
-									@if(isset($p->user) && $p->user->profile->aid != 0)
-										<a href="/alliance/detail/{{ $p->user->profile->alliance->alliance_tag }}">{{ $p->user->profile->alliance->alliance_tag }}</a>
+									@if(isset($p->user) && $p->user->profile->alliance_id != 0)
+										<a href="/alliance/detail/{{ urlencode($p->user->profile->alliance->alliance_tag) }}">{{ $p->user->profile->alliance->alliance_tag }}</a>
 									@else
 										-
 									@endif
