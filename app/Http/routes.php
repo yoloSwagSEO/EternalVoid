@@ -1,6 +1,9 @@
 <?php
 	Route::group(['domain' => '{universe}.'.Config::get('app.host'), 'middleware' => ['auth', 'universe']], function() {
-		Route::controller('json', 'JsonController');
+		Route::controller('alliance/ranks', 'AlliancesRanksController');
+        Route::controller('alliance/messages', 'AlliancesMessagesController');
+        Route::controller('alliance/applications', 'AlliancesApplicationsController');
+        Route::controller('json', 'JsonController');
 		Route::controller('user', 'UsersController');
 		Route::controller('simulator', 'SimulatorController');
 		Route::controller('options', 'OptionsController');
