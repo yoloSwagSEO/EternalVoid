@@ -34,12 +34,26 @@
             return $userProfile->save();
         }
 
+        public function setAlliance($allianceId, UserProfile $userProfile) {
+            $userProfile->alliance_id = $allianceId;
+            return $userProfile->save();
+        }
+
+        public function setAllianceRank($allianceRankId, UserProfile $userProfile) {
+            $userProfile->alliance_rank_id = $allianceRankId;
+            return $userProfile->save();
+        }
+
         public function race() {
             return $this->belongsTo('Eternal\Models\Race', 'race_id', 'id');
         }
 
         public function alliance() {
             return $this->belongsTo('Eternal\Models\Alliance', 'alliance_id', 'id');
+        }
+
+        public function alliancePermissions() {
+            return $this->hasOne('Eternal\Models\AllianceRank', 'id', 'alliance_rank_id');
         }
 
     }
