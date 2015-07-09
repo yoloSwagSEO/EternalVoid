@@ -23,71 +23,47 @@
             ]);
         }
 
-        public function getRead($id) {
-            $note = $this->note->read($id);
-            if(!is_null($note)) {
-                if($note->user_id == $this->user->id) {
-                    return view('pages.game.'.$this->game['viewpath'].'.notes-read')->with([
-                        'note' => $note
-                    ]);
-                }
-
-                return redirect('notes')->with(
-                    'error', 'Die gewünschte Notiz kann nicht angezeigt werden.'
-                );
+        public function getRead($noteId) {
+            $note = $this->retrieveNote($noteId);
+            if($note instanceof Note) {
+                return view('pages.game.'.$this->game['viewpath'].'.notes-read')->with([
+                    'note' => $note
+                ]);
             }
 
-            return redirect('notes')->with(
-                'error', 'Die gewünschte Notiz existiert nicht.'
-            );
+            return $note;
         }
 
         public function getNew() {
             return view('pages.game.'.$this->game['viewpath'].'.notes-new');
         }
 
-        public function getEdit($id) {
-            $note = $this->note->read($id);
-            if(!is_null($note)) {
-                if($note->user_id == $this->user->id) {
-                    return view('pages.game.'.$this->game['viewpath'].'.notes-edit')->with([
-                        'note' => $note
-                    ]);
-                }
-
-                return redirect('notes')->with(
-                    'error', 'Die zu bearbeitende Notiz kann nicht bearbeitet werden.'
-                );
+        public function getEdit($noteId) {
+            $note = $this->retrieveNote($noteId);
+            if($note instanceof Note) {
+                return view('pages.game.'.$this->game['viewpath'].'.notes-edit')->with([
+                    'note' => $note
+                ]);
             }
 
-            return redirect('notes')->with(
-                'error', 'Die zu bearbeitende Notiz existiert nicht.'
-            );
+            return $note;
         }
 
-        public function getDelete($id) {
-            $note = $this->note->read($id);
-            if(!is_null($note)) {
-                if($note->user_id == $this->user->id) {
-                    if($this->note->remove($note)) {
-                        return redirect('notes')->with(
-                            'success', 'Die Notiz wurde erfolgreich gelöscht.'
-                        );
-                    }
-
+        public function getDelete($noteId) {
+            $note = $this->retrieveNote($noteId);
+            if($note instanceof Note) {
+                if($this->note->remove($note)) {
                     return redirect('notes')->with(
-                        'error', 'Die Notiz konnte nicht gelöscht werden.'
+                        'success', 'Die Notiz wurde erfolgreich gelöscht.'
                     );
                 }
 
                 return redirect('notes')->with(
-                    'error', 'Die gewünschte Notiz kann nicht gelöscht werden.'
+                    'error', 'Die Notiz konnte nicht gelöscht werden.'
                 );
             }
 
-            return redirect('notes')->with(
-                'error', 'Die gewünschte Notiz existiert nicht.'
-            );
+            return $note;
         }
 
         public function postNew() {
@@ -100,26 +76,35 @@
             return redirect('notes/new')->withInput()->withErrors($this->note->validator);
         }
 
-        public function postEdit($id) {
-            $note = $this->note->read($id);
+        public function postEdit($noteId) {
+            $note = $this->retrieveNote($noteId);
+            if($note instanceof Note) {
+                if($this->note->edit($note)) {
+                    return redirect('notes')->with(
+                        'success', 'Die Notiz wurde erfolgreich bearbeitet'
+                    );
+                }
+
+                return redirect('notes/edit/'.$noteId)->withInput()->withErrors($this->note->validator);
+            }
+
+            return $note;
+        }
+
+        private function retrieveNote($noteId) {
+            $note = $this->note->read($noteId);
             if(!is_null($note)) {
                 if($note->user_id == $this->user->id) {
-                    if($this->note->edit($note)) {
-                        return redirect('notes')->with(
-                            'success', 'Die Notiz wurde erfolgreich bearbeitet'
-                        );
-                    }
-
-                    return redirect('notes/edit/'.$id)->withInput()->withErrors($this->note->validator);
+                    return $note;
                 }
 
                 return redirect('notes')->with(
-                    'error', 'Die zu bearbeitende Notiz kann nicht bearbeitet werden.'
+                    'error', 'Diese Notiz gehört nicht zu deinem Account.'
                 );
             }
 
             return redirect('notes')->with(
-                'error', 'Die zu bearbeitende Notiz existiert nicht.'
+                'error', 'Diese Notiz existiert nicht.'
             );
         }
     }
