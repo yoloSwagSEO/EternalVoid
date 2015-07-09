@@ -78,34 +78,32 @@
         private function setProduction($data) {
             switch($data['key']) {
                 case 'aluminiummine':
-                case 'geologie':
-                    $this->planet->production->aluminium = $this->planet->production->aluminium * $this->getGeologieBonus();
                     $this->planet->production->aluminium = ($data['production'] / 3600) * $this->getGeologieBonus();
                 break;
                 case 'titanfertigung':
-                case 'speziallegierungen':
-                    $this->planet->production->titan = $this->planet->production->titan * $this->getSpeziallegierungBonus();
                     $this->planet->production->titan = ($data['production'] / 3600) * $this->getSpeziallegierungBonus();
                 break;
                 case 'siliziummine':
-                case 'geologie':
-                    $this->planet->production->silizium  = $this->planet->production->silizium * $this->getGeologieBonus();
                     $this->planet->production->silizium = ($data['production'] / 3600) * $this->getGeologieBonus();
                 break;
                 case 'arsenfertigung':
-                case 'speziallegierungen':
-                    $this->planet->production->arsen = $this->planet->production->arsen * $this->getSpeziallegierungBonus();
                     $this->planet->production->arsen = ($data['production'] / 3600) * $this->getSpeziallegierungBonus();
                 break;
                 case 'wasserstofffabrik':
-                case 'materiestabilisierung':
-                    $this->planet->production->wasserstoff = $this->planet->production->wasserstoff * $this->getMateriestabilisierungBonus();
                     $this->planet->production->wasserstoff = ($data['production'] / 3600) * $this->getMateriestabilisierungBonus();
                 break;
                 case 'antimateriefabrik':
-                case 'materiestabilisierung':
-                    $this->planet->production->antimaterie = $this->planet->production->antimaterie * $this->getMateriestabilisierungBonus();
                     $this->planet->production->antimaterie = ($data['production'] / 3600) * $this->getMateriestabilisierungBonus();
+                break;
+                case 'geologie':
+                case 'speziallegierungen':
+                case 'materiestabilisierung':
+                    $this->planet->production->aluminium = $this->planet->production->aluminium * $this->getGeologieBonus();
+                    $this->planet->production->titan = $this->planet->production->titan * $this->getSpeziallegierungBonus();
+                    $this->planet->production->silizium  = $this->planet->production->silizium * $this->getGeologieBonus();
+                    $this->planet->production->arsen = $this->planet->production->arsen * $this->getSpeziallegierungBonus();
+                    $this->planet->production->wasserstoff = $this->planet->production->wasserstoff * $this->getMateriestabilisierungBonus();
+                    $this->planet->production->antimaterie = $this->planet->production->antimaterie * $this->getMateriestabilisierungBonus();
                 break;
             }
         }
