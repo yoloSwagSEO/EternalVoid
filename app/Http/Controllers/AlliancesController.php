@@ -31,9 +31,9 @@
         public function getIndex() {
             if(is_null($this->playerAlliance)) {
                 $alliances = $this->alliance->read();
-                return view('pages.game.'.$this->game['viewpath'].'.alliance-index')->with([
-                    'alliances' => $alliances
-                ]);
+                return view('pages.game.'.$this->game['viewpath'].'.alliance-index')->with(
+                    'alliances', $alliances
+                );
             }
 
             return view('pages.game.'.$this->game['viewpath'].'.alliance-page');
@@ -57,7 +57,7 @@
 
             return redirect('alliance')->withInput()
                                        ->withErrors($this->alliance->validator)
-                                       ->with(['create' => true]);
+                                       ->with('create', true);
         }
 
         public function getEdit() {
@@ -76,9 +76,9 @@
             if(!is_null($this->playerAlliance)) {
                 if($this->hasPermission('edit_alliance')) {
                     if($this->alliance->modify($this->playerAlliance)) {
-                        return redirect('alliance/edit')->with([
-                            'success' => 'Deine Allianz wurde erfolgreich bearbeitet.'
-                        ]);
+                        return redirect('alliance/edit')->with(
+                            'success', 'Deine Allianz wurde erfolgreich bearbeitet.'
+                        );
                     }
 
                     return redirect('alliance/edit')->withInput()->withErrors($this->alliance->validator);
@@ -93,14 +93,14 @@
         public function getLeave() {
             if(!is_null($this->playerAlliance)) {
                 if($this->user->profile->setAlliance(0, $this->user->profile) && $this->user->profile->setAllianceRank(0, $this->user->profile)) {
-                    return redirect('alliance')->with([
-                        'success' => 'Du hast deine Allianz soeben verlassen.'
-                    ]);
+                    return redirect('alliance')->with(
+                        'success', 'Du hast deine Allianz soeben verlassen.'
+                    );
                 }
 
-                return redirect('alliance')->with([
-                    'error' => 'Aufgrund eines technischen Fehlers konntest du deine Allianz nicht verlassen.'
-                ]);
+                return redirect('alliance')->with(
+                    'error', 'Aufgrund eines technischen Fehlers konntest du deine Allianz nicht verlassen.'
+                );
             }
 
             return redirect('/');
@@ -110,14 +110,14 @@
             if(!is_null($this->playerAlliance)) {
                 if($this->hasPermission('delete_alliance')) {
                     if($this->alliance->remove($this->playerAlliance)) {
-                        return redirect('alliance')->with([
-                            'success' => 'Deine Allianz wurde erfolgreich gelöscht.'
-                        ]);
+                        return redirect('alliance')->with(
+                            'success', 'Deine Allianz wurde erfolgreich gelöscht.'
+                        );
                     }
 
-                    return redirect('alliance')->with([
-                        'error' => 'Deine Allianz konnte aufgrund eines technischen Fehlers nicht gelöscht werden.'
-                    ]);
+                    return redirect('alliance')->with(
+                        'error', 'Deine Allianz konnte aufgrund eines technischen Fehlers nicht gelöscht werden.'
+                    );
                 }
 
                 return redirect('alliance');
@@ -129,14 +129,14 @@
         public function getDetail($allianceTag) {
             $alliance = $this->alliance->readByTag($allianceTag, ['memberCount']);
             if(!is_null($alliance)) {
-                return view('pages.game.'.$this->game['viewpath'].'.alliance-detail')->with([
-                    'alliance' => $alliance
-                ]);
+                return view('pages.game.'.$this->game['viewpath'].'.alliance-detail')->with(
+                    'alliance', $alliance
+                );
             }
 
-            return redirect()->back()->with([
-               'error' => 'Es gibt keine Allianz mit diesem TAG.'
-            ]);
+            return redirect()->back()->with(
+               'error', 'Es gibt keine Allianz mit diesem TAG.'
+            );
         }
 
         private function setPlayerAlliance() {
