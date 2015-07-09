@@ -76,22 +76,10 @@
         }
 
         private function setProduction($data) {
-            $resource   = str_replace(['mine', 'fertigung', 'fabrik'], ['','',''], $data['key']);
-            $production = $data['production'] / 3600;
-
-            switch($data['key']) {
-                case 'aluminiummine':
-                case 'siliziummine':
-                    $this->planet->production->{$resource} = $production * $this->getGeologieBonus();
-                break;
-                case 'titanfertigung':
-                case 'arsenfertigung':
-                    $this->planet->production->{$resource} = $production * $this->getSpeziallegierungBonus();
-                break;
-                case 'wasserstofffabrik':
-                case 'antimateriefabrik':
-                    $this->planet->production->{$resource} = $production * $this->getMateriestabilisierungBonus();
-                break;
+            if(isset($data['production'])) {
+                $resource   = str_replace(['mine', 'fertigung', 'fabrik'], ['','',''], $data['key']);
+                $production = $data['production'] / 3600;
+                $this->planet->production->{$resource} = $production;
             }
 
             $this->planet->production->aluminium = $this->planet->production->aluminium * $this->getGeologieBonus();
