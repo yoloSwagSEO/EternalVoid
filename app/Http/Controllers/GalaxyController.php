@@ -31,26 +31,8 @@
             $galaxy = (int) Request::get('galaxy');
             $system = (int) Request::get('system');
 
-            foreach(Request::all() as $key => $value) {
-                switch($key) {
-                    case 'home':
-                        $galaxy = $this->planet->galaxy;
-                        $system = $this->planet->system;
-                    break;
-                    case 'prevgalaxy':
-                        $galaxy--;
-                    break;
-                    case 'nextgalaxy':
-                        $galaxy++;
-                    break;
-                    case 'prevsystem':
-                        $system--;
-                    break;
-                    case 'nextsystem':
-                        $system++;
-                    break;
-                }
-            }
+            $galaxy = Request::exists('home') ? $this->planet->galaxy : $this->setGalaxy($galaxy);
+            $system = Request::exists('home') ? $this->planet->system : $this->setSystem($system);
 
             if($system < 1) {
                 $system = 255;
@@ -64,6 +46,14 @@
 
             $galaxy = $galaxy < 1 ? 4 : ($galaxy > 4 ? 1 : $galaxy);
             return $this->getIndex($galaxy, $system);
+        }
+
+        private function setGalaxy($galaxy) {
+            return $galaxy = Request::exists('nextgalaxy') ? $galaxy + 1 : (Request::get('prevgalaxy') ? $galaxy - 1 : $galaxy);
+        }
+
+        private function setSystem($system) {
+            return $system = Request::exists('nextsystem') ? $system + 1 : (Request::get('nextsystem') ? $system - 1 : $system);
         }
 
     }
