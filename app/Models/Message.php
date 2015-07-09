@@ -122,21 +122,12 @@
         }
 
         public function move($action, Message $message) {
-            switch($action) {
-                case 'recover':
-                    $message->receiver_folder = $message->receiver_id == $this->usr->id ? 1 : $message->receiver_folder;
-                    $message->sender_folder   = $message->sender_id == $this->usr->id ? 2 : $message->sender_folder;
-                break;
-                case 'trash':
-                    $message->receiver_folder = $message->receiver_id == $this->usr->id ? 3 : $message->receiver_folder;
-                    $message->sender_folder   = $message->sender_id == $this->usr->id ? 3 : $message->sender_folder;
-                break;
-                case 'delete':
-                    $message->read_at = Carbon::now();
-                    $message->receiver_folder = $message->receiver_id == $this->usr->id ? 4 : $message->receiver_folder;
-                    $message->sender_folder   = $message->sender_id == $this->usr->id ? 4 : $message->sender_folder;
-                break;
-            }
+            $receiverFolder = $action == 'recover' ? 1 : ($action == 'trash' ? 3 : 4);
+            $senderFolder   = $receiverFolder == 1 ? 2 : $receiverFolder;
+
+            $message->read_at         = is_null($message->read_at) ? Carbon::now() : $message->read_at;
+            $message->receiver_folder = $message->receiver_id == $this->usr->id ? $receiverFolder : $message->receiver_folder;
+            $message->sender_folder   = $message->sender_id == $this->usr->id ? $senderFolder : $message->sender_folder;
 
             return $message->save();
         }
