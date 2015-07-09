@@ -24,14 +24,7 @@
         }
 
         public function getRead($noteId) {
-            $note = $this->retrieveNote($noteId);
-            if($note instanceof Note) {
-                return view('pages.game.'.$this->game['viewpath'].'.notes-read')->with([
-                    'note' => $note
-                ]);
-            }
-
-            return $note;
+            return $this->getNoteResponse('read', $noteId);
         }
 
         public function getNew() {
@@ -39,14 +32,7 @@
         }
 
         public function getEdit($noteId) {
-            $note = $this->retrieveNote($noteId);
-            if($note instanceof Note) {
-                return view('pages.game.'.$this->game['viewpath'].'.notes-edit')->with([
-                    'note' => $note
-                ]);
-            }
-
-            return $note;
+            return $this->getNoteResponse('edit', $noteId);
         }
 
         public function getDelete($noteId) {
@@ -106,5 +92,16 @@
             return redirect('notes')->with(
                 'error', 'Diese Notiz existiert nicht.'
             );
+        }
+
+        private function getNoteResponse($action, $noteId) {
+            $note = $this->retrieveNote($noteId);
+            if($note instanceof Note) {
+                return view('pages.game.'.$this->game['viewpath'].'.notes-'.$action)->with([
+                    'note' => $note
+                ]);
+            }
+
+            return $note;
         }
     }
