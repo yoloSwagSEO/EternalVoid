@@ -49,11 +49,11 @@
         }
 
         private function setGalaxy($galaxy) {
-            return $galaxy = Request::exists('nextgalaxy') ? $galaxy + 1 : (Request::get('prevgalaxy') ? $galaxy - 1 : $galaxy);
+            return Request::exists('nextgalaxy') ? $galaxy + 1 : (Request::get('prevgalaxy') ? $galaxy - 1 : $galaxy);
         }
 
         private function setSystem($system) {
-            return $system = Request::exists('nextsystem') ? $system + 1 : (Request::get('nextsystem') ? $system - 1 : $system);
+            return Request::exists('nextsystem') ? $system + 1 : (Request::get('nextsystem') ? $system - 1 : $system);
         }
 
     }

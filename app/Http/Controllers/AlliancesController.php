@@ -18,10 +18,14 @@
             $this->alliance = $alliance;
             $this->alliance->setCurrentUser($this->user);
 
-            $this->allianceRank   = $allianceRank;
+            $this->allianceRank = $allianceRank;
             $this->allianceRank->setCurrentUser($this->user);
 
             $this->setPlayerAlliance()->setAlliancePermissions();
+            view()->share([
+                'alliance'    => $this->playerAlliance,
+                'permissions' => $this->alliancePermissions,
+            ]);
         }
 
         public function getIndex() {
@@ -32,10 +36,7 @@
                 ]);
             }
 
-            return view('pages.game.'.$this->game['viewpath'].'.alliance-page')->with([
-                'alliance'    => $this->playerAlliance,
-                'permissions' => $this->alliancePermissions,
-            ]);
+            return view('pages.game.'.$this->game['viewpath'].'.alliance-page');
         }
 
         public function postCreate() {
@@ -62,10 +63,7 @@
         public function getEdit() {
             if(!is_null($this->playerAlliance)) {
                 if($this->hasPermission('edit_alliance')) {
-                    return view('pages.game.'.$this->game['viewpath'].'.alliance-edit')->with([
-                        'alliance'    => $this->playerAlliance,
-                        'permissions' => $this->alliancePermissions,
-                    ]);
+                    return view('pages.game.'.$this->game['viewpath'].'.alliance-edit');
                 }
 
                 return redirect('alliance');
@@ -93,15 +91,19 @@
         }
 
         public function getLeave() {
-            if($this->user->profile->setAlliance(0, $this->user->profile) && $this->user->profile->setAllianceRank(0, $this->user->profile)) {
-                return redirect('alliance')->with(
-                    'success', 'Du hast deine Allianz soeben verlassen.'
-                );
+            if(!is_null($this->playerAlliance)) {
+                if($this->user->profile->setAlliance(0, $this->user->profile) && $this->user->profile->setAllianceRank(0, $this->user->profile)) {
+                    return redirect('alliance')->with([
+                        'success' => 'Du hast deine Allianz soeben verlassen.'
+                    ]);
+                }
+
+                return redirect('alliance')->with([
+                    'error' => 'Aufgrund eines technischen Fehlers konntest du deine Allianz nicht verlassen.'
+                ]);
             }
 
-            return redirect('alliance')->with(
-                'error', 'Aufgrund eines technischen Fehlers konntest du deine Allianz nicht verlassen.'
-            );
+            return redirect('/');
         }
 
         public function getDelete() {
