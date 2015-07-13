@@ -30,7 +30,7 @@
 					<h1 class="text-center w50 acenter pt15">{{ empty($planet->planetname) ? 'Planet' : $planet->planetname }}</h1>
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 p0">
-					<div class="btn-group btn-group-sm btn-group-justified btn-group-top">
+					<div class="btn-group btn-group-sm btn-group-justified btn-group-top navigation-top">
 						<a href="/planet" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Planet">
 							<i class="fa fa-home fa-lg"></i>
 							<span class="visible-lg">Planet</span>
@@ -128,7 +128,7 @@
 		</div>
 		<div class="container-fluid posfix zi1000 b0">
 			<div class="row">
-				<div class="btn-group btn-group-sm btn-group-justified btn-group-btm">
+				<div class="btn-group btn-group-sm btn-group-justified btn-group-btm navigation-bottom">
 					<a href="/missions/" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="Missionen">
 						<i class="fa fa-briefcase fa-lg pt1"></i>
 						<span class="visible-lg">Missionen</span>
