@@ -40,7 +40,8 @@
 
         protected $table = 'planets';
         protected $dates = [
-            'lastupdate_at'
+            'lastupdate_at',
+            'settled_at'
         ];
 
         public function read($id = '', $userId = '', $with = []) {
@@ -57,6 +58,14 @@
             }
 
             return $this->with($with)->get();
+        }
+
+        public function readByCoordinates($galaxy, $system, $position, $with = []) {
+            return $this->with($with)
+                        ->where('galaxy', '=', $galaxy)
+                        ->where('system', '=', $system)
+                        ->where('position', '=', $position)
+                        ->get();
         }
 
         public function in($galaxy, $system, $with = []) {
