@@ -13,4 +13,11 @@
             return view('pages.game.'.$this->game['viewpath'].'.planet');
         }
 
+        public function getDetail($galaxy, $system, $position) {
+            $planet = $this->planet->readByCoordinates($galaxy, $system, $position, ['user'])->first();
+            return view('pages.game.'.$this->game['viewpath'].'.planet-detail')->with([
+                'plt' => $planet
+            ]);
+        }
+
     }
