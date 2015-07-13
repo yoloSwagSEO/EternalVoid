@@ -129,7 +129,7 @@ a:focus {
 	background-color:transparent;
 	background-image:linear-gradient(to bottom, #16374A 0px, #0F1C24 100%);
 
-	border:0 solid #0E0B13;
+	border:1px solid #0E0B13;
 	text-shadow:0 1px 0 #000000;
 	color:#9CB9C9;
 	transition:color .15s ease-in;
@@ -166,6 +166,10 @@ a:focus {
 
 .btn-group-top {
 	border-bottom:1px solid #3D4D57;
+}
+
+.navigation-top a.btn, .navigation-bottom a.btn {
+	border-width: 0;
 }
 
 .gcontainer, .ccontainer {
