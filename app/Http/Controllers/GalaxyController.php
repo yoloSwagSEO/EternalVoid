@@ -56,4 +56,8 @@
             return Request::exists('nextsystem') ? $system + 1 : (Request::exists('prevsystem') ? $system - 1 : $system);
         }
 
+        public function missingMethod($parameters = []) {
+            return call_user_func_array([$this, 'getIndex'], explode('/', $parameters));
+        }
+
     }
