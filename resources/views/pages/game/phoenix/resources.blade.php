@@ -188,8 +188,8 @@
 							<form class="form-inline" id="resprod">
 								<div class="form-group">
 									<label class="control-label mr5">Wie lange benötige ich für die Produktion von</label>
-									<input type="text" name="amount" id="resprod-amount" class="form-control input-sm w15" />
-									<select name="resource" class="form-control input-sm" id="resprod-resource">
+									<input type="text" name="amount" id="resprod-amount" class="form-control w15" />
+									<select name="resource" class="form-control" id="resprod-resource">
 										<option value="aluminium">Aluminium</option>
 										<option value="titan">Titan</option>
 										<option value="silizium">Silizium</option>
@@ -200,8 +200,8 @@
 								</div>
 								<br /><br />
 								<div class="form-group">
-									<input type="text" name="resprod-htime" id="resprod-htime" class="form-control input-sm text-center" value="-" readonly="disabled" />
-									<input type="text" name="resprod-date" id="resprod-date" class="form-control input-sm text-center" value="-" readonly="disabled" />
+									<input type="text" name="resprod-htime" id="resprod-htime" class="form-control text-center" value="-" readonly="disabled" />
+									<input type="text" name="resprod-date" id="resprod-date" class="form-control text-center" value="-" readonly="disabled" />
 								</div>
 								<br /><br />
 								<div class="form-group">
@@ -216,7 +216,7 @@
 							<form class="form-inline" id="restime">
 								<div class="form-group">
 									<label class="control-label mr5">Wieviel</label>
-									<select name="resource" class="form-control input-sm" id="restime-resource">
+									<select name="resource" class="form-control" id="restime-resource">
 										<option value="aluminium">Aluminium</option>
 										<option value="titan">Titan</option>
 										<option value="silizium">Silizium</option>
@@ -225,13 +225,13 @@
 										<option value="antimaterie">Antimaterie</option>
 									</select>
 									<label class="control-label mr5 ml5">produziere ich in</label>
-									<input type="text" name="amount" id="restime-hours" class="form-control input-sm w25" />
+									<input type="text" name="amount" id="restime-hours" class="form-control w25" />
 									<label class="control-label inline ml5">Stunden?</label>
 								</div>
 								<br /><br />
 								<div class="form-group">
-									<input type="text" name="restime-prod" id="restime-prod" class="form-control input-sm text-center" value="-" readonly="disabled" />
-									<input type="text" name="restime-date" id="restime-date" class="form-control input-sm text-center" value="-" readonly="disabled" />
+									<input type="text" name="restime-prod" id="restime-prod" class="form-control text-center" value="-" readonly="disabled" />
+									<input type="text" name="restime-date" id="restime-date" class="form-control text-center" value="-" readonly="disabled" />
 								</div>
 								<br /><br />
 								<div class="form-group">
@@ -255,7 +255,7 @@
 							<form class="form-inline" id="resdesint">
 								<div class="form-group">
 									<label class="control-label mr5">Wieviel</label>
-									<select name="resdesint-resource" class="form-control input-sm" id="resdesint-resource">
+									<select name="resdesint-resource" class="form-control" id="resdesint-resource">
 										<option value="aluminium">Aluminium</option>
 										<option value="titan">Titan</option>
 										<option value="silizium">Silizium</option>
@@ -264,8 +264,8 @@
 										<option value="antimaterie">Antimaterie</option>
 									</select>
 									<label class="control-label mr5 ml5">möchtest du vernichten?</label>
-									<input type="text" name="resdesint-amount" id="resdesint-amount" class="form-control input-sm" />
-									<button type="button" name="desintegrate" id="desintegrate" class="btn btn-default btn-sm"><i class="fa fa-check pr5"></i> Desintegrieren</button>
+									<input type="text" name="resdesint-amount" id="resdesint-amount" class="form-control" />
+									<button type="button" name="desintegrate" id="desintegrate" class="btn btn-default"><i class="fa fa-check pr5"></i> Desintegrieren</button>
 								</div>
 							</form>
 						</div>

@@ -28,7 +28,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-md-10 col-md-offset-2 btn-group btn-group-sm">
+							<div class="col-md-10 col-md-offset-2 btn-group">
 								<button type="submit" id="send" name="send" class="btn btn-default"><i class="fa fa-check pr5"></i> Bearbeiten</button>
 								<button type="button" id="preview" name="preview" class="btn btn-default" data-toggle="modal" data-target="#preview-modal"><i class="fa fa-eye pr5"></i> Vorschau</button>
 							</div>

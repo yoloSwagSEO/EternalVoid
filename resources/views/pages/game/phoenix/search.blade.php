@@ -10,13 +10,13 @@
 						<form action="/search" enctype="multipart/form-data" method="post" class="form-inline">
 							<div class="form-group">
 								<label class="control-label mr5" for="searchtype">Wonach suchen?</label>
-								<select name="searchtype" class="form-control input-sm" id="searchtype">
+								<select name="searchtype" class="form-control" id="searchtype">
 									<option value="user">Spieler</option>
 									<option value="alliance">Allianzen</option>
 									<option value="planet">Planeten</option>
 								</select>
-								<input type="text" name="searchterm" id="searchterm" class="form-control input-sm" />
-								<button type="submit" name="search" id="search" class="btn btn-default btn-sm">
+								<input type="text" name="searchterm" id="searchterm" class="form-control" />
+								<button type="submit" name="search" id="search" class="btn btn-default">
 									<i class="fa fa-search"></i>
 								</button>
 							</div>

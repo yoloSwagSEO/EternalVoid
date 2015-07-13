@@ -18,7 +18,7 @@
 							<div class="col-md-10">{{ $note->note }}</div>
 						</div>
 						<div class="form-group">
-							<div class="btn-group btn-group-sm col-md-10 col-md-offset-2 pl0">
+							<div class="btn-group col-md-10 col-md-offset-2 pl0">
 								<a href="/notes/edit/{{ $note->id }}" class="btn btn-default"><i class="fa fa-edit pr5"></i> Notiz bearbeiten</i></a>
 								<a href="/notes/delete/{{ $note->id }}" class="btn btn-default dellink" data-message="Willst du diese Notiz wirklich löschen?"><i class="fa fa-trash-o pr5"></i> Notiz löschen</a>
 							</div>

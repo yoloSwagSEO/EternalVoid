@@ -3,31 +3,31 @@
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<form action="/galaxy" enctype="multipart/form-data" method="post" class="form-inline w100 center-block mb20" id="galaxyform">
-				<a href="/options/planetimages" class="btn btn-default btn-sm posabs t30 mt5 r15">
+				<a href="/options/planetimages" class="btn btn-default posabs t30 mt5 r15">
 					<i class="fa fa-{{ $user->profile->planetimages ? 'eye-slash' : 'eye' }} pr2 pl2"></i>
 					Planetenbilder {{ $user->profile->planetimages ? 'ausblenden' : 'einblenden' }}
 				</a>
 				<div class="form-group w100 text-center mb3">
-					<button type="submit" id="ok" name="ok" class="btn btn-default btn-sm ml2" title="Springe zu eingegebenen Koordinaten"><i class="fa fa-check fa-lg"></i></button>
+					<button type="submit" id="ok" name="ok" class="btn btn-default ml2" title="Springe zu eingegebenen Koordinaten"><i class="fa fa-check fa-lg"></i></button>
 				</div>
 				<div class="w100 text-center">
 					<div class="input-group">
 						<span class="input-group-btn">
-							<button type="submit" id="prevgalaxy" name="prevgalaxy" class="btn btn-default btn-sm" title="Vorherige Galaxie"><i class="fa fa-minus fa-lg"></i></button>
+							<button type="submit" id="prevgalaxy" name="prevgalaxy" class="btn btn-default" title="Vorherige Galaxie"><i class="fa fa-chevron-left fa-lg"></i></button>
 						</span>
-						<input type="text" id="galaxy" name="galaxy" value="{{ $galaxy }}" class="form-control input-sm text-center"/>
-							<span class="input-group-btn">
-								<button type="submit" id="nextgalaxy" name="nextgalaxy" class="btn btn-default btn-sm ml-1" title="Nächste Galaxie"><i class="fa fa-plus fa-lg"></i></button>
-							</span>
-							<span class="input-group-btn">
-								<button type="submit" id="home" name="home" class="btn btn-default btn-sm mr-2 ml-2" title="Heimatkoordinaten"><i class="fa fa-home fa-lg"></i></button>
-							</span>
-							<span class="input-group-btn">
-								<button type="submit" id="prevsystem" name="prevsystem" class="btn btn-default btn-sm mr-1" title="Vorheriges System"><i class="fa fa-minus fa-lg"></i></button>
-							</span>
-						<input type="text" id="system" name="system" value="{{ $system }}" class="form-control input-sm text-center"/>
+						<input type="text" id="galaxy" name="galaxy" value="{{ $galaxy }}" class="form-control text-center"/>
 						<span class="input-group-btn">
-							<button type="submit" id="nextsystem" name="nextsystem" class="btn btn-default btn-sm" title="Nächstes System"><i class="fa fa-plus fa-lg"></i></button>
+							<button type="submit" id="nextgalaxy" name="nextgalaxy" class="btn btn-default ml-1" title="Nächste Galaxie"><i class="fa fa-chevron-right fa-lg"></i></button>
+						</span>
+						<span class="input-group-btn">
+							<button type="submit" id="home" name="home" class="btn btn-default mr-2 ml-2" title="Heimatkoordinaten"><i class="fa fa-home fa-lg"></i></button>
+						</span>
+						<span class="input-group-btn">
+							<button type="submit" id="prevsystem" name="prevsystem" class="btn btn-default mr-1" title="Vorheriges System"><i class="fa fa-chevron-left fa-lg"></i></button>
+						</span>
+						<input type="text" id="system" name="system" value="{{ $system }}" class="form-control text-center"/>
+						<span class="input-group-btn">
+							<button type="submit" id="nextsystem" name="nextsystem" class="btn btn-default" title="Nächstes System"><i class="fa fa-chevron-right fa-lg"></i></button>
 						</span>
 					</div>
 				</div>
